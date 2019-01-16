@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TipsComponent } from "./components/tips/tips.component";
 import { PaseosComponent } from "./components/paseos/paseos.component";
 import { MatchComponent } from './components/match/match.component';
+import { AgendadosComponent } from './components/agendados/agendados.component';
 
 
 const routes: Routes = [];
@@ -22,7 +23,8 @@ const APP_ROUTES: Routes = [
     component: PaseosComponent, 
     canActivate: [AppGuard], 
     children: [
-      {path: 'match', component: MatchComponent}
+      {path: 'match', component: MatchComponent},
+      {path: 'agendados', component: AgendadosComponent}
     ]},
   { path: '**', pathMatch: 'full', redirectTo: 'tips' }
 ];

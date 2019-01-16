@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TipsComponent } from './components/tips/tips.component';
 import { PaseosComponent } from './components/paseos/paseos.component';
 import { MatchComponent } from './components/match/match.component';
+import { AgendadosComponent } from './components/agendados/agendados.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatchComponent } from './components/match/match.component';
     LoginComponent,
     TipsComponent,
     PaseosComponent,
-    MatchComponent
+    MatchComponent,
+    AgendadosComponent
   ],
   imports: [
     BrowserModule,
