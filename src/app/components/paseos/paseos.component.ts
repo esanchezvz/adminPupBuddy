@@ -18,4 +18,8 @@ export class PaseosComponent implements OnInit {
     this.router.navigate(["paseos/match"]);
   }
 
+  toAgendados() {
+    this.router.navigate(["paseos/agendados"]);
+  }
+
 }
