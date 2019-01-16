@@ -8,10 +8,6 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpClientModule } from '@angula
 import { AppGuard } from './app.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-//Modal
-import { ModalComponent } from './directives/modal/modal.component';
-import { ModalService } from './directives/modal.service';
-
 //Service
 import { LoginService } from './services/login.service';
 
@@ -21,6 +17,7 @@ import { TipsComponent } from './components/tips/tips.component';
 import { PaseosComponent } from './components/paseos/paseos.component';
 import { MatchComponent } from './components/match/match.component';
 import { AgendadosComponent } from './components/agendados/agendados.component';
+import { RealizadosComponent } from './components/realizados/realizados.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +27,8 @@ import { AgendadosComponent } from './components/agendados/agendados.component';
     TipsComponent,
     PaseosComponent,
     MatchComponent,
-    AgendadosComponent
+    AgendadosComponent,
+    RealizadosComponent
   ],
   imports: [
     BrowserModule,

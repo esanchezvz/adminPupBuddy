@@ -11,6 +11,7 @@ import { TipsComponent } from "./components/tips/tips.component";
 import { PaseosComponent } from "./components/paseos/paseos.component";
 import { MatchComponent } from './components/match/match.component';
 import { AgendadosComponent } from './components/agendados/agendados.component';
+import { RealizadosComponent } from './components/realizados/realizados.component';
 
 
 const routes: Routes = [];
@@ -24,7 +25,8 @@ const APP_ROUTES: Routes = [
     canActivate: [AppGuard], 
     children: [
       {path: 'match', component: MatchComponent},
-      {path: 'agendados', component: AgendadosComponent}
+      {path: 'agendados', component: AgendadosComponent},
+      {path: 'realizados', component: RealizadosComponent}
     ]},
   { path: '**', pathMatch: 'full', redirectTo: 'tips' }
 ];
