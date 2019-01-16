@@ -1,0 +1,9 @@
+<div *ngIf="logged">
+    <app-header></app-header>
+    <main id="content-wrapper">
+        <router-outlet></router-outlet>
+    </main>
+</div>
+<div *ngIf="!logged">
+    <router-outlet></router-outlet>
+</div>

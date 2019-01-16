@@ -1,0 +1,47 @@
+.jw-modal {
+    /* modal container fixed across whole screen */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    /* z-index must be higher than .jw-modal-background */
+    z-index: 1000;
+     
+    /* enables scrolling for tall modals */
+    overflow: auto;
+
+    
+}
+.jw-modal .jw-modal-body {
+        padding: 20px;
+        background-image: linear-gradient(to bottom right, #40c1c6, #987eb1);
+
+        /* margin exposes part of the modal background */
+        margin-left: 30%;
+        margin-right: 30%;
+        margin-top: 300px;
+
+        border-radius: 10px;
+        color: white;
+    }
+
+.jw-modal-background {
+    /* modal background fixed across whole screen */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    /* semi-transparent black  */
+    background-color: #000;
+    opacity: 0.5;
+     
+    /* z-index must be below .jw-modal and above everything else  */
+    z-index: 900;
+}
+h1{
+    justify-content: center;
+}

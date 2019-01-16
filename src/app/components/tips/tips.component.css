@@ -1,0 +1,7 @@
+.col-form-label {
+  font-weight: bold;
+}
+
+.selected {
+  background: rgba(0,0,0, 0.27);
+}

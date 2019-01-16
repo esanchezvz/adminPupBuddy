@@ -1,0 +1,91 @@
+<nav class="navbar clearfix">
+  <div class="float-left">
+    <i class="menuIcon barIcon material-icons">menu</i>
+  </div>
+  <a class="navbar-brand p-0 mx-auto" href="./"><img class="logoBrand" src="./assets/img/logo-letras-min.png"
+      alt="Logo PUP BUDDY"></a>
+  <div class="float-right">
+    <i class="barIcon material-icons" data-action="user_profile" data-toggle="tooltip" data-placement="left" ngbTooltip="Perfil">person</i>
+    <i (click)="logMeOut()" class="barIcon material-icons" data-action="log-out" data-toggle="tooltip" data-placement="left"
+      ngbTooltip="Cerrar Sesión">exit_to_app</i>
+  </div>
+</nav>
+<div id="sideNav" class="sideNav-wrapper">
+
+  <ul class="navMenu">
+
+    <li class="navItem">
+      <a [routerLink]="[ 'tips' ]">
+        <i class="navIcon material-icons">schedule</i>
+        <span class="navTitle">Tips</span>
+      </a>
+      <span class="tooltipText">Tips</span>
+    </li>
+
+    <li class="navItem">
+      <a [routerLink]="[ '' ]">
+        <i class="navIcon material-icons">schedule</i>
+        <span class="navTitle">Paseadores</span>
+      </a>
+      <span class="tooltipText">Paseadores</span>
+    </li>
+
+    <li class="navItem">
+      <a [routerLink]="[ '' ]">
+        <i class="navIcon material-icons">schedule</i>
+        <span class="navTitle">Directorio</span>
+      </a>
+      <span class="tooltipText">Directorio</span>
+    </li>
+
+    <li class="navItem">
+      <a [routerLink]="[ 'paseos' ]">
+        <i class="navIcon material-icons">pets</i>
+        <span class="navTitle">Paseos</span>
+      </a>
+      <span class="tooltipText">Paseos</span>
+    </li>
+
+    <li class="navItem">
+      <a [routerLink]="[ '' ]">
+        <i class="navIcon material-icons">schedule</i>
+        <span class="navTitle">Mensualidades</span>
+      </a>
+      <span class="tooltipText">Mensualidades</span>
+    </li>
+
+    <li class="navItem">
+      <a [routerLink]="[ '' ]">
+        <i class="navIcon material-icons">schedule</i>
+        <span class="navTitle">Cobro y prepago</span>
+      </a>
+      <span class="tooltipText">Cobro y prepago</span>
+    </li>
+
+    <li class="navItem">
+      <a [routerLink]="[ '' ]">
+        <i class="navIcon material-icons">schedule</i>
+        <span class="navTitle">Pagos</span>
+      </a>
+      <span class="tooltipText">Pagos</span>
+    </li>
+
+    <li class="navItem">
+      <a [routerLink]="[ '' ]">
+        <i class="navIcon material-icons">schedule</i>
+        <span class="navTitle">Clientes</span>
+      </a>
+      <span class="tooltipText">Clientes</span>
+    </li>
+
+    <li class="navItem">
+      <a [routerLink]="[ '' ]">
+        <i class="navIcon material-icons">schedule</i>
+        <span class="navTitle">Reportes</span>
+      </a>
+      <span class="tooltipText">Reportes</span>
+    </li>
+
+  </ul>
+
+</div>

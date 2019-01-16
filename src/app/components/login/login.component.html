@@ -1,0 +1,31 @@
+<div class="contenedor">
+  <div class="container centrar">
+
+    <!--jw-modal id="custom-modal-1">
+      <h1 align="center">¡SUS CREDENCIALES SON INCORRECTAS!</h1>
+      <h3 align="center">Verifica o recupera tu contraseña</h3>
+      <button class="btn btn-close" (click)="closeModal('custom-modal-1');">
+        <h1>ok</h1>
+      </button>
+    </jw-modal>
+
+    <jw-modal id="custom-modal-2">
+      <h1 align="center">Ingresando...</h1>
+      <h3 align="center">Estamos validando sus datos</h3>
+    </jw-modal-->
+
+    <div class="row">
+
+      <form [formGroup]="formatoLog" (ngSubmit)="logMeIn()">
+        <div class="col-10 offset-1 col-lg-6 offset-lg-3 text-right">
+          <img src="./assets/img/logo-letras-blanco-min.png" alt="Logo Pup Buddy" class="img-fluid">
+          <input type="email" placeholder="Email" formControlName="email">
+          <input type="password" placeholder="Contraseña" formControlName="pss">
+          <div class="btns mt-3 clearfix">
+            <button type="submit" href="#" class="btn btn-transparent float-left">Ingresar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

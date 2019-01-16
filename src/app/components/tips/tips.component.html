@@ -1,0 +1,64 @@
+<div class="container bg-light">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>Tip- Edición y Consulta</h1>
+    </div>
+    <div class="col-12 col-md-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{head}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let el of items" [class.selected]="el.selected">
+            <th scope="row">
+              <input type="checkbox"
+                     [checked]="el.selected"
+                     (change)="selectHandler(el.id, el)">
+            </th>
+            <th>{{el.id}}</th>
+            <td>{{el.nombre}}</td>
+            <td>{{el.fecha}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <form>
+        <div class="form-group row">
+          <label for="nombreTip" class="col-sm-3 col-form-label">Nombre Tip</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="nombreTip">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="textoTip" class="col-sm-3 col-form-label">Texto Tip</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="textoTip">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="fechaTip" class="col-sm-3 col-form-label">Fecha Tip</label>
+          <div class="col-sm-9">
+            <input type="date" class="form-control" id="fechaTip">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="imgTip" class="col-sm-3 col-form-label">Imagen Tip</label>
+          <div class="col-sm-9">
+            <input type="file" class="form-control" id="imgTip" accept="image/jpeg">
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn d-block mx-auto">Vista Previa</button>
+        </div>
+        <div class="row">
+          <div class="col-6 text-center"><button class="btn">Cancelar</button></div>
+          <div class="col-6 text-center"><button class="btn">Guardar</button></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
