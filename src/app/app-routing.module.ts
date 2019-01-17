@@ -12,6 +12,7 @@ import { PaseosComponent } from "./components/paseos/paseos.component";
 import { MatchComponent } from './components/match/match.component';
 import { AgendadosComponent } from './components/agendados/agendados.component';
 import { RealizadosComponent } from './components/realizados/realizados.component';
+import { CobrosprepComponent } from './components/cobrosprep/cobrosprep.component';
 
 
 const routes: Routes = [];
@@ -28,6 +29,7 @@ const APP_ROUTES: Routes = [
       {path: 'agendados', component: AgendadosComponent},
       {path: 'realizados', component: RealizadosComponent}
     ]},
+    {path: "cobrosprep", component: CobrosprepComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'tips' }
 ];
 
