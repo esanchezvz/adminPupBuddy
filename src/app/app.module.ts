@@ -34,7 +34,7 @@ import { EditarPaseadorFormComponent } from './components/editar-paseador-form/e
     MatchComponent,
     AgendadosComponent,
     RealizadosComponent,
-    CobrosprepComponent
+    CobrosprepComponent,
     PaseadoresComponent,
     PaseadoresEditarComponent,
     PaseadoresAltaComponent,
