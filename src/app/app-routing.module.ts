@@ -10,10 +10,10 @@ import { PaseosComponent } from "./components/paseos/paseos.component";
 import { MatchComponent } from './components/match/match.component';
 import { AgendadosComponent } from './components/agendados/agendados.component';
 import { RealizadosComponent } from './components/realizados/realizados.component';
+import { CobrosprepComponent } from './components/cobrosprep/cobrosprep.component';
 import { PaseadoresComponent } from './components/paseadores/paseadores.component';
 import { PaseadoresEditarComponent } from './components/paseadores-editar/paseadores-editar.component';
 import { PaseadoresAltaComponent } from './components/paseadores-alta/paseadores-alta.component';
-
 
 const routes: Routes = [];
 
@@ -44,12 +44,18 @@ const APP_ROUTES: Routes = [
     children: [
       {path: 'editar', component: PaseadoresEditarComponent},
       {path: 'alta', component: PaseadoresAltaComponent},
-      {path: '**', pathMatch: 'full', redirectTo: 'editar'}
-    ]},
+      {path: '**', pathMatch: 'full', redirectTo: 'editar'}]
+  },
+  {
+    path: "cobrosprep", 
+    component: CobrosprepComponent,
+    canActivate: [AppGuard]
+  },
   { 
     path: '**', 
     pathMatch: 'full', 
-    redirectTo: 'tips' }
+    redirectTo: 'tips' 
+  }
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES, { useHash: false });
