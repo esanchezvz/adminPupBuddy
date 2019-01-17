@@ -14,6 +14,7 @@ import { CobrosprepComponent } from './components/cobrosprep/cobrosprep.componen
 import { PaseadoresComponent } from './components/paseadores/paseadores.component';
 import { PaseadoresEditarComponent } from './components/paseadores-editar/paseadores-editar.component';
 import { PaseadoresAltaComponent } from './components/paseadores-alta/paseadores-alta.component';
+import { EditarPaseadorFormComponent } from './components/editar-paseador-form/editar-paseador-form.component';
 
 const routes: Routes = [];
 
@@ -43,6 +44,7 @@ const APP_ROUTES: Routes = [
     canActivate: [AppGuard], 
     children: [
       {path: 'editar', component: PaseadoresEditarComponent},
+      {path: 'editar/:id', component: EditarPaseadorFormComponent},
       {path: 'alta', component: PaseadoresAltaComponent},
       {path: '**', pathMatch: 'full', redirectTo: 'editar'}]
   },
