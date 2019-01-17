@@ -2,7 +2,7 @@
   <div class="float-left">
     <i class="menuIcon barIcon material-icons">menu</i>
   </div>
-  <a class="navbar-brand p-0 mx-auto" href="./"><img class="logoBrand" src="./assets/img/logo-letras-min.png"
+  <a class="navbar-brand p-0 mx-auto"[routerLink]="[ 'tips' ]"><img class="logoBrand" src="./assets/img/logo-letras-min.png"
       alt="Logo PUP BUDDY"></a>
   <div class="float-right">
     <i class="barIcon material-icons" data-action="user_profile" data-toggle="tooltip" data-placement="left" ngbTooltip="Perfil">person</i>
@@ -23,7 +23,7 @@
     </li>
 
     <li class="navItem">
-      <a [routerLink]="[ '' ]">
+      <a [routerLink]="[ 'paseadores/editar' ]">
         <i class="navIcon material-icons">schedule</i>
         <span class="navTitle">Paseadores</span>
       </a>

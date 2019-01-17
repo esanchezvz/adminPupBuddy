@@ -18,6 +18,10 @@ import { PaseosComponent } from './components/paseos/paseos.component';
 import { MatchComponent } from './components/match/match.component';
 import { AgendadosComponent } from './components/agendados/agendados.component';
 import { RealizadosComponent } from './components/realizados/realizados.component';
+import { PaseadoresComponent } from './components/paseadores/paseadores.component';
+import { PaseadoresEditarComponent } from './components/paseadores-editar/paseadores-editar.component';
+import { PaseadoresAltaComponent } from './components/paseadores-alta/paseadores-alta.component';
+import { EditarPaseadorFormComponent } from './components/editar-paseador-form/editar-paseador-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { RealizadosComponent } from './components/realizados/realizados.componen
     PaseosComponent,
     MatchComponent,
     AgendadosComponent,
-    RealizadosComponent
+    RealizadosComponent,
+    PaseadoresComponent,
+    PaseadoresEditarComponent,
+    PaseadoresAltaComponent,
+    EditarPaseadorFormComponent
   ],
   imports: [
     BrowserModule,
