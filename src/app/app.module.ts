@@ -16,13 +16,15 @@ import { LoginComponent } from './components/login/login.component';
 import { TipsComponent } from './components/tips/tips.component';
 import { PaseosComponent } from './components/paseos/paseos.component';
 import { MatchComponent } from './components/match/match.component';
-import { AgendadosComponent } from './components/agendados/agendados.component';
-import { RealizadosComponent } from './components/realizados/realizados.component';
+import { AgendadosComponent } from './components/paseos-agendados/agendados.component';
+import { RealizadosComponent } from './components/paseos-realizados/realizados.component';
 import { CobrosprepComponent } from './components/cobrosprep/cobrosprep.component';
 import { PaseadoresComponent } from './components/paseadores/paseadores.component';
 import { PaseadoresEditarComponent } from './components/paseadores-editar/paseadores-editar.component';
 import { PaseadoresAltaComponent } from './components/paseadores-alta/paseadores-alta.component';
 import { EditarPaseadorFormComponent } from './components/editar-paseador-form/editar-paseador-form.component';
+import { CobrosprepCobrosComponent } from './components/cobrosprep-cobros/cobrosprep-cobros.component';
+import { CobrosprepRecibosComponent } from './components/cobrosprep-recibos/cobrosprep-recibos.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { EditarPaseadorFormComponent } from './components/editar-paseador-form/e
     PaseadoresComponent,
     PaseadoresEditarComponent,
     PaseadoresAltaComponent,
-    EditarPaseadorFormComponent
+    EditarPaseadorFormComponent,
+    CobrosprepCobrosComponent,
+    CobrosprepRecibosComponent
   ],
   imports: [
     BrowserModule,

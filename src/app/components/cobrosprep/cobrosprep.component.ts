@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-cobrosprep',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CobrosprepComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  toCobros() {
+    this.router.navigate(["cobrosprep/cobros"]);
+  }
+
+  toRecibos() {
+    this.router.navigate(["cobrosprep/recibos"]);
   }
 
 }
