@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-paseadores-editar',
@@ -26,7 +27,7 @@ export class PaseadoresEditarComponent implements OnInit {
     return {...item, selected: false}
   })
 
-  constructor() {
+  constructor(private router: Router) {
     this.selectHandler = (elemID, index) => {
       this.items.forEach(item => {
         if (elemID === item.id) {
@@ -34,6 +35,7 @@ export class PaseadoresEditarComponent implements OnInit {
           console.log(item)
         }
       });
+    this.router.navigate([`paseadores/editar/${elemID}`]);
     }
   }
 
