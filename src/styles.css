@@ -54,3 +54,12 @@ main#content-wrapper {
     margin-left: 50px;
     transition: all 0.3s ease;
 }
+
+.col-form-label {
+    font-weight: bold;
+}
+
+.selected-row,
+.table-row:hover {
+    background: rgba(0,0,0, 0.09);
+}
