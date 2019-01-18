@@ -26,6 +26,8 @@ import { PaseadoresAltaComponent } from './components/paseadores-alta/paseadores
 import { EditarPaseadorFormComponent } from './components/editar-paseador-form/editar-paseador-form.component';
 import { CobrosprepCobrosComponent } from './components/cobrosprep-cobros/cobrosprep-cobros.component';
 import { CobrosprepRecibosComponent } from './components/cobrosprep-recibos/cobrosprep-recibos.component';
+import { MensualidadesComponent } from './components/mensualidades/mensualidades.component';
+import { MensualidadesAltaComponent } from './components/mensualidades-alta/mensualidades-alta.component';
 import { AltaTipComponent } from './components/alta-tip/alta-tip.component';
 import { TipsPadreComponent } from './components/tips-padre/tips-padre.component';
 import { DirectorioComponent } from './components/directorio/directorio.component';
@@ -50,6 +52,8 @@ import { DirectorioEditaComponent } from './components/directorio-edita/director
     EditarPaseadorFormComponent,
     CobrosprepCobrosComponent,
     CobrosprepRecibosComponent,
+    MensualidadesComponent,
+    MensualidadesAltaComponent
     AltaTipComponent,
     TipsPadreComponent,
     DirectorioComponent,
