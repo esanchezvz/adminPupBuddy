@@ -10,7 +10,8 @@ export class ServiciosService {
 
   headers1 = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   httpOptions: any
-  ipServer = "http://74.208.165.73:9910"
+  // ipServer = "http://74.208.165.73:9910" //SERVIDOR
+  ipServer = "http://192.168.1.88:9910" //LOCAL
 
 
   constructor(private httpClient: HttpClient) {
@@ -22,13 +23,20 @@ export class ServiciosService {
   }
 
   getTip(): Observable<any> {
-    return this.httpClient.get(this.ipServer + "/tip", this.httpOptions).pipe(
+    return this.httpClient.get(this.ipServer + "/tips", this.httpOptions).pipe(
       map((res: HttpResponse<any>) => {
         return res
       })
     )
   }
 
+  getPaseador(): Observable<any> {
+    return this.httpClient.get(this.ipServer + "/paseador", this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
   putPaseador(data): Observable<any> {
     return this.httpClient.put(this.ipServer + "/paseador", data, this.httpOptions).pipe(
       map((res: HttpResponse<any>) => {

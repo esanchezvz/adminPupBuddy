@@ -14,15 +14,15 @@
       <tr *ngFor="let el of items" class="table-row">
         <th scope="row">
           <button class="btn btn-primary btn-sm"
-                 (click)="selectHandler(el.id, el)">
+                 (click)="selectHandler(el.id_paseador, el)">
                  Editar
           </button>
         </th>
-        <th>{{el.id}}</th>
-        <td>{{el.nombre}}</td>
+        <th>{{el.id_paseador}}</th>
+        <td>{{el.nombre +' '+ el.ap +' '+ el.am}}</td>
         <td>{{el.email}}</td>
-        <td>{{el.telefono}}</td>
-        <td>{{el.calificacion}}</td>
+        <td>{{el.cel}}</td>
+        <!-- <td>{{el.calificacion}}</td> -->
         <td>{{el.status}}</td>
       </tr>
     </tbody>
