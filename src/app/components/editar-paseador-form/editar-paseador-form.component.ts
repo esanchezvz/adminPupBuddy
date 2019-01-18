@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-editar-paseador-form',
   templateUrl: './editar-paseador-form.component.html',

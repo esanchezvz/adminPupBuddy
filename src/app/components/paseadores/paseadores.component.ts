@@ -14,13 +14,11 @@ export class PaseadoresComponent implements OnInit {
   }
 
   toAlta() {
-    console.log('paseadores/alta');
     this.router.navigate(["paseadores/alta"]);
   }
 
   toEditar() {
-    console.log('paseadores/editar');
-    this.router.navigate(["paseadores/editar"]);
+    this.router.navigate(["paseadores/consulta"]);
   }
 
 }
