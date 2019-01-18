@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-12">
+    <form class="row" [formGroup]="formato" (ngSubmit)="altaDirectorio()">
+      <div class="col-12 col-md-6">
+        <div class="form-group row">
+          <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
+          <div class="col-sm-8">
+            <input formControlName="nombre" type="text" class="form-control" id="nombre">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="categoria" class="col-sm-4 col-form-label">Categoría</label>
+          <div class="col-sm-8">
+            <input formControlName="cat" type="text" class="form-control" id="categoria">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="direccion" class="col-sm-4 col-form-label">Dirección</label>
+          <div class="col-sm-8">
+            <input formControlName="dir" type="text" class="form-control" id="direccion">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="coord" class="col-sm-4 col-form-label">Coordenadas</label>
+          <div class="col-sm-8">
+            <input formControlName="coord" type="text" class="form-control" id="coord">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="img-paseador" class="col-sm-3 col-form-label">Imagen Paseador</label>
+          <div class="col-sm-9">
+            <input type="file" class="form-control-file" id="img-paseador" accept="image/jpeg">
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="form-group row">
+          <label for="tel" class="col-sm-4 col-form-label">Teléfono</label>
+          <div class="col-sm-8">
+            <input formControlName="tel" type="tel" class="form-control" id="tel">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="website" class="col-sm-4 col-form-label">Website</label>
+          <div class="col-sm-8">
+            <input type="url" formControlName="url" class="form-control" id="website">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="facebook" class="col-sm-4 col-form-label">Facebook</label>
+          <div class="col-sm-8">
+            <input type="url" formControlName="fb" class="form-control" id="facebook">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="insta" class="col-sm-4 col-form-label">Instagram</label>
+          <div class="col-sm-8">
+            <input type="url" formControlName="ig" class="form-control" id="insta">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Titular Comercio</label>
+          <div class="col-sm-8">
+            <input formControlName="nombreT" type="text" class="form-control" id="nombreTitular" placeholder="Nombre">
+            <input formControlName="telT" type="tel" class="form-control" id="telTitular" placeholder="Teléfono">
+            <input formControlName="emailT" type="email" class="form-control" id="emailTitular" placeholder="Email">
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mb-5 mt-3 text-center">
+        <button class="btn m-3" type="submit">ACEPTAR</button>
+        <button class="btn m-3">CANCELAR</button>
+      </div>
+    </form>
+  </div>
+</div>

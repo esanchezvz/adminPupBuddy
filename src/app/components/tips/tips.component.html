@@ -1,8 +1,5 @@
-<div class="container bg-light">
+<div class="container bg-light p-3">
   <div class="row">
-    <div class="col-12 text-center">
-      <h1>Tip- Edición y Consulta</h1>
-    </div>
     <div class="col-12 col-md-6">
       <table class="table">
         <thead>
@@ -15,11 +12,11 @@
             <th scope="row">
               <input type="checkbox"
                      [checked]="el.selected"
-                     (change)="selectHandler(el.id, el)">
+                     (change)="selectHandler(el.id_tip, el)">
             </th>
-            <th>{{el.id}}</th>
+            <th>{{el.id_tip}}</th>
             <td>{{el.nombre}}</td>
-            <td>{{el.fecha}}</td>
+            <td>{{el.fdp | date: 'dd/MM/yy, h:mm a'}}</td>
           </tr>
         </tbody>
       </table>
@@ -55,7 +52,7 @@
           <button class="btn d-block mx-auto">Vista Previa</button>
         </div>
         <div class="row">
-          <div class="col-6 text-center"><button class="btn">Cancelar</button></div>
+          <div class="col-6 text-center"><button (click)="getTips()" class="btn">Cancelar</button></div>
           <div class="col-6 text-center"><button class="btn">Guardar</button></div>
         </div>
       </form>
