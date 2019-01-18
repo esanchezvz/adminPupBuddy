@@ -25,6 +25,8 @@ import { PaseadoresAltaComponent } from './components/paseadores-alta/paseadores
 import { EditarPaseadorFormComponent } from './components/editar-paseador-form/editar-paseador-form.component';
 import { CobrosprepCobrosComponent } from './components/cobrosprep-cobros/cobrosprep-cobros.component';
 import { CobrosprepRecibosComponent } from './components/cobrosprep-recibos/cobrosprep-recibos.component';
+import { MensualidadesComponent } from './components/mensualidades/mensualidades.component';
+import { MensualidadesAltaComponent } from './components/mensualidades-alta/mensualidades-alta.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { CobrosprepRecibosComponent } from './components/cobrosprep-recibos/cobr
     PaseadoresAltaComponent,
     EditarPaseadorFormComponent,
     CobrosprepCobrosComponent,
-    CobrosprepRecibosComponent
+    CobrosprepRecibosComponent,
+    MensualidadesComponent,
+    MensualidadesAltaComponent
   ],
   imports: [
     BrowserModule,

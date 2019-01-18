@@ -29,8 +29,8 @@ export class ServiciosService {
     )
   }
 
-  postPaseador(data): Observable<any> {
-    return this.httpClient.post(this.ipServer + "/paseador", data, this.httpOptions).pipe(
+  putPaseador(data): Observable<any> {
+    return this.httpClient.put(this.ipServer + "/paseador", data, this.httpOptions).pipe(
       map((res: HttpResponse<any>) => {
         return res
       })
