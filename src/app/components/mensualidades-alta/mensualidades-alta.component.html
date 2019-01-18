@@ -1,3 +1,58 @@
-<p>
-  mensualidades-alta works!
-</p>
+<div class="row">
+
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Correo del cliente" aria-label="Correo del cliente"
+      aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button">Consultar</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-md-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">ID</th>
+          <th scope="col">Buddie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><input type="checkbox"></th>
+          <td>Mark</td>
+          <td>Otto</td>
+        </tr>
+        <tr>
+          <th><input type="checkbox"></th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+        </tr>
+        <tr>
+          <th><input type="checkbox"></th>
+          <td>Larry</td>
+          <td>the Bird</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-9">
+
+    <input id="timePicker" class="form-control" placeholder="Seleccione Una Hora" [ngxTimepicker]="range" min="08:00 am"
+      max="08:00 pm" readonly>
+    <ngx-material-timepicker #range [minutesGap]="15" [cancelBtnTmpl]="cancelBtn" [confirmBtnTmpl]="confirmBtn"></ngx-material-timepicker>
+  </div>
+
+  <ng-template #cancelBtn>
+    <button class="btn mr-5">Cancelar</button>
+  </ng-template>
+  <ng-template #confirmBtn>
+    <button class="btn">OK</button>
+  </ng-template>
+
+</div>

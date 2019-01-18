@@ -8,7 +8,8 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpClientModule } from '@angula
 import { AppGuard } from './app.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
-
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Service
 import { LoginService } from './services/login.service';
 
@@ -67,6 +68,8 @@ import { DirectorioEditaComponent } from './components/directorio-edita/director
     APP_ROUTING,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    NgxMaterialTimepickerModule.forRoot()
   ],
   providers: [LoginService, AppGuard, DatePipe],
   bootstrap: [AppComponent]
