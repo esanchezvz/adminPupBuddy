@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mensualidades',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MensualidadesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  toAlta() {
+    this.router.navigate(["mensualidades/alta"]);
+  }
+
+  toConsulta() {
+    this.router.navigate(["mensualidades/alta"]);
   }
 
 }
