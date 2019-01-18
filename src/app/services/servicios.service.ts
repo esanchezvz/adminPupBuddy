@@ -21,8 +21,8 @@ export class ServiciosService {
     }
   }
 
-  getTarifas(): Observable<any> {
-    return this.httpClient.get(this.ipServer + "/tarifas", this.httpOptions).pipe(
+  getTip(): Observable<any> {
+    return this.httpClient.get(this.ipServer + "/tip", this.httpOptions).pipe(
       map((res: HttpResponse<any>) => {
         return res
       })
@@ -37,6 +37,11 @@ export class ServiciosService {
     )
   }
 
-  
-
+  postTip(data): Observable<any> {
+    return this.httpClient.post(this.ipServer + "/tip", data, this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
 }

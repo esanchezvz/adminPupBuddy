@@ -17,6 +17,12 @@ import { PaseadoresAltaComponent } from './components/paseadores-alta/paseadores
 import { EditarPaseadorFormComponent } from './components/editar-paseador-form/editar-paseador-form.component';
 import { CobrosprepCobrosComponent } from './components/cobrosprep-cobros/cobrosprep-cobros.component';
 import { CobrosprepRecibosComponent } from './components/cobrosprep-recibos/cobrosprep-recibos.component';
+import { TipsPadreComponent } from './components/tips-padre/tips-padre.component';
+import { AltaTipComponent } from './components/alta-tip/alta-tip.component';
+import { DirectorioAltaComponent } from './components/directorio-alta/directorio-alta.component';
+import { DirectorioComponent } from './components/directorio/directorio.component';
+import { DirectorioConsultaComponent } from './components/directorio-consulta/directorio-consulta.component';
+import { DirectorioEditaComponent } from './components/directorio-edita/directorio-edita.component';
 
 const routes: Routes = [];
 
@@ -27,8 +33,13 @@ const APP_ROUTES: Routes = [
   },
   { 
     path: 'tips', 
-    component: TipsComponent, 
-    canActivate: [AppGuard] 
+    component: TipsPadreComponent, 
+    canActivate: [AppGuard],
+    children: [
+      {path: 'alta', component: AltaTipComponent},
+      {path: 'consulta', component: TipsComponent},
+      {path: '**', pathMatch: 'full', redirectTo: 'consulta'}
+    ]
   },
   { 
     path: 'paseos', 
@@ -45,7 +56,7 @@ const APP_ROUTES: Routes = [
     component: PaseadoresComponent, 
     canActivate: [AppGuard], 
     children: [
-      {path: 'editar', component: PaseadoresEditarComponent},
+      {path: 'consulta', component: PaseadoresEditarComponent},
       {path: 'editar/:id', component: EditarPaseadorFormComponent},
       {path: 'alta', component: PaseadoresAltaComponent},
       {path: '**', pathMatch: 'full', redirectTo: 'editar'}]
@@ -58,6 +69,16 @@ const APP_ROUTES: Routes = [
       { path: 'cobros', component: CobrosprepCobrosComponent },
       { path: 'recibos', component: CobrosprepRecibosComponent },
       { path: '**', pathMatch: 'full', redirectTo: 'cobros' }]
+  },
+  {
+    path: "directorio", 
+    component: DirectorioComponent,
+    canActivate: [AppGuard],
+    children: [
+      { path: 'alta', component: DirectorioAltaComponent },
+      { path: 'editar/:id', component: DirectorioEditaComponent },
+      { path: 'consulta', component: DirectorioConsultaComponent },
+      { path: '**', pathMatch: 'full', redirectTo: 'consulta' }]
   },
   { 
     path: '**', 
