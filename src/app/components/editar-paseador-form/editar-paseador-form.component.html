@@ -5,38 +5,38 @@
         <div class="form-group row">
           <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="nombre">
+            <input type="text" class="form-control" id="nombre" value="{{paseador.nombre}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="apellidoP" class="col-sm-4 col-form-label">Apellido Paterno</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="apellidoP">
+            <input type="text" class="form-control" id="apellidoP" value="{{paseador.ap}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="apellidoM" class="col-sm-4 col-form-label">Apellido Materno</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="apellidoM">
+            <input type="text" class="form-control" id="apellidoM" value="{{paseador.am}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="fecha" class="col-sm-4 col-form-label">Fecha de Nacimiento</label>
           <div class="col-sm-8">
-            <input type="date" class="form-control" id="fecha">
+            <input type="date" class="form-control" id="fecha" value="{{paseador.fnacimiento  | date: 'yyyy-MM-dd'}}">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-4 col-form-label">Sexo</label>
           <div class="col-sm-8">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="Masculino">
+              <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="Masculino" [checked]="masc">
               <label class="form-check-label" for="sexoM">
                 Masculino
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="Femenino">
+              <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="Femenino" [checked]="fem">
               <label class="form-check-label" for="sexoF">
                 Femenino
               </label>
@@ -55,39 +55,39 @@
         <div class="form-group row">
           <label for="email" class="col-sm-4 col-form-label">Email</label>
           <div class="col-sm-8">
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" id="email" value="{{paseador.email}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="confirm-email" class="col-sm-4 col-form-label">Confirmar Email</label>
           <div class="col-sm-8">
-            <input type="email" class="form-control" id="confirm-email">
+            <input type="email" class="form-control" id="confirm-email" value="{{paseador.email}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="cel" class="col-sm-4 col-form-label">Celular</label>
           <div class="col-sm-8">
-            <input type="tel" class="form-control" id="cel">
+            <input type="tel" class="form-control" id="cel" value="{{paseador.cel}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="confirm-cel" class="col-sm-4 col-form-label">Confirmar Celular</label>
           <div class="col-sm-8">
-            <input type="tel" class="form-control" id="confirm-cel">
+            <input type="tel" class="form-control" id="confirm-cel" value="{{paseador.cel}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="rfc" class="col-sm-4 col-form-label">RFC</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="rfc">
+            <input type="text" class="form-control" id="rfc" value="{{paseador.rfc}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="datos-bancarios" class="col-sm-4 col-form-label">Datos Bancarios</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="datos-bancarios" placeholder="BANCO">
-            <input type="text" class="form-control" id="datos-bancarios-banco" placeholder="CUENTA">
-            <input type="text" class="form-control" id="datos-bancarios-clabe" placeholder="CLABE">
+            <input type="text" class="form-control" id="datos-bancarios" placeholder="BANCO" value="{{paseador.banco}}">
+            <input type="text" class="form-control" id="datos-bancarios-banco" placeholder="CUENTA" value="{{paseador.cuenta}}">
+            <input type="text" class="form-control" id="datos-bancarios-clabe" placeholder="CLABE" value="{{paseador.clabe}}">
           </div>
         </div>
       </div>
