@@ -53,7 +53,7 @@ import { DirectorioEditaComponent } from './components/directorio-edita/director
     CobrosprepCobrosComponent,
     CobrosprepRecibosComponent,
     MensualidadesComponent,
-    MensualidadesAltaComponent
+    MensualidadesAltaComponent,
     AltaTipComponent,
     TipsPadreComponent,
     DirectorioComponent,
