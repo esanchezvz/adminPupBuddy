@@ -40,7 +40,6 @@ const APP_ROUTES: Routes = [
     children: [
       {path: 'alta', component: AltaTipComponent},
       {path: 'consulta', component: TipsComponent},
-      {path: '**', pathMatch: 'full', redirectTo: 'consulta'}
     ]
   },
   { 
@@ -50,8 +49,7 @@ const APP_ROUTES: Routes = [
     children: [
       {path: 'match', component: MatchComponent},
       {path: 'agendados', component: AgendadosComponent},
-      {path: 'realizados', component: RealizadosComponent},
-      {path: '**', pathMatch: 'full', redirectTo: 'agendados'}
+      {path: 'realizados', component: RealizadosComponent}
     ]},
   { 
     path: 'paseadores', 
@@ -60,8 +58,7 @@ const APP_ROUTES: Routes = [
     children: [
       {path: 'consulta', component: PaseadoresEditarComponent},
       {path: 'editar/:id', component: EditarPaseadorFormComponent},
-      {path: 'alta', component: PaseadoresAltaComponent},
-      {path: '**', pathMatch: 'full', redirectTo: 'editar'}]
+      {path: 'alta', component: PaseadoresAltaComponent}]
   },
   {
     path: "cobrosprep", 
@@ -69,8 +66,7 @@ const APP_ROUTES: Routes = [
     canActivate: [AppGuard],
     children: [
       { path: 'cobros', component: CobrosprepCobrosComponent },
-      { path: 'recibos', component: CobrosprepRecibosComponent },
-      { path: '**', pathMatch: 'full', redirectTo: 'cobros' }]
+      { path: 'recibos', component: CobrosprepRecibosComponent }]
   },
   {
     path: "directorio", 
@@ -79,16 +75,14 @@ const APP_ROUTES: Routes = [
     children: [
       { path: 'alta', component: DirectorioAltaComponent },
       { path: 'editar/:id', component: DirectorioEditaComponent },
-      { path: 'consulta', component: DirectorioConsultaComponent },
-      { path: '**', pathMatch: 'full', redirectTo: 'consulta' }]
+      { path: 'consulta', component: DirectorioConsultaComponent }]
   },
   {
     path: "mensualidades",
     component: MensualidadesComponent,
     canActivate: [AppGuard],
     children: [
-      { path: 'alta', component: MensualidadesAltaComponent },
-      { path: '**', pathMatch: 'full', redirectTo: 'alta' }]
+      { path: 'alta', component: MensualidadesAltaComponent }]
   },
   { 
     path: '**', 
