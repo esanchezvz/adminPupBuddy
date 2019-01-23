@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     });
 
     if (login.isLoggedIn) {
-      router.navigate(['tips'])
+      router.navigate(['tips/consulta'])
     } else {
       this.active = true
     }
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("id", this.resp.id)
         localStorage.setItem("token", this.resp.token)
 
-        this.router.navigate(['tips']);
+        this.router.navigate(['tips/consulta']);
 
       },
       error => {

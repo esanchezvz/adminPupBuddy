@@ -1,46 +1,28 @@
-<div class="row">
-
-  <div class="input-group mb-3">
-    <input type="date" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-      aria-describedby="basic-addon2">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">Consultar</button>
+<div class="container bg-light p-3">
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{head}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let el of items" class="table-row" [class.selected-row]="el.selected">
+            <th scope="row">
+              <input type="checkbox" [checked]="el.selected" (change)="selectHandler(el.id_tip, el)">
+            </th>
+            <td>{{el.id_solicitud}}</td>
+            <td>{{el.id_paseador}}</td>
+            <td>{{el.rmatch | date: 'h:mm a'}}</td>
+            <td>{{el.status_paseo}}</td>
+            <td>{{el.inicio}}</td>
+            <td>{{el.fin}}</td>
+            <td><button class="btn">Iniciar</button></td>
+            <td><button class="btn">Finalizar</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-
-</div>
-
-<div class="row">
-
-  <div class="col-md-12">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col"># Solicitud</th>
-          <th scope="col"># Paseador</th>
-          <th scope="col">Hora</th>
-          <th scope="col">Servicio</th>
-          <th scope="col">Status</th>
-          <th scope="col">Hora inicio</th>
-          <th scope="col">Hora finalizado</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><button class="btn">Iniciar</button></td>
-          <td><button class="btn">Finalizar</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
 </div>
