@@ -10,8 +10,8 @@ export class ServiciosService {
 
   headers1 = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   httpOptions: any
-  // ipServer = "http://74.208.165.73:9910" //SERVIDOR
-  ipServer = "http://192.168.1.88:9910" //LOCAL
+  ipServer = "http://74.208.165.73:9910" //SERVIDOR
+  // ipServer = "http://192.168.1.88:9910" //LOCAL
 
 
   constructor(private httpClient: HttpClient) {
@@ -37,6 +37,23 @@ export class ServiciosService {
       })
     )
   }
+
+  getAgendados(): Observable<any> {
+    return this.httpClient.get(this.ipServer + "/agendados", this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
+  
+  getSolicitud(): Observable<any> {
+    return this.httpClient.get(this.ipServer + "/solicitudes", this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
+
   putPaseador(data): Observable<any> {
     return this.httpClient.put(this.ipServer + "/paseador", data, this.httpOptions).pipe(
       map((res: HttpResponse<any>) => {
@@ -47,6 +64,14 @@ export class ServiciosService {
 
   postTip(data): Observable<any> {
     return this.httpClient.post(this.ipServer + "/tip", data, this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
+
+  postMatch(data): Observable<any> {
+    return this.httpClient.post(this.ipServer + "/match", data, this.httpOptions).pipe(
       map((res: HttpResponse<any>) => {
         return res
       })

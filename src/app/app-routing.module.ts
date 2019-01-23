@@ -26,7 +26,6 @@ import { DirectorioEditaComponent } from './components/directorio-edita/director
 import { MensualidadesComponent } from './components/mensualidades/mensualidades.component';
 import { MensualidadesAltaComponent } from './components/mensualidades-alta/mensualidades-alta.component';
 
-const routes: Routes = [];
 
 const APP_ROUTES: Routes = [
   { 
@@ -39,7 +38,7 @@ const APP_ROUTES: Routes = [
     canActivate: [AppGuard],
     children: [
       {path: 'alta', component: AltaTipComponent},
-      {path: 'consulta', component: TipsComponent},
+      {path: 'consulta', component: TipsComponent}
     ]
   },
   { 
@@ -50,7 +49,8 @@ const APP_ROUTES: Routes = [
       {path: 'match', component: MatchComponent},
       {path: 'agendados', component: AgendadosComponent},
       {path: 'realizados', component: RealizadosComponent}
-    ]},
+    ]
+  },
   { 
     path: 'paseadores', 
     component: PaseadoresComponent, 
@@ -58,7 +58,8 @@ const APP_ROUTES: Routes = [
     children: [
       {path: 'consulta', component: PaseadoresEditarComponent},
       {path: 'editar/:id', component: EditarPaseadorFormComponent},
-      {path: 'alta', component: PaseadoresAltaComponent}]
+      {path: 'alta', component: PaseadoresAltaComponent}
+    ]
   },
   {
     path: "cobrosprep", 
@@ -66,7 +67,8 @@ const APP_ROUTES: Routes = [
     canActivate: [AppGuard],
     children: [
       { path: 'cobros', component: CobrosprepCobrosComponent },
-      { path: 'recibos', component: CobrosprepRecibosComponent }]
+      { path: 'recibos', component: CobrosprepRecibosComponent }
+    ]
   },
   {
     path: "directorio", 
@@ -75,19 +77,21 @@ const APP_ROUTES: Routes = [
     children: [
       { path: 'alta', component: DirectorioAltaComponent },
       { path: 'editar/:id', component: DirectorioEditaComponent },
-      { path: 'consulta', component: DirectorioConsultaComponent }]
+      { path: 'consulta', component: DirectorioConsultaComponent }
+    ]
   },
   {
     path: "mensualidades",
     component: MensualidadesComponent,
     canActivate: [AppGuard],
     children: [
-      { path: 'alta', component: MensualidadesAltaComponent }]
+      { path: 'alta', component: MensualidadesAltaComponent }
+    ]
   },
   { 
     path: '**', 
     pathMatch: 'full', 
-    redirectTo: 'tips' 
+    redirectTo: 'tips/consulta' 
   }
 ];
 

@@ -23,7 +23,7 @@ export class TipsComponent implements OnInit {
           item.selected = false;
         }
 
-        if (elemID === item.id) {
+        if (elemID === item.id_tip) {
           item.selected = !item.selected;
         }
       });
@@ -34,12 +34,10 @@ export class TipsComponent implements OnInit {
     this.serviciosService.getTip().subscribe(
       response => {
         this.tips = response;
-        this.items = this.tips;
         this.items = this.tips.map(item => {
           return { ...item, selected: false };
         });
-        
-        console.log("RESPONSE->", this.items);
+        console.log("TIPS->", this.items);
       },
       error => {
         console.log(error);
