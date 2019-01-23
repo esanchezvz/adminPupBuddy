@@ -12,7 +12,7 @@
 
 <div class="row">
 
-  <div class="col-md-3">
+  <div class="col-md-4">
     <table class="table">
       <thead>
         <tr>
@@ -41,11 +41,60 @@
     </table>
   </div>
 
-  <div class="col-md-9">
+  <div class="col-md-4">
 
-    <input id="timePicker" class="form-control" placeholder="Seleccione Una Hora" [ngxTimepicker]="range" min="08:00 am"
+    <input id="timePicker" class="form-control mb-3" placeholder="Seleccione Una Hora" [ngxTimepicker]="range" min="08:00 am"
       max="08:00 pm" readonly>
     <ngx-material-timepicker #range [minutesGap]="15" [cancelBtnTmpl]="cancelBtn" [confirmBtnTmpl]="confirmBtn"></ngx-material-timepicker>
+  
+    <select class="custom-select custom-select-sm mb-3">
+      <option selected>Tipo de servicio</option>
+      <option value="1">Mensual 1</option>
+      <option value="2">Mensual 2</option>
+      <option value="3">Trimestral 1</option>
+      <option value="4">Trimestral 2</option>
+      <option value="5">Anual 1</option>
+      <option value="6">Anual 2</option>
+    </select>
+
+    <div class="mb-3">
+      <label for="fecha">Fecha Inicio mensualidad</label>
+      <input type="date" class="form-control">
+    </div>
+  
+  </div>
+
+  <div class="col-md-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">ID</th>
+        <th scope="col">Direccion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th><input type="checkbox"></th>
+        <td>Mark</td>
+        <td>Otto</td>
+      </tr>
+      <tr>
+        <th><input type="checkbox"></th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+      </tr>
+      <tr>
+        <th><input type="checkbox"></th>
+        <td>Larry</td>
+        <td>the Bird</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="row">
+    <button class="btn">Activar</button>
   </div>
 
   <ng-template #cancelBtn>
@@ -54,5 +103,7 @@
   <ng-template #confirmBtn>
     <button class="btn">OK</button>
   </ng-template>
+
+  
 
 </div>

@@ -49,7 +49,8 @@ const APP_ROUTES: Routes = [
       {path: 'match', component: MatchComponent},
       {path: 'agendados', component: AgendadosComponent},
       {path: 'realizados', component: RealizadosComponent}
-    ]},
+    ]
+  },
   { 
     path: 'paseadores', 
     component: PaseadoresComponent, 

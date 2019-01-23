@@ -8,7 +8,7 @@ import { LoginService } from './services/login.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'pupbuddy';
+  title = 'pupbuddy-admin';
   logged;
   update$;
   constructor(logInService: LoginService) {
