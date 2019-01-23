@@ -37,8 +37,8 @@ const APP_ROUTES: Routes = [
     component: TipsPadreComponent, 
     canActivate: [AppGuard],
     children: [
-      {path: 'alta', component: AltaTipComponent},
-      {path: 'consulta', component: TipsComponent}
+      { path: 'alta', component: AltaTipComponent },
+      { path: 'consulta', component: TipsComponent }
     ]
   },
   { 
@@ -46,9 +46,9 @@ const APP_ROUTES: Routes = [
     component: PaseosComponent, 
     canActivate: [AppGuard], 
     children: [
-      {path: 'match', component: MatchComponent},
-      {path: 'agendados', component: AgendadosComponent},
-      {path: 'realizados', component: RealizadosComponent}
+      { path: 'match', component: MatchComponent },
+      { path: 'agendados', component: AgendadosComponent },
+      { path: 'realizados', component: RealizadosComponent }
     ]
   },
   { 
@@ -56,9 +56,9 @@ const APP_ROUTES: Routes = [
     component: PaseadoresComponent, 
     canActivate: [AppGuard], 
     children: [
-      {path: 'consulta', component: PaseadoresEditarComponent},
-      {path: 'editar/:id', component: EditarPaseadorFormComponent},
-      {path: 'alta', component: PaseadoresAltaComponent}
+      { path: 'consulta', component: PaseadoresEditarComponent },
+      { path: 'editar/:id', component: EditarPaseadorFormComponent },
+      { path: 'alta', component: PaseadoresAltaComponent }
     ]
   },
   {
@@ -95,4 +95,4 @@ const APP_ROUTES: Routes = [
   }
 ];
 
-export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES, { useHash: false });
+export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES, { useHash: true });

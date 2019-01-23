@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class MatchComponent implements OnInit {
   solicitudes: any[];
   paseadores: any[];
-  titulosSolicitudes = ["", "Solicitud", "Fecha y Hora", "Tipo de Servicio"];
+  titulosSolicitudes = ["", "Solicitud", "Fecha Servicio", "Hora Servicio", "Tipo de Servicio"];
   titulosPaseadores = ["", "ID", "Nombre"];
   selectHandlerSolicitud: Function;
   selectHandlerPaseador: Function;
