@@ -4,22 +4,19 @@
       <table class="table">
         <thead>
           <tr>
-            <th *ngFor="let head of headElements" scope="col">{{head}}</th>
+            <th *ngFor="let head of headElements" scope="col">{{ head }}</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let el of items" class="table-row" [class.selected-row]="el.selected">
-            <th scope="row">
-              <input type="checkbox" [checked]="el.selected" (change)="selectHandler(el.id_tip, el)">
-            </th>
-            <td>{{el.id_solicitud}}</td>
-            <td>{{el.id_paseador}}</td>
-            <td>{{el.rmatch | date: 'h:mm a'}}</td>
-            <td>{{el.status_paseo}}</td>
-            <td>{{el.inicio}}</td>
-            <td>{{el.fin}}</td>
-            <td><button class="btn">Iniciar</button></td>
-            <td><button class="btn">Finalizar</button></td>
+            <td>{{ el.id_solicitud }}</td>
+            <td>{{ el.id_paseador }}</td>
+            <td>{{ el.rmatch | date: 'h:mm a' }}</td>
+            <td>{{ el.status_paseo }}</td>
+            <td>{{ el.inicio | date: 'h:mm a' }}</td>
+            <td>{{ el.fin | date: 'h:mm a' }}</td>
+            <td><button class="btn" (click)="iniciarPaseo(el)">Iniciar</button></td>
+            <td><button class="btn" (click)="terminarPaseo(el)">Finalizar</button></td>
           </tr>
         </tbody>
       </table>
