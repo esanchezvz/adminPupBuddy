@@ -45,6 +45,14 @@ export class ServiciosService {
       })
     )
   }
+
+  getRealizados(): Observable<any> {
+    return this.httpClient.get(this.ipServer + "/realizados", this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
   
   getSolicitud(): Observable<any> {
     return this.httpClient.get(this.ipServer + "/solicitudes", this.httpOptions).pipe(
@@ -64,6 +72,14 @@ export class ServiciosService {
 
   postTip(data): Observable<any> {
     return this.httpClient.post(this.ipServer + "/tip", data, this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
+
+  postPaseoInicioFin(data): Observable<any> {
+    return this.httpClient.post(this.ipServer + "/paseo", data, this.httpOptions).pipe(
       map((res: HttpResponse<any>) => {
         return res
       })
