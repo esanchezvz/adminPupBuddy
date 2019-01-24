@@ -16,27 +16,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-          <td>Otto</td>
-          <td>Otto</td>
-          <td>Otto</td>
-          <td>Otto</td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-          <td>Otto</td>
-          <td>Otto</td>
-          <td>Otto</td>
-          <td>Otto</td>
+        <tr *ngFor="let item of realizados">
+          <th scope="row">{{item.id_solicitud}}</th>
+          <td>{{item.id_paseo}}</td>
+          <td>{{item.inicio | date: 'dd/MM/yyyy, h:mm a'}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{item.status_paseo}}</td>
         </tr>
       </tbody>
     </table>
