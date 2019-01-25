@@ -25,6 +25,7 @@ import { DirectorioConsultaComponent } from './components/directorio-consulta/di
 import { DirectorioEditaComponent } from './components/directorio-edita/directorio-edita.component';
 import { MensualidadesComponent } from './components/mensualidades/mensualidades.component';
 import { MensualidadesAltaComponent } from './components/mensualidades-alta/mensualidades-alta.component';
+import { MensualidadesConsultaComponent } from './components/mensualidades-consulta/mensualidades-consulta.component';
 
 
 const APP_ROUTES: Routes = [
@@ -85,7 +86,8 @@ const APP_ROUTES: Routes = [
     component: MensualidadesComponent,
     canActivate: [AppGuard],
     children: [
-      { path: 'alta', component: MensualidadesAltaComponent }
+      { path: 'alta', component: MensualidadesAltaComponent },
+      { path: 'consulta', component: MensualidadesConsultaComponent }
     ]
   },
   { 
