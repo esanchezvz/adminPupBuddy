@@ -35,6 +35,7 @@ import { DirectorioComponent } from './components/directorio/directorio.componen
 import { DirectorioAltaComponent } from './components/directorio-alta/directorio-alta.component';
 import { DirectorioConsultaComponent } from './components/directorio-consulta/directorio-consulta.component';
 import { DirectorioEditaComponent } from './components/directorio-edita/directorio-edita.component';
+import { MensualidadesConsultaComponent } from './components/mensualidades-consulta/mensualidades-consulta.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { DirectorioEditaComponent } from './components/directorio-edita/director
     DirectorioComponent,
     DirectorioAltaComponent,
     DirectorioConsultaComponent,
-    DirectorioEditaComponent
+    DirectorioEditaComponent,
+    MensualidadesConsultaComponent
   ],
   imports: [
     BrowserModule,

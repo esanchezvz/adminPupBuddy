@@ -18,7 +18,7 @@ export class MensualidadesComponent implements OnInit {
   }
 
   toConsulta() {
-    this.router.navigate(["mensualidades/alta"]);
+    this.router.navigate(["mensualidades/consulta"]);
   }
 
 }
