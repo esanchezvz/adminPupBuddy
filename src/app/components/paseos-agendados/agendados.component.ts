@@ -42,7 +42,7 @@ export class AgendadosComponent implements OnInit {
     this.servicios.postPaseoInicioFin(this.paseo).subscribe(
       response => {
         console.log(response.message)
-        this.router.navigate(["paseos/agendados"]);
+        this.router.navigate(["paseos/match"]);
       },
       error => {
         console.error(error)
