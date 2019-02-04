@@ -37,6 +37,9 @@ import { DirectorioConsultaComponent } from './components/directorio-consulta/di
 import { DirectorioEditaComponent } from './components/directorio-edita/directorio-edita.component';
 import { MensualidadesConsultaComponent } from './components/mensualidades-consulta/mensualidades-consulta.component';
 import { MensualidadEdicionComponent } from './components/mensualidad-edicion/mensualidad-edicion.component';
+import { PagosComponent } from './components/pagos/pagos.component';
+import { PagosRealizarComponent } from './components/pagos-realizar/pagos-realizar.component';
+import { PagosHistoricoComponent } from './components/pagos-historico/pagos-historico.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,10 @@ import { MensualidadEdicionComponent } from './components/mensualidad-edicion/me
     DirectorioConsultaComponent,
     DirectorioEditaComponent,
     MensualidadesConsultaComponent,
-    MensualidadEdicionComponent
+    MensualidadEdicionComponent,
+    PagosComponent,
+    PagosRealizarComponent,
+    PagosHistoricoComponent
   ],
   imports: [
     BrowserModule,

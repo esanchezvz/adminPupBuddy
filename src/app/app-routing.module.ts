@@ -27,6 +27,9 @@ import { MensualidadesComponent } from './components/mensualidades/mensualidades
 import { MensualidadesAltaComponent } from './components/mensualidades-alta/mensualidades-alta.component';
 import { MensualidadesConsultaComponent } from './components/mensualidades-consulta/mensualidades-consulta.component';
 import { MensualidadEdicionComponent } from './components/mensualidad-edicion/mensualidad-edicion.component';
+import { PagosComponent } from './components/pagos/pagos.component';
+import { PagosRealizarComponent } from './components/pagos-realizar/pagos-realizar.component';
+import { PagosHistoricoComponent } from './components/pagos-historico/pagos-historico.component';
 
 
 const APP_ROUTES: Routes = [
@@ -90,6 +93,15 @@ const APP_ROUTES: Routes = [
       { path: 'alta', component: MensualidadesAltaComponent },
       { path: 'consulta', component: MensualidadesConsultaComponent },
       { path: 'editar', component: MensualidadEdicionComponent }
+    ]
+  },
+  {
+    path: "pagos",
+    component: PagosComponent,
+    canActivate: [AppGuard],
+    children: [
+      { path: 'realizar', component: PagosRealizarComponent },
+      { path: 'historico', component: PagosHistoricoComponent }
     ]
   },
   { 
