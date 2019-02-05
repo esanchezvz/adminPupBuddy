@@ -11,25 +11,28 @@
         <div class="form-group row">
           <label for="categoria" class="col-sm-4 col-form-label">Categoría</label>
           <div class="col-sm-8">
-            <input formControlName="cat" type="text" class="form-control" id="categoria">
+            <input formControlName="categoria" type="text" class="form-control" id="categoria">
           </div>
         </div>
         <div class="form-group row">
           <label for="direccion" class="col-sm-4 col-form-label">Dirección</label>
           <div class="col-sm-8">
-            <input formControlName="dir" type="text" class="form-control" id="direccion">
+            <input formControlName="direccion" type="text" class="form-control" id="direccion">
           </div>
         </div>
         <div class="form-group row">
-          <label for="coord" class="col-sm-4 col-form-label">Coordenadas</label>
-          <div class="col-sm-8">
-            <input formControlName="coord" type="text" class="form-control" id="coord">
+          <label for="lat" class="col-sm-4 col-form-label">Coordenadas</label>
+          <div class="col-sm-4">
+            <input formControlName="lat" type="number" class="form-control" id="lat" placeholder="Lat">
           </div>
+          <div class="col-sm-4">
+              <input formControlName="lng" type="number" class="form-control" id="lng" placeholder="Lon">
+            </div>
         </div>
         <div class="form-group row">
           <label for="img-paseador" class="col-sm-3 col-form-label">Imagen Paseador</label>
-          <div class="col-sm-9">
-            <input type="file" class="form-control-file" id="img-paseador" accept="image/jpeg">
+          <div class="col-sm-9" style="vertical-align: middle; text-align: center;">
+            <input type="file" (change)="onFileChanged($event)" id="img-paseador">
           </div>
         </div>
       </div>
@@ -37,34 +40,34 @@
         <div class="form-group row">
           <label for="tel" class="col-sm-4 col-form-label">Teléfono</label>
           <div class="col-sm-8">
-            <input formControlName="tel" type="tel" class="form-control" id="tel">
+            <input formControlName="tel" type="number" class="form-control" id="tel" placeholder="(10 dígitos)">
           </div>
         </div>
         <div class="form-group row">
-          <label for="website" class="col-sm-4 col-form-label">Website</label>
+          <label for="web" class="col-sm-4 col-form-label">Website</label>
           <div class="col-sm-8">
-            <input type="url" formControlName="url" class="form-control" id="website">
+            <input type="url" formControlName="web" class="form-control" id="web">
           </div>
         </div>
         <div class="form-group row">
-          <label for="facebook" class="col-sm-4 col-form-label">Facebook</label>
+          <label for="fb" class="col-sm-4 col-form-label">Facebook</label>
           <div class="col-sm-8">
-            <input type="url" formControlName="fb" class="form-control" id="facebook">
+            <input type="url" formControlName="fb" class="form-control" id="fb">
           </div>
         </div>
         <div class="form-group row">
           <label for="insta" class="col-sm-4 col-form-label">Instagram</label>
           <div class="col-sm-8">
-            <input type="url" formControlName="ig" class="form-control" id="insta">
+            <input type="url" formControlName="instagram" class="form-control" id="insta">
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-4 col-form-label">Titular Comercio</label>
           <div class="col-sm-8">
-            <input formControlName="nombreT" type="text" class="form-control" id="nombreTitular" placeholder="Nombre">
-            <input formControlName="telT" type="tel" class="form-control" id="telTitular" placeholder="Teléfono">
-            <input formControlName="emailT" type="email" class="form-control" id="emailTitular" placeholder="Email">
+            <input formControlName="t_nombre" type="text" class="form-control" id="nombreTitular" placeholder="Nombre">
+            <input formControlName="t_tel" type="number" class="form-control" id="telTitular" placeholder="Teléfono (10 dígitos)">
+            <input formControlName="t_email" type="email" class="form-control" id="emailTitular" placeholder="Email">
           </div>
         </div>
       </div>
