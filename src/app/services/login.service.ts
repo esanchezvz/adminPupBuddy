@@ -19,7 +19,7 @@ export class LoginService {
 
   get isLoggedIn(): any {
     let token = localStorage.getItem('token');
-    console.log(token)
+    // console.log(token)
     if (token != "" && token != null) {
       this.loggedIn.next(true);
       return this.loggedIn.asObservable(), true;
