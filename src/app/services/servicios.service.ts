@@ -94,6 +94,22 @@ export class ServiciosService {
     )
   }
 
+  postDirectorio(data): Observable<any> {
+    return this.httpClient.post(this.ipServer + "/directorio", data, this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
+
+  getDirecotrio(): Observable<any> {
+    return this.httpClient.get(this.ipServer + "/directorios", this.httpOptions).pipe(
+      map((res: HttpResponse<Array<any>>) => {
+        return res
+      })
+    )
+  }
+
   postMensualidad(data): Observable<any> {
     return this.httpClient.post(this.ipServer + "/usuario", data, this.httpOptions).pipe(
       map((res: HttpResponse<any>) => {
