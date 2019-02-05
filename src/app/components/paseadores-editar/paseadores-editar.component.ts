@@ -30,7 +30,6 @@ export class PaseadoresEditarComponent implements OnInit {
   ngOnInit() {
     this.serviciosService.getPaseador().subscribe(
       response => {
-        console.log(response)
         this.paseadores = response;
         this.items = this.paseadores;
         this.items = this.paseadores.map(item => {

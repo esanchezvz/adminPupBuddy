@@ -109,4 +109,60 @@ export class ServiciosService {
       })
     )
   }
+
+  postMensualidad(data): Observable<any> {
+    return this.httpClient.post(this.ipServer + "/usuario", data, this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
+
+  postMembresia(data): Observable<any> {
+    return this.httpClient.post(this.ipServer + "/membresia", data, this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
+
+  getBuddies(uid): Observable<any> {
+    return this.httpClient.get(this.ipServer + `/buddies/${uid}`, this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
+
+  getDirecciones(uid): Observable<any> {
+    return this.httpClient.get(this.ipServer + `/direcciones/${uid}`, this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
+
+  getMembresias(): Observable<any> {
+    return this.httpClient.get(this.ipServer + `/membresias`, this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
+
+  getTarjetas(uid): Observable<any> {
+    return this.httpClient.get(this.ipServer + `/tarjetas/${uid}`, this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
+
+  getTarifas(): Observable<any> {
+    return this.httpClient.get(this.ipServer + `/tarifas`, this.httpOptions).pipe(
+      map((res: HttpResponse<any>) => {
+        return res
+      })
+    )
+  }
 }
