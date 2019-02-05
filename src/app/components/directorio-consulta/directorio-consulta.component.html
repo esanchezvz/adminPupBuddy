@@ -11,18 +11,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let el of items" class="table-row">
+        <tr *ngFor="let el of elements" class="table-row">
           <th scope="row">
             <button class="btn btn-primary btn-sm"
-                   (click)="selectHandler(el.id, el)">
+                   (click)="selectedDir(el.id)">
                    Editar
             </button>
           </th>
           <th>{{el.id}}</th>
           <td>{{el.nombre}}</td>
-          <td>{{el.email}}</td>
-          <td>{{el.telefono}}</td>
-          <td>{{el.calificacion}}</td>
+          <td>{{el.categoria}}</td>
+          <td>{{el.titular}}</td>
           <td>{{el.status}}</td>
         </tr>
       </tbody>
