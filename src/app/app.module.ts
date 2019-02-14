@@ -40,6 +40,7 @@ import { MensualidadEdicionComponent } from './components/mensualidad-edicion/me
 import { PagosComponent } from './components/pagos/pagos.component';
 import { PagosRealizarComponent } from './components/pagos-realizar/pagos-realizar.component';
 import { PagosHistoricoComponent } from './components/pagos-historico/pagos-historico.component';
+import { ModalComponent } from './directives/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { PagosHistoricoComponent } from './components/pagos-historico/pagos-hist
     MensualidadEdicionComponent,
     PagosComponent,
     PagosRealizarComponent,
-    PagosHistoricoComponent
+    PagosHistoricoComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
