@@ -12,4 +12,6 @@ export class AltaTipComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
 }

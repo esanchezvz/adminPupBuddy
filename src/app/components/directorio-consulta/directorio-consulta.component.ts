@@ -35,7 +35,7 @@ export class DirectorioConsultaComponent implements OnInit {
         });
       },
       err =>{
-        alert("No pudimos obtener los datos...")
+        //alert("No pudimos obtener los datos...")
       }
     );
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { ServiciosService } from "src/app/services/servicios.service";
 
 @Component({
@@ -13,6 +13,7 @@ export class TipsComponent implements OnInit {
   selectHandler: Function;
   selectedRow: any[];
   items: any[];
+
 
   constructor(
     private serviciosService: ServiciosService
@@ -29,6 +30,22 @@ export class TipsComponent implements OnInit {
       });
     };
   }
+
+  //Funcional prev de imagen al seleccionarla
+  readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        (<HTMLImageElement>document.getElementById('preview')).src = e.target.result
+        //assuming element with id blah will always be an ImageElement
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  //END
 
   ngOnInit() {
     this.serviciosService.getTip().subscribe(

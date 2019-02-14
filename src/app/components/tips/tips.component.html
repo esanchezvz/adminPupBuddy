@@ -45,14 +45,15 @@
         <div class="form-group row">
           <label for="imgTip" class="col-sm-3 col-form-label">Imagen Tip</label>
           <div class="col-sm-9">
-            <input type="file" class="form-control-file" id="imgTip" accept="image/jpeg">
+            <input type="file" class="form-control-file" id="imgTip" (change)="readURL($event.target)" accept="image/jpeg">
+              <img id="preview">
           </div>
         </div>
         <div class="row">
           <button class="btn d-block mx-auto">Vista Previa</button>
         </div>
         <div class="row">
-          <div class="col-6 text-center"><button (click)="getTips()" class="btn">Cancelar</button></div>
+          <div class="col-6 text-center"><button class="btn">Cancelar</button></div>
           <div class="col-6 text-center"><button class="btn">Guardar</button></div>
         </div>
       </form>
