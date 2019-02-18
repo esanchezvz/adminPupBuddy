@@ -41,6 +41,8 @@ import { PagosComponent } from './components/pagos/pagos.component';
 import { PagosRealizarComponent } from './components/pagos-realizar/pagos-realizar.component';
 import { PagosHistoricoComponent } from './components/pagos-historico/pagos-historico.component';
 import { ModalComponent } from './directives/modal/modal.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
+import { ClientesConsultaComponent } from './components/clientes-consulta/clientes-consulta.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { ModalComponent } from './directives/modal/modal.component';
     PagosComponent,
     PagosRealizarComponent,
     PagosHistoricoComponent,
-    ModalComponent
+    ModalComponent,
+    ClientesComponent,
+    ClientesConsultaComponent
   ],
   imports: [
     BrowserModule,
