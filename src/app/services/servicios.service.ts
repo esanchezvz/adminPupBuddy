@@ -10,7 +10,7 @@ export class ServiciosService {
 
   headers1 = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   httpOptions: any
-  ipServer = "http://74.208.165.73:9910" //SERVIDOR
+  ipServer = "https://www.appwit-api.com:9910" //SERVIDOR
   // ipServer = "http://192.168.1.88:9910" //LOCAL
 
 
