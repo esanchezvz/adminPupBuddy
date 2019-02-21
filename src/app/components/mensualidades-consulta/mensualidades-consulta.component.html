@@ -10,7 +10,10 @@
         <tbody>
           <tr *ngFor="let el of membresias" class="table-row">
             <th scope="row">
-              <button class="btn btn-primary btn-sm" (click)="toEditar(el)">
+              <button
+                class="btn btn-primary btn-sm"
+                (click)="toEditar(el, el.id_membresia)"
+              >
                 Editar
               </button>
             </th>
@@ -36,7 +39,9 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item active">Total</li>
-      <li class="list-group-item"><b>Buddies</b>{{' ' + membresias.length }}</li>
+      <li class="list-group-item">
+        <b>Buddies</b>{{ " " + membresias.length }}
+      </li>
       <li class="list-group-item"><b>Monto</b> $ 700.00 MXN</li>
     </ul>
   </div>
