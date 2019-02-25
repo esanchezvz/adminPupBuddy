@@ -9,7 +9,7 @@ import { ServiciosService } from "src/app/services/servicios.service";
 })
 export class PaseadoresEditarComponent implements OnInit {
   paseadores: any = [];
-  headElements = ['', 'ID', 'Nombre', 'Email', 'Teléfono', 'Status']; //FALTA CALIFICACION  Y STATUS
+  headElements = ['', 'ID', 'Nombre', 'Email', 'Teléfono', 'Calificacion', 'Status']; //FALTA CALIFICACION  Y STATUS
   selectHandler: Function;
   selectedRow: any[];
 
@@ -41,6 +41,24 @@ export class PaseadoresEditarComponent implements OnInit {
       error => {
         console.log(error);
       }
+    );
+  }
+
+  changeStatus(st, ps){
+
+    var data = {
+      "status": st,
+      "idPaseador": ps
+    }
+
+      this.serviciosService.postEstatusPaseador(data).subscribe(
+        response => {
+          console.log(response);
+          this.ngOnInit();
+        },
+        error => {
+          console.log(error);
+        }
     );
   }
 
