@@ -78,7 +78,7 @@ export class MensualidadesAltaComponent implements OnInit {
         this.getBuddies(response.id_usuario);
         this.getDirecciones(response.id_usuario);
         // this.getTarjetas(response.id_usuario);
-        this.formato.reset();
+        //this.formato.reset();
       },
       error => {
         alert(`${error}\n Intente de Nuevo.`);
@@ -192,7 +192,8 @@ export class MensualidadesAltaComponent implements OnInit {
     this.serviciosService.postMembresia(this.membresia).subscribe(
       response => {
         alert(`${response.message}`);
-        this.formato.reset();
+        //this.formato.reset();
+        this.ngOnInit();
       },
       error => {
         console.log(error);

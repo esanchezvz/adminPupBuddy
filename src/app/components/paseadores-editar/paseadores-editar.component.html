@@ -22,8 +22,11 @@
         <td>{{el.nombre +' '+ el.ap +' '+ el.am}}</td>
         <td>{{el.email}}</td>
         <td>{{el.cel}}</td>
-        <!-- <td>{{el.calificacion}}</td> -->
-        <td>{{el.status}}</td>
+        <td>{{el.calificacion}}</td>
+        <td *ngIf="el.estatus == 0"><button class="btn" 
+          (click)="changeStatus(1, el.id_paseador)">Activar</button></td>
+        <td *ngIf="el.estatus == 1"><button class="btn" 
+          (click)="changeStatus(0, el.id_paseador)">Desactivar</button></td>
       </tr>
     </tbody>
   </table>
