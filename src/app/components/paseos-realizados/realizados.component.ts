@@ -19,7 +19,7 @@ export class RealizadosComponent implements OnInit {
   ngOnInit() {
     this.servicios.getRealizados().subscribe(
       response => {
-        console.log(response.message)
+        console.log(response)
         this.realizados = response
       },
       error => {
