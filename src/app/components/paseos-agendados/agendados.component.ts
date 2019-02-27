@@ -10,13 +10,17 @@ import { Router } from '@angular/router';
 
 export class AgendadosComponent implements OnInit {
   agendados: any[];
-  headElements = ["# Solicitud", "# Paseador", "Hora", "Status", "Hora Inicio", "Hora Finalizado"];
+  headElements = ["# Solicitud", "# Paseador", "Fecha y Hora", "Hora Inicio", "Status"];
   selectHandler: Function;
   selectedRow: any[];
   items: any[];
   paseo:any = {
     idPaseo: null,
     status: null
+  };
+
+  cobrar: any = {
+    idSolicitud: null
   };
 
   constructor(
@@ -62,6 +66,22 @@ export class AgendadosComponent implements OnInit {
       },
       error => {
         console.error(error)
+      }
+    )
+  }
+
+  generarCargo(elem) {
+    console.log(elem)
+    this.cobrar.idSolicitud = elem.id_solicitud;
+    this.servicios.postCargo(this.cobrar).subscribe(
+      response => {
+        console.log(response.message)
+        this.router.navigate(["paseos/match"]);
+
+      },
+      error => {
+        console.error(error)
+        alert("La tarjeta no paso, ponte en contacto con el cliente");
       }
     )
   }

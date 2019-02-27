@@ -152,6 +152,17 @@ export class ServiciosService {
       );
   }
 
+  postCargo(data): Observable<any> {
+    // Genera cobro del servicio
+    return this.httpClient
+      .post(this.ipServer + "/cargo", data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
   getMembresia(id): Observable<any> {
     // Trae arregle de fechas o 404
     // Si es 404 llamar postAgendarMembresia y Luego getMembresia(id)
