@@ -141,7 +141,6 @@ export class MensualidadesAltaComponent implements OnInit {
   }
 
   setService(event) {
-    // Mostrar Segundo Input de Hora
     if (event.target.value % 2 !== 0) {
       this.show = true;
     } else {
@@ -159,10 +158,31 @@ export class MensualidadesAltaComponent implements OnInit {
   setDates(event) {
     const fAlta = moment(event.target.value);
     this.membresia.f_alta = fAlta.valueOf();
-    this.membresia.f_corte = fAlta
-      .add(1, "months")
-      .subtract(1, "days")
-      .valueOf();
+    if (
+      this.membresia.tipo_servicio === 2 ||
+      this.membresia.tipo_servicio === 3
+    ) {
+      this.membresia.f_corte = fAlta
+        .add(1, "months")
+        .subtract(1, "days")
+        .valueOf();
+    } else if (
+      this.membresia.tipo_servicio === 4 ||
+      this.membresia.tipo_servicio === 5
+    ) {
+      this.membresia.f_corte = fAlta
+        .add(3, "months")
+        .subtract(1, "days")
+        .valueOf();
+    } else if (
+      this.membresia.tipo_servicio === 6 ||
+      this.membresia.tipo_servicio === 7
+    ) {
+      this.membresia.f_corte = fAlta
+        .add(1, "years")
+        .subtract(1, "days")
+        .valueOf();
+    }
   }
 
   setTime1() {
@@ -191,8 +211,7 @@ export class MensualidadesAltaComponent implements OnInit {
     this.show ? this.setTime2() : null;
     this.serviciosService.postMembresia(this.membresia).subscribe(
       response => {
-        alert(`${response.message}`);
-        //this.formato.reset();
+        // alert(`${response.message}`);
         this.ngOnInit();
       },
       error => {
