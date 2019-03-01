@@ -33,7 +33,7 @@ export class ServiciosService {
 
   getPaseador(): Observable<any> {
     return this.httpClient
-      .get(this.ipServer + "/paseador", this.httpOptions)
+      .get(this.ipServer + "/paseadores", this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -71,9 +71,9 @@ export class ServiciosService {
       );
   }
 
-  putPaseador(data): Observable<any> {
+  postPaseador(data): Observable<any> {
     return this.httpClient
-      .put(this.ipServer + "/paseador", data, this.httpOptions)
+      .post(this.ipServer + "/paseador", data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -247,7 +247,7 @@ export class ServiciosService {
 
   postEstatusPaseador(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/paseador", data, this.httpOptions)
+      .post(this.ipServer + "/paseadorst", data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
