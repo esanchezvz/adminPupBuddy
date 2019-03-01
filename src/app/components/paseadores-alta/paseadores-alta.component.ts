@@ -33,7 +33,7 @@ export class PaseadoresAltaComponent implements OnInit {
 
   altaPaseador() {
     this.formato.value.fnacimiento = this.datePipe.transform(this.formato.value.fnacimiento, 'dd/MM/yyyy')
-    this.serviciosService.putPaseador(this.formato.value).subscribe(response => {
+    this.serviciosService.postPaseador(this.formato.value).subscribe(response => {
       alert(`${response.message} \n Paseador agragado exitosamente`)
       this.formato.reset()
     },
