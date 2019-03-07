@@ -14,6 +14,7 @@ export class ServiciosService {
   httpOptions: any;
   ipServer = "https://www.appwit-api.com:9910"; //SERVIDOR
   // ipServer = "http://192.168.1.88:9910" //LOCAL
+  //ipServer = "http://192.168.100.4:9910" //LOCAL
 
   constructor(private httpClient: HttpClient) {
     this.headers1.append("Access-Control-Allow-Origin", "*");

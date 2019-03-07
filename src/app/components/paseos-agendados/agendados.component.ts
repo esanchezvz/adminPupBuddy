@@ -20,7 +20,8 @@ export class AgendadosComponent implements OnInit {
   };
 
   cobrar: any = {
-    idSolicitud: null
+    idSolicitud: null,
+    idPaseo:null
   };
 
   constructor(
@@ -73,6 +74,7 @@ export class AgendadosComponent implements OnInit {
   generarCargo(elem) {
     console.log(elem)
     this.cobrar.idSolicitud = elem.id_solicitud;
+    this.cobrar.idPaseo = elem.id_paseo;
     this.servicios.postCargo(this.cobrar).subscribe(
       response => {
         console.log(response.message)
