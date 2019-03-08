@@ -33,12 +33,11 @@ export class DirectorioAltaComponent implements OnInit {
       t_nombre: ["", Validators.required],
       t_tel: ["", Validators.required],
       t_email: ["", Validators.required],
-      url_img: [""]
+      img: [""]
     });
   }
 
   altaDirectorio() {
-    console.log(this.formato.value);
     if (this.urlImg == "") {
       alert("Favor de agregar una imagen");
       return;
@@ -49,7 +48,7 @@ export class DirectorioAltaComponent implements OnInit {
     }
     this.getOnlyBase64(); // Obtiene la base 64 en finalUrl
     console.log(this.urlImgFinal);
-    this.formato.value.url_img = this.urlImgFinal;
+    this.formato.value.img = this.urlImgFinal;
     this.serviciosService.postDirectorio(this.formato.value).subscribe(
       res => {
         this.formato.reset();
@@ -71,7 +70,6 @@ export class DirectorioAltaComponent implements OnInit {
 
         reader.readAsDataURL(event.target.files[0]); // read file as data url
         reader.onload = event => {
-          // called once readAsDataURL is completed
           this.urlImg = reader.result.toString();
         };
         this.imgFlag = true;
@@ -84,9 +82,6 @@ export class DirectorioAltaComponent implements OnInit {
   }
 
   checkImage(img: any) {
-    console.log(img);
-    console.log(img.type);
-
     if (img.size > 1000000) {
       console.log("TOO LARGE");
       alert("La imagen supera el máximo de 1MB");
@@ -94,7 +89,7 @@ export class DirectorioAltaComponent implements OnInit {
     }
     if (
       img.type.toString() === "image/jpeg" ||
-      img.type.toString() === "image/png" ||
+      // img.type.toString() === "image/png" ||
       img.type.toString() === "image/jpg"
     ) {
       return true;

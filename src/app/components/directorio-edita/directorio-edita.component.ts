@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators, FormControl } from "@angular/forms";
 import { ServiciosService } from "src/app/services/servicios.service";
 import { Router } from "@angular/router";
-import * as moment from "moment";
 
 @Component({
   selector: "app-directorio-edita",
@@ -33,7 +32,7 @@ export class DirectorioEditaComponent implements OnInit {
       t_nombre: ["", Validators.required],
       t_tel: ["", Validators.required],
       t_email: ["", Validators.required],
-      url_img: [""]
+      img: [""]
     });
   }
 
@@ -53,17 +52,18 @@ export class DirectorioEditaComponent implements OnInit {
       t_nombre: [this.directorio.t_nombre, Validators.required],
       t_tel: [this.directorio.t_tel, Validators.required],
       t_email: [this.directorio.t_email, Validators.required],
-      url_img: [this.directorio.url_img]
+      img: [this.directorio.url_img]
     });
     console.log(this.formato.value);
   }
 
   registrar() {
+    console.log(this.formato.value);
+    console.log("ID", this.directorio.id_directorio);
     this.servicios
       .putDirectorio(this.formato.value, this.directorio.id_directorio)
       .subscribe(
         response => {
-          console.log(this.formato.value);
           alert(`${response.message} \n Paseador editado exitosamente`);
           this.toConsulta();
         },
@@ -71,6 +71,12 @@ export class DirectorioEditaComponent implements OnInit {
           alert(`${error.message}\n Intente de Nuevo.`);
         }
       );
+  }
+
+  ngDoCheck(): void {
+    if (this.flag === true) {
+      this.formato.value.img = this.imagen;
+    }
   }
 
   handleUpload(e) {
