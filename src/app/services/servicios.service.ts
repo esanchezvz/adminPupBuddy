@@ -154,7 +154,7 @@ export class ServiciosService {
   }
 
   postCargo(data): Observable<any> {
-    // Genera cobro del servicio
+    // Genera cargo del servicio
     return this.httpClient
       .post(this.ipServer + "/cargo", data, this.httpOptions)
       .pipe(
@@ -256,4 +256,67 @@ export class ServiciosService {
       );
   }
 
+  putTip(data, id): Observable<any> {
+    return this.httpClient
+      .put(`${this.ipServer}/tip/${id}`, data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  putPaseador(data, id): Observable<any> {
+    return this.httpClient
+      .put(`${this.ipServer}/paseador/${id}`, data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  putDirectorio(data, id): Observable<any> {
+    return this.httpClient
+      .put(`${this.ipServer}/directorio/${id}`, data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  getCobrosPaseos(): Observable<any> {
+    return this.httpClient
+      .get(this.ipServer + "/cobrosPaseos", this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+    // [
+    //   {
+    //       "id_paseo": 1,
+    //       "id_solicitud": 1,
+    //       "id_usuario": 1,
+    //       "id_paseador": 1,
+    //       "status_paseo": 2,
+    //       "inicio": "2019-02-21T19:48:30.000+0000",
+    //       "status_admin": 0,
+    //       "monto": "No se encontro cargo",
+    //       "n_buddies": 3
+    //   },
+    //   ...
+    // ]
+  }
+
+  postCobrosPaseosR(data): Observable<any> {
+    return this.httpClient
+      .post(this.ipServer + "/cobrosPaseosR", data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
 }

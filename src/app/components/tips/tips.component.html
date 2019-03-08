@@ -4,59 +4,132 @@
       <table class="table">
         <thead>
           <tr>
-            <th *ngFor="let head of headElements" scope="col">{{head}}</th>
+            <th *ngFor="let head of headElements" scope="col">{{ head }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let el of items" class="table-row" [class.selected-row]="el.selected">
+          <tr
+            *ngFor="let el of tips"
+            class="table-row"
+            [class.selected-row]="el.selected"
+          >
             <th scope="row">
-              <input type="checkbox"
-                     [checked]="el.selected"
-                     (change)="selectHandler(el.id_tip, el)">
+              <button
+                class="btn"
+                [disabled]="enable"
+                (click)="handleEditar(el)"
+              >
+                Editar
+              </button>
             </th>
-            <th>{{el.id_tip}}</th>
-            <td>{{el.nombre}}</td>
-            <td>{{el.fdp | date: 'dd/MM/yy, h:mm a'}}</td>
+            <th>{{ el.id_tip }}</th>
+            <td>{{ el.nombre }}</td>
+            <td>{{ el.fdp | date: "dd/MM/yy, h:mm a" }}</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="col-12 col-md-6">
-      <form>
+      <form [formGroup]="formato">
         <div class="form-group row">
-          <label for="nombreTip" class="col-sm-3 col-form-label">Nombre Tip</label>
+          <label for="nombre" class="col-sm-3 col-form-label">Nombre Tip</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="nombreTip">
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              formControlName="nombre"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="textoTip" class="col-sm-3 col-form-label">Texto Tip</label>
+          <label for="texto" class="col-sm-3 col-form-label">Texto Tip</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="textoTip">
+            <textarea
+              type="text"
+              class="form-control"
+              id="texto"
+              formControlName="texto"
+            ></textarea>
           </div>
         </div>
         <div class="form-group row">
-          <label for="fechaTip" class="col-sm-3 col-form-label">Fecha Tip</label>
+          <label for="url" class="col-sm-3 col-form-label">URL Tip</label>
           <div class="col-sm-9">
-            <input type="date" class="form-control" id="fechaTip">
+            <input
+              type="text"
+              class="form-control"
+              id="url"
+              formControlName="url"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="imgTip" class="col-sm-3 col-form-label">Imagen Tip</label>
+          <label for="fecha" class="col-sm-3 col-form-label">Fecha Tip</label>
           <div class="col-sm-9">
-            <input type="file" class="form-control-file" id="imgTip" (change)="readURL($event.target)" accept="image/jpeg">
-              <img id="preview">
+            <input
+              type="date"
+              class="form-control"
+              id="fecha"
+              formControlName="fdp"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="img" class="col-sm-3 col-form-label">Imagen Tip</label>
+          <div class="col-sm-9">
+            <div class="imgContainer" *ngIf="!imagenOriginal; else templateA">
+              <img
+                id="img"
+                class="img-fluid huella"
+                src="https://via.placeholder.com/250"
+                alt="{{ Tip }}"
+              />
+              <div class="upload-wrapper">
+                <i class="material-icons camara-icon">
+                  camera_alt
+                </i>
+                <input
+                  type="file"
+                  (change)="handleUpload($event)"
+                  accept="image/jpeg"
+                  [disabled]="!enable"
+                  class="fileInput"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
-          <button class="btn d-block mx-auto">Vista Previa</button>
-        </div>
-        <div class="row">
-          <div class="col-6 text-center"><button class="btn">Cancelar</button></div>
-          <div class="col-6 text-center"><button class="btn">Guardar</button></div>
+          <div class="col-6 text-center">
+            <button class="btn" (click)="cancelar()">Cancelar</button>
+          </div>
+          <div class="col-6 text-center">
+            <button class="btn" [disabled]="!enable" (click)="guardar()">
+              Guardar
+            </button>
+          </div>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+<ng-template #templateA>
+  <div class="imgContainer">
+    <div *ngIf="!nuevaImagen; else newImg">
+      <img class="img-fluid tip" src="{{ imagenOriginal }}" alt="Tip" />
+    </div>
+    <div class="upload-wrapper">
+      <i class="material-icons camara-icon">
+        camera_alt
+      </i>
+      <input type="file" (change)="handleUpload($event)" />
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #newImg>
+  <img class="img-fluid tip" src="{{ nuevaImagen }}" alt="Tip" />
+</ng-template>
