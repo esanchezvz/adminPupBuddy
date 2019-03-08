@@ -12,8 +12,8 @@ export class ServiciosService {
     "application/json; charset=utf-8"
   );
   httpOptions: any;
-  // ipServer = "https://www.appwit-api.com:9910"; //SERVIDOR
-  ipServer = "http://192.168.15.6:9910"; //LOCAL
+  ipServer = "https://www.appwit-api.com:9910"; //SERVIDOR
+  // ipServer = "http://192.168.15.6:9910"; //LOCAL
 
   constructor(private httpClient: HttpClient) {
     this.headers1.append("Access-Control-Allow-Origin", "*");
