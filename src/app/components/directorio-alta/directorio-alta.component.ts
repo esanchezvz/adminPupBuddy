@@ -11,7 +11,7 @@ import { toBase64String } from "@angular/compiler/src/output/source_map";
 })
 export class DirectorioAltaComponent implements OnInit {
   public formato;
-
+  public imgFlag = false;
   private urlImg = "";
   private urlImgFinal = "";
 
@@ -26,33 +26,18 @@ export class DirectorioAltaComponent implements OnInit {
       direccion: ["", Validators.required],
       lat: ["", Validators.required],
       lng: ["", Validators.required],
-      tel: [
-        "",
-        Validators.compose([
-          Validators.required,
-          Validators.max(9999999999),
-          Validators.min(1000000000)
-        ])
-      ],
+      tel: ["", Validators.required],
       web: ["", Validators.required],
       fb: ["", Validators.required],
       instagram: ["", Validators.required],
       t_nombre: ["", Validators.required],
-      t_tel: [
-        "",
-        Validators.compose([
-          Validators.required,
-          Validators.max(9999999999),
-          Validators.min(1000000000)
-        ])
-      ],
+      t_tel: ["", Validators.required],
       t_email: ["", Validators.required],
-      imagen_directorio: [""]
+      img: [""]
     });
   }
 
   altaDirectorio() {
-    console.log(this.formato.value);
     if (this.urlImg == "") {
       alert("Favor de agregar una imagen");
       return;
@@ -62,13 +47,12 @@ export class DirectorioAltaComponent implements OnInit {
       return;
     }
     this.getOnlyBase64(); // Obtiene la base 64 en finalUrl
-    this.formato.value.imagen_directorio = this.urlImgFinal;
-    this.formato.value.lat = this.formato.value.lat.toString();
-    this.formato.value.lng = this.formato.value.lng.toString();
+    console.log(this.urlImgFinal);
+    this.formato.value.img = this.urlImgFinal;
     this.serviciosService.postDirectorio(this.formato.value).subscribe(
       res => {
         this.formato.reset();
-        alert("¡Éxito!");
+        alert(`¡Éxito!\n${res.message}`);
       },
       error => {
         alert("Error! Vuelva a intentar.");
@@ -86,21 +70,18 @@ export class DirectorioAltaComponent implements OnInit {
 
         reader.readAsDataURL(event.target.files[0]); // read file as data url
         reader.onload = event => {
-          // called once readAsDataURL is completed
           this.urlImg = reader.result.toString();
         };
+        this.imgFlag = true;
       }
     }
   }
 
   getOnlyBase64() {
-    this.urlImgFinal = this.urlImg.split("base64,")[1];
+    this.urlImgFinal = this.urlImg; //.split("base64,")[1];
   }
 
   checkImage(img: any) {
-    console.log(img);
-    console.log(img.type);
-
     if (img.size > 1000000) {
       console.log("TOO LARGE");
       alert("La imagen supera el máximo de 1MB");
@@ -108,7 +89,7 @@ export class DirectorioAltaComponent implements OnInit {
     }
     if (
       img.type.toString() === "image/jpeg" ||
-      img.type.toString() === "image/png" ||
+      // img.type.toString() === "image/png" ||
       img.type.toString() === "image/jpg"
     ) {
       return true;

@@ -40,7 +40,7 @@ export class MensualidadesConsultaComponent implements OnInit {
   }
 
   toEditar(elem, id) {
-    localStorage.setItem("membresia", JSON.stringify(elem));
+    sessionStorage.setItem("membresia", JSON.stringify(elem));
     this.router.navigate(["mensualidades/editar/", id]);
   }
 }

@@ -1,43 +1,83 @@
 <div class="row">
   <div class="col-12">
-
-    <form>
+    <form [formGroup]="formato" ngNativeValidate (ngSubmit)="registrar()">
       <div class="form-group row">
-        <label for="nombreTip" class="col-sm-3 col-form-label">Nombre Tip</label>
+        <label for="nombreTip" class="col-sm-3 col-form-label"
+          >Nombre Tip</label
+        >
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="nombreTip">
+          <input
+            type="text"
+            class="form-control"
+            id="nombreTip"
+            formControlName="nombre"
+          />
         </div>
       </div>
       <div class="form-group row">
         <label for="textoTip" class="col-sm-3 col-form-label">Texto Tip</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="textoTip">
+          <input
+            type="text"
+            class="form-control"
+            id="textoTip"
+            formControlName="texto"
+          />
         </div>
       </div>
       <div class="form-group row">
-        <label for="fechaTip" class="col-sm-3 col-form-label">Fecha Publicación Tip</label>
+        <label for="fechaTip" class="col-sm-3 col-form-label"
+          >Fecha Publicación Tip</label
+        >
         <div class="col-sm-9">
-          <input type="date" class="form-control" id="fechaTip">
+          <input
+            type="date"
+            class="form-control"
+            id="fechaTip"
+            formControlName="fdp"
+          />
         </div>
       </div>
       <div class="form-group row">
-        <label for="horaTip" class="col-sm-3 col-form-label">Hora Publicación Tip</label>
+        <label for="urlTip" class="col-sm-3 col-form-label">URL Tip</label>
         <div class="col-sm-9">
-          <input type="time" class="form-control" id="horaTip">
+          <input
+            type="text"
+            class="form-control"
+            id="urlTip"
+            formControlName="url"
+          />
         </div>
       </div>
       <div class="form-group row">
         <label for="imgTip" class="col-sm-3 col-form-label">Imagen Tip</label>
-        <div class="col-sm-9">
-          <input type="file" class="form-control-file" id="imgTip" accept="image/jpeg">
+        <div class="col-sm-5">
+          <input
+            type="file"
+            class="form-control-file"
+            id="imgTip"
+            accept="image/png"
+            (change)="handleUpload($event)"
+          />
+        </div>
+        <div class="col-sm-4" *ngIf="imagen">
+          <div class="imgContainer">
+            <div *ngIf="!nuevaImagen; else newImg">
+              <img class="img-fluid tip" src="{{ imagen }}" alt="Tip" />
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <button class="btn d-block mx-auto">Vista Previa</button>
-      </div>
+      </div> -->
       <div class="row">
-        <div class="col-6 text-center"><button class="btn">Cancelar</button></div>
-        <div class="col-6 text-center"><button class="btn">Guardar</button></div>
+        <div class="col-6 text-center">
+          <button class="btn" (click)="toConsulta()">Cancelar</button>
+        </div>
+        <div class="col-6 text-center">
+          <button class="btn" type="submit">Guardar</button>
+        </div>
       </div>
     </form>
   </div>

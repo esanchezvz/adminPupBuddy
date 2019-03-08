@@ -5,38 +5,78 @@
         <div class="form-group row">
           <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
           <div class="col-sm-8">
-            <input formControlName="nombre" type="text" class="form-control" id="nombre">
+            <input
+              formControlName="nombre"
+              type="text"
+              class="form-control"
+              id="nombre"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="apellidoP" class="col-sm-4 col-form-label">Apellido Paterno</label>
+          <label for="apellidoP" class="col-sm-4 col-form-label"
+            >Apellido Paterno</label
+          >
           <div class="col-sm-8">
-            <input formControlName="ap" type="text" class="form-control" id="apellidoP">
+            <input
+              formControlName="ap"
+              type="text"
+              class="form-control"
+              id="apellidoP"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="apellidoM" class="col-sm-4 col-form-label">Apellido Materno</label>
+          <label for="apellidoM" class="col-sm-4 col-form-label"
+            >Apellido Materno</label
+          >
           <div class="col-sm-8">
-            <input formControlName="am" type="text" class="form-control" id="apellidoM">
+            <input
+              formControlName="am"
+              type="text"
+              class="form-control"
+              id="apellidoM"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="fecha" class="col-sm-4 col-form-label">Fecha de Nacimiento</label>
+          <label for="fecha" class="col-sm-4 col-form-label"
+            >Fecha de Nacimiento</label
+          >
           <div class="col-sm-8">
-            <input formControlName="fnacimiento" type="date" class="form-control" id="fecha">
+            <input
+              formControlName="fnacimiento"
+              type="date"
+              class="form-control"
+              id="fecha"
+            />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-4 col-form-label">Sexo</label>
           <div class="col-sm-8">
             <div class="form-check">
-              <input (change)="setSexo($event.target.value)" class="form-check-input" type="radio" name="sexo" id="sexoM" value="Masculino">
+              <input
+                (change)="setSexo($event.target.value)"
+                class="form-check-input"
+                type="radio"
+                name="sexo"
+                id="sexoM"
+                value="Masculino"
+              />
               <label class="form-check-label" for="sexoM">
                 Masculino
               </label>
             </div>
             <div class="form-check">
-              <input (change)="setSexo($event.target.value)" class="form-check-input" type="radio" name="sexo" id="sexoF" value="Femenino">
+              <input
+                (change)="setSexo($event.target.value)"
+                class="form-check-input"
+                type="radio"
+                name="sexo"
+                id="sexoF"
+                value="Femenino"
+              />
               <label class="form-check-label" for="sexoF">
                 Femenino
               </label>
@@ -44,9 +84,20 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="img-paseador" class="col-sm-3 col-form-label">Imagen Paseador</label>
+          <label for="img-paseador" class="col-sm-3 col-form-label"
+            >Imagen Paseador</label
+          >
           <div class="col-sm-9">
-            <input type="file" class="form-control-file" id="img-paseador" accept="image/jpeg">
+            <input
+              type="file"
+              class="form-control-file"
+              id="img-paseador"
+              (change)="handleUpload($event)"
+              accept="image/jpeg"
+            />
+          </div>
+          <div class="col-12" *ngIf="imgFlag">
+            <img class="img-fluid paseador" src="{{ imagen }}" alt="Paseador" />
           </div>
         </div>
       </div>
@@ -55,45 +106,84 @@
         <div class="form-group row">
           <label for="email" class="col-sm-4 col-form-label">Email</label>
           <div class="col-sm-8">
-            <input formControlName="email" type="email" class="form-control" id="email">
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              id="email"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="confirm-email" class="col-sm-4 col-form-label">Confirmar Email</label>
+          <label for="confirm-email" class="col-sm-4 col-form-label"
+            >Confirmar Email</label
+          >
           <div class="col-sm-8">
-            <input type="email" class="form-control" id="confirm-email">
+            <input type="email" class="form-control" id="confirm-email" />
           </div>
         </div>
         <div class="form-group row">
           <label for="cel" class="col-sm-4 col-form-label">Celular</label>
           <div class="col-sm-8">
-            <input formControlName="cel" type="tel" class="form-control" id="cel">
+            <input
+              formControlName="cel"
+              type="tel"
+              class="form-control"
+              id="cel"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="confirm-cel" class="col-sm-4 col-form-label">Confirmar Celular</label>
+          <label for="confirm-cel" class="col-sm-4 col-form-label"
+            >Confirmar Celular</label
+          >
           <div class="col-sm-8">
-            <input type="tel" class="form-control" id="confirm-cel">
+            <input type="tel" class="form-control" id="confirm-cel" />
           </div>
         </div>
         <div class="form-group row">
           <label for="rfc" class="col-sm-4 col-form-label">RFC</label>
           <div class="col-sm-8">
-            <input formControlName="rfc" type="text" class="form-control" id="rfc">
+            <input
+              formControlName="rfc"
+              type="text"
+              class="form-control"
+              id="rfc"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="datos-bancarios" class="col-sm-4 col-form-label">Datos Bancarios</label>
+          <label for="datos-bancarios" class="col-sm-4 col-form-label"
+            >Datos Bancarios</label
+          >
           <div class="col-sm-8">
-            <input formControlName="banco" type="text" class="form-control" id="datos-bancarios" placeholder="BANCO">
-            <input formControlName="cuenta" type="text" class="form-control" id="datos-bancarios-banco" placeholder="CUENTA">
-            <input formControlName="clabe" type="text" class="form-control" id="datos-bancarios-clabe" placeholder="CLABE">
+            <input
+              formControlName="banco"
+              type="text"
+              class="form-control"
+              id="datos-bancarios"
+              placeholder="BANCO"
+            />
+            <input
+              formControlName="cuenta"
+              type="text"
+              class="form-control"
+              id="datos-bancarios-banco"
+              placeholder="CUENTA"
+            />
+            <input
+              formControlName="clabe"
+              type="text"
+              class="form-control"
+              id="datos-bancarios-clabe"
+              placeholder="CLABE"
+            />
           </div>
         </div>
       </div>
       <div class="col-12 mb-5 mt-3 text-center">
         <button class="btn m-3" type="submit">ACEPTAR</button>
-        <button class="btn m-3">CANCELAR</button>
+        <button class="btn m-3" (click)="toConsulta()">CANCELAR</button>
       </div>
     </form>
   </div>

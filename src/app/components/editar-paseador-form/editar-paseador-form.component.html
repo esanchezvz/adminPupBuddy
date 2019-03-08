@@ -1,42 +1,88 @@
 <div class="row">
   <div class="col-12">
-    <form class="row">
+    <form class="row" [formGroup]="formato">
       <div class="col-12 col-md-6">
         <div class="form-group row">
           <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="nombre" value="{{paseador.nombre}}">
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              value="{{ paseador.nombre }}"
+              formControlName="nombre"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="apellidoP" class="col-sm-4 col-form-label">Apellido Paterno</label>
+          <label for="apellidoP" class="col-sm-4 col-form-label"
+            >Apellido Paterno</label
+          >
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="apellidoP" value="{{paseador.ap}}">
+            <input
+              type="text"
+              class="form-control"
+              id="apellidoP"
+              value="{{ paseador.ap }}"
+              formControlName="ap"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="apellidoM" class="col-sm-4 col-form-label">Apellido Materno</label>
+          <label for="apellidoM" class="col-sm-4 col-form-label"
+            >Apellido Materno</label
+          >
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="apellidoM" value="{{paseador.am}}">
+            <input
+              type="text"
+              class="form-control"
+              id="apellidoM"
+              value="{{ paseador.am }}"
+              formControlName="am"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="fecha" class="col-sm-4 col-form-label">Fecha de Nacimiento</label>
+          <label for="fecha" class="col-sm-4 col-form-label"
+            >Fecha de Nacimiento</label
+          >
           <div class="col-sm-8">
-            <input type="date" class="form-control" id="fecha" value="{{paseador.fnacimiento  | date: 'yyyy-MM-dd'}}">
+            <input
+              type="date"
+              class="form-control"
+              id="fecha"
+              value="{{ paseador.fnacimiento | date: 'yyyy-MM-dd' }}"
+              formControlName="fnacimiento"
+            />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-4 col-form-label">Sexo</label>
           <div class="col-sm-8">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="Masculino" [checked]="masc">
+              <input
+                (change)="setSexo($event.target.value)"
+                class="form-check-input"
+                type="radio"
+                name="sexo"
+                [checked]="masc"
+                id="sexoM"
+                value="Masculino"
+              />
               <label class="form-check-label" for="sexoM">
                 Masculino
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="Femenino" [checked]="fem">
+              <input
+                (change)="setSexo($event.target.value)"
+                class="form-check-input"
+                type="radio"
+                name="sexo"
+                [checked]="fem"
+                id="sexoF"
+                value="Femenino"
+              />
               <label class="form-check-label" for="sexoF">
                 Femenino
               </label>
@@ -44,9 +90,25 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="img-paseador" class="col-sm-3 col-form-label">Imagen Paseador</label>
-          <div class="col-sm-9">
-            <input type="file" class="form-control-file" id="img-paseador" accept="image/jpeg">
+          <label
+            for="img-paseador"
+            class="col-sm-3 d-flex align-items-center col-form-label"
+            >Imagen Paseador</label
+          >
+          <div class="col-sm-2 d-flex align-items-center">
+            <div class="upload-wrapper">
+              <i class="material-icons camara-icon">
+                camera_alt
+              </i>
+              <input type="file" (change)="handleUpload($event)" />
+            </div>
+          </div>
+          <div class="col-sm-7" *ngIf="!flag; else templateA">
+            <img
+              class="img-fluid paseador"
+              src="{{ paseador.urlImg }}"
+              alt="Paseador"
+            />
           </div>
         </div>
       </div>
@@ -55,46 +117,101 @@
         <div class="form-group row">
           <label for="email" class="col-sm-4 col-form-label">Email</label>
           <div class="col-sm-8">
-            <input type="email" class="form-control" id="email" value="{{paseador.email}}">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              value="{{ paseador.email }}"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="confirm-email" class="col-sm-4 col-form-label">Confirmar Email</label>
+          <label for="confirm-email" class="col-sm-4 col-form-label"
+            >Confirmar Email</label
+          >
           <div class="col-sm-8">
-            <input type="email" class="form-control" id="confirm-email" value="{{paseador.email}}">
+            <input
+              type="email"
+              class="form-control"
+              id="confirm-email"
+              value="{{ paseador.email }}"
+            />
           </div>
         </div>
         <div class="form-group row">
           <label for="cel" class="col-sm-4 col-form-label">Celular</label>
           <div class="col-sm-8">
-            <input type="tel" class="form-control" id="cel" value="{{paseador.cel}}">
+            <input
+              type="tel"
+              class="form-control"
+              id="cel"
+              value="{{ paseador.cel }}"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="confirm-cel" class="col-sm-4 col-form-label">Confirmar Celular</label>
+          <label for="confirm-cel" class="col-sm-4 col-form-label"
+            >Confirmar Celular</label
+          >
           <div class="col-sm-8">
-            <input type="tel" class="form-control" id="confirm-cel" value="{{paseador.cel}}">
+            <input
+              type="tel"
+              class="form-control"
+              id="confirm-cel"
+              value="{{ paseador.cel }}"
+            />
           </div>
         </div>
         <div class="form-group row">
           <label for="rfc" class="col-sm-4 col-form-label">RFC</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="rfc" value="{{paseador.rfc}}">
+            <input
+              type="text"
+              class="form-control"
+              id="rfc"
+              value="{{ paseador.rfc }}"
+            />
           </div>
         </div>
         <div class="form-group row">
-          <label for="datos-bancarios" class="col-sm-4 col-form-label">Datos Bancarios</label>
+          <label for="datos-bancarios" class="col-sm-4 col-form-label"
+            >Datos Bancarios</label
+          >
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="datos-bancarios" placeholder="BANCO" value="{{paseador.banco}}">
-            <input type="text" class="form-control" id="datos-bancarios-banco" placeholder="CUENTA" value="{{paseador.cuenta}}">
-            <input type="text" class="form-control" id="datos-bancarios-clabe" placeholder="CLABE" value="{{paseador.clabe}}">
+            <input
+              type="text"
+              class="form-control"
+              id="datos-bancarios"
+              placeholder="BANCO"
+              value="{{ paseador.banco }}"
+            />
+            <input
+              type="text"
+              class="form-control"
+              id="datos-bancarios-banco"
+              placeholder="CUENTA"
+              value="{{ paseador.cuenta }}"
+            />
+            <input
+              type="text"
+              class="form-control"
+              id="datos-bancarios-clabe"
+              placeholder="CLABE"
+              value="{{ paseador.clabe }}"
+            />
           </div>
         </div>
       </div>
       <div class="col-12 mb-5 mt-3 text-center">
-        <button class="btn m-3">ACEPTAR</button>
-        <button class="btn m-3">CANCELAR</button>
+        <button class="btn m-3" (click)="toConsulta()">CANCELAR</button>
+        <button class="btn m-3" (click)="registrar()">ACEPTAR</button>
       </div>
     </form>
   </div>
 </div>
+
+<ng-template #templateA>
+  <div class="col-sm-7">
+    <img class="img-fluid paseador" src="{{ imagen }}" alt="Paseador" />
+  </div>
+</ng-template>

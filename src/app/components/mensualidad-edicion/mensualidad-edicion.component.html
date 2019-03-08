@@ -1,60 +1,107 @@
 <div class="row">
-
-
   <form>
-
     <div class="form-row mb-3">
       <div class="col-md-2">
         <label for="cliente">Cliente</label>
-        <input type="text" class="form-control" value="Carlos" readonly>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ membresia.id_usuario }}"
+          readonly
+        />
       </div>
       <div class="col-md-2">
         <label for="cliente">Buddy</label>
-        <input type="text" class="form-control" value="Hanks" readonly>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ membresia.id_buddy }}"
+          readonly
+        />
       </div>
       <div class="col-md-2">
         <label for="cliente">Fecha inicio</label>
-        <input type="text" class="form-control" value="31/01/2019" readonly>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ membresia.f_alta | date: 'dd/MM/yyyy' }}"
+          readonly
+        />
       </div>
       <div class="col-md-2">
         <label for="cliente">Fecha corte</label>
-        <input type="text" class="form-control" value="27/01/2019" readonly>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ membresia.f_corte | date: 'dd/MM/yyyy' }}"
+          readonly
+        />
       </div>
       <div class="col-md-2">
-        <label for="cliente">Horario</label>
-        <input type="text" class="form-control" value="8:15" readonly>
+        <label for="cliente">Horario 1</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ membresia.h_paseo1 }}"
+          readonly
+        />
       </div>
       <div class="col-md-2">
-        <label for="cliente">Membresía</label>
-        <input type="text" class="form-control" value="Mensual 1" readonly>
+        <label for="cliente">Horario 2</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ membresia.h_paseo2 }}"
+          readonly
+        />
       </div>
     </div>
 
     <div class="form-row">
       <div class="col-md-2">
         <label for="cliente">Status</label>
-        <button class="btn form-control">Activar</button>
-        <!-- <input type="text" class="form-control" value="Activo" readonly> -->
+        <div *ngIf="!fechas">
+          <button class="btn form-control" (click)="activarMembresia()">
+            {{ textoBoton }}
+          </button>
+        </div>
+        <div *ngIf="fechas">
+          <button class="btn form-control">
+            {{ textoBoton }}
+          </button>
+        </div>
+
+        <!-- <input type="text" class="form-control"value"Activo" readonly> -->
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-4">
         <label for="cliente"># Autorización</label>
-        <input type="text" class="form-control" placeholder="000001">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="000001"
+          maxlength="10"
+          [readonly]="fechas"
+          (keyup)="getAuthNumber($event.target.value)"
+        />
       </div>
-      
-      
+
+      <div class="col-md-4">
+        <label for="cliente">Membresía</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ tipoMembresia }}"
+          readonly
+        />
+      </div>
     </div>
-
-
   </form>
-
 </div>
 
-
 <div class="row mt-5">
-
   <div class="col-md-6">
-    <table class="table">
+    <table class="table bg-light">
       <thead>
         <tr>
           <th scope="col"></th>
@@ -63,19 +110,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>12/12/12</td>
-          <td>Sin asignacion</td>
-        </tr>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>12/12/12</td>
-          <td>Sin asignacion</td>
-        </tr>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>12/12/12</td>
+        <tr
+          *ngFor="let fecha of showFechas"
+          [class.selected-row]="fecha.selected"
+        >
+          <th>
+            <input
+              type="checkbox"
+              [checked]="fecha.selected"
+              (change)="selectHandlerSolicitud(fecha.id_agendado, fecha)"
+            />
+          </th>
+          <td>{{ fecha.agendado | date: "dd/MM/yyyy" }}</td>
           <td>Sin asignacion</td>
         </tr>
       </tbody>
@@ -83,7 +129,7 @@
   </div>
 
   <div class="col-md-6">
-    <table class="table">
+    <table class="table bg-light">
       <thead>
         <tr>
           <th scope="col"></th>
@@ -92,32 +138,28 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>1</td>
-          <td>Carlos</td>
-        </tr>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>2</td>
-          <td>Carlos</td>
-        </tr>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>3</td>
-          <td>Carlos</td>
+        <tr
+          *ngFor="let paseador of paseadores"
+          [class.selected-row]="paseador.selected"
+        >
+          <th>
+            <input
+              type="checkbox"
+              [checked]="paseador.selected"
+              (change)="selectHandlerPaseador(paseador.id_paseador, paseador)"
+            />
+          </th>
+          <td>{{ paseador.id_paseador }}</td>
+          <td>{{ paseador.nombre }}</td>
         </tr>
       </tbody>
     </table>
+    <div class="row mt-3">
+      <div class="col text-center">
+        <button class="btn" [disabled]="!allowMatch" (click)="makeMatch()">
+          Asignar
+        </button>
+      </div>
+    </div>
   </div>
-
 </div>
-
-<div class="row mt-3">
-
-  <button class="btn">Asignar</button>
-
-</div>
-
-<br>
-<br>

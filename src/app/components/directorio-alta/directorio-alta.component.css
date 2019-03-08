@@ -1,0 +1,24 @@
+div.imgContainer {
+  display: block;
+  margin: 0 auto !important;
+}
+
+img.comercio {
+  object-fit: cover;
+  /* border-radius: 50%; */
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+}
+
+.upload-wrapper {
+  position: relative;
+}
+.upload-wrapper input[type="file"] {
+  /* font-size: 100px; */
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  /* cursor: pointer; */
+}

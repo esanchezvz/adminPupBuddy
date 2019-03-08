@@ -1,29 +1,28 @@
 <div class="container bg-light">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h1>Consulta</h1>
-      </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>Consulta</h1>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th *ngFor="let head of headElements" scope="col">{{head}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let el of elements" class="table-row">
-          <th scope="row">
-            <button class="btn btn-primary btn-sm"
-                   (click)="selectedDir(el.id)">
-                   Editar
-            </button>
-          </th>
-          <th>{{el.id}}</th>
-          <td>{{el.nombre}}</td>
-          <td>{{el.categoria}}</td>
-          <td>{{el.titular}}</td>
-          <td>{{el.status}}</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let head of headElements" scope="col">{{ head }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let el of elements" class="table-row">
+        <th scope="row">
+          <button class="btn btn-primary btn-sm" (click)="selectedDir(el)">
+            Editar
+          </button>
+        </th>
+        <th>{{ el.id_directorio }}</th>
+        <td>{{ el.nombre }}</td>
+        <td>{{ el.categoria }}</td>
+        <td>{{ el.t_nombre }}</td>
+        <td>{{ el.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
