@@ -195,16 +195,6 @@ export class ServiciosService {
       );
   }
 
-  getMembresias(): Observable<any> {
-    return this.httpClient
-      .get(this.ipServer + `/membresias`, this.httpOptions)
-      .pipe(
-        map((res: HttpResponse<any>) => {
-          return res;
-        })
-      );
-  }
-
   getTarjetas(uid): Observable<any> {
     return this.httpClient
       .get(this.ipServer + `/tarjetas/${uid}`, this.httpOptions)
@@ -293,25 +283,31 @@ export class ServiciosService {
           return res;
         })
       );
-    // [
-    //   {
-    //       "id_paseo": 1,
-    //       "id_solicitud": 1,
-    //       "id_usuario": 1,
-    //       "id_paseador": 1,
-    //       "status_paseo": 2,
-    //       "inicio": "2019-02-21T19:48:30.000+0000",
-    //       "status_admin": 0,
-    //       "monto": "No se encontro cargo",
-    //       "n_buddies": 3
-    //   },
-    //   ...
-    // ]
+  }
+
+  getMembresias(): Observable<any> {
+    return this.httpClient
+      .get(this.ipServer + `/membresias`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
   }
 
   postCobrosPaseosR(data): Observable<any> {
     return this.httpClient
       .post(this.ipServer + "/cobrosPaseosR", data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  postMembresias(data): Observable<any> {
+    return this.httpClient
+      .post(this.ipServer + "/membresias", data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
