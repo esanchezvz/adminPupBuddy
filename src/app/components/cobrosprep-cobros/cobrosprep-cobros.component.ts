@@ -81,8 +81,8 @@ export class CobrosprepCobrosComponent implements OnInit {
 
   consulta() {
     this.consultaHecha = true;
-    const fecha1 = moment(this.fecha1).format("DD/MM/YYYY");
-    const fecha2 = moment(this.fecha2).format("DD/MM/YYYY");
+    const fecha1 = moment(this.fecha1).format("YYYY/MM/DD");
+    const fecha2 = moment(this.fecha2).format("YYYY/MM/DD");
 
     console.log({ i: fecha1, f: fecha2 });
     this.servicios.postMembresias({ i: fecha1, f: fecha2 }).subscribe(

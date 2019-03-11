@@ -314,4 +314,44 @@ export class ServiciosService {
         })
       );
   }
+
+  postRecibo(data): Observable<any> {
+    return this.httpClient
+      .post(this.ipServer + "/recibo", data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  getPaseos(id): Observable<any> {
+    return this.httpClient
+      .get(this.ipServer + `/paseos/${id}`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  getPaseadorInfo(id): Observable<any> {
+    return this.httpClient
+      .get(this.ipServer + `/paseador/${id}`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  getResibos(id): Observable<any> {
+    return this.httpClient
+      .get(this.ipServer + `/recibos`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
 }
