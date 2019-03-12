@@ -1,51 +1,81 @@
 <div class="row">
-
   <div class="input-group mb-3">
-    <input type="date" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-      aria-describedby="basic-addon2">
+    <input
+      type="number"
+      class="form-control"
+      placeholder="ID Paseador"
+      aria-label="ID Paseador"
+      (keyup)="setId($event)"
+    />
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">Consultar</button>
+      <button
+        (click)="getPaseos()"
+        class="btn btn-outline-secondary"
+        type="button"
+      >
+        Consultar
+      </button>
     </div>
   </div>
-
 </div>
 
 <div class="row">
-
+  <div class="col-12" *ngIf="paseador">
+    <div class="row">
+      <div class="col-4"><b>Nombre Paseador:</b></div>
+      <div class="col-8">
+        {{ paseador.nombre }} {{ paseador.ap }} {{ paseador.am }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4"><b>Correo Paseador:</b></div>
+      <div class="col-8">
+        {{ paseador.email }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4"><b>TOTAL:</b></div>
+      <div class="col-8">
+        <b>{{ "$ " + monto + ".00 MXN" || "$ 0.00 MXN" }}</b>
+      </div>
+    </div>
+  </div>
+  <div class="p-1"></div>
   <div class="col-md-12">
     <table class="table">
       <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col"># Solicitud</th>
+          <th scope="col">ID Servicio</th>
           <th scope="col">Fecha y hora</th>
           <th scope="col">Servicio</th>
-          <th scope="col">Buddies</th>
+          <th scope="col"># de Buddies</th>
           <th scope="col">Status</th>
           <th scope="col">Monto</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-          <td>Otto</td>
-          <td>Otto</td>
-        </tr>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-          <td>Otto</td>
-          <td>Otto</td>
+      <tbody *ngIf="paseos">
+        <tr *ngFor="let paseo of paseos" [class.selected-row]="paseo.selected">
+          <th><input type="checkbox" (change)="addPaseo($event, paseo)" /></th>
+          <td>{{ paseo.idServicio }}</td>
+          <td>{{ paseo.agendado | date: "dd/MM/yyyy, hh:mm a" }}</td>
+          <td>{{ paseo.tipo === "A" ? "Agendado" : "Membresía" }}</td>
+          <td>{{ paseo.buddies }}</td>
+          <td>
+            {{ paseo.statusPaseo === 2 ? "Finalizado" : "Cancelado" }}
+          </td>
+          <td>$ 40.00 MXN</td>
         </tr>
       </tbody>
     </table>
+    <div class="col-12 text-center mb-3">
+      <button
+        class="btn"
+        [disabled]="!habilitarServicio"
+        (click)="postRecibo()"
+      >
+        Generar Recibo
+      </button>
+    </div>
   </div>
-
 </div>

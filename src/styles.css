@@ -8,15 +8,15 @@
 
 body,
 html {
-    font-family: "Source Sans Pro", sans-serif;
-    background-image: url(../src/assets/img/bg-white-min.png);
-    background-attachment: fixed;
-    background-repeat: repeat;
-    background-size: cover;
+  font-family: "Source Sans Pro", sans-serif;
+  background-image: url(../src/assets/img/bg-white-min.png);
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: cover;
 }
 
 h1 {
-    font-family: "Luckiest Guy", cursive;
+  font-family: "Luckiest Guy", cursive;
 }
 
 /* .container{
@@ -25,41 +25,54 @@ h1 {
 } */
 
 .btn:focus {
-    outline: 0;
-    box-shadow: none;
+  outline: 0;
+  box-shadow: none;
 }
 
 .btn {
-    text-transform: uppercase;
-    border-radius: 15px;
-    color: white;
-    background: #a288bb;
-    border: 1px solid #a288bb;
-    transition: all 0.3s ease;
+  text-transform: uppercase;
+  border-radius: 15px;
+  color: white;
+  background: #a288bb;
+  border: 1px solid #a288bb;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
-    background: white;
-    color: #a288bb;
-    transition: all 0.3s ease;
+  background: white;
+  color: #a288bb;
+  transition: all 0.3s ease;
 }
 
 .btn:hover img.logoChange {
-    content: url(./assets/img/logo-buddy-color-min.png);
-    transition: all 0.3s ease;
+  content: url(./assets/img/logo-buddy-color-min.png);
+  transition: all 0.3s ease;
 }
 
 main#content-wrapper {
-    margin-top: calc(55px + 1rem);
-    margin-left: 50px;
-    transition: all 0.3s ease;
+  margin-top: calc(55px + 1rem);
+  margin-left: 50px;
+  transition: all 0.3s ease;
 }
 
 .col-form-label {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .selected-row,
 .table-row:hover {
-    background: rgba(0,0,0, 0.09);
+  background: rgba(0, 0, 0, 0.09);
+}
+
+button.btn:disabled {
+  cursor: not-allowed;
+}
+
+button.btn:disabled:hover {
+  text-transform: uppercase;
+  border-radius: 15px;
+  color: white;
+  background: #a288bb;
+  border: 1px solid #a288bb;
+  transition: all 0.3s ease;
 }
