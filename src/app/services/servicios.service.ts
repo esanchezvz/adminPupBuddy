@@ -345,9 +345,39 @@ export class ServiciosService {
       );
   }
 
-  getResibos(id): Observable<any> {
+  getRecibos(): Observable<any> {
     return this.httpClient
       .get(this.ipServer + `/recibos`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  getRecibosId(id): Observable<any> {
+    return this.httpClient
+      .get(this.ipServer + `/recibos/${id}`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  putRecibo(data): Observable<any> {
+    return this.httpClient
+      .put(`${this.ipServer}/recibos`, data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  postPago(data): Observable<any> {
+    return this.httpClient
+      .post(`${this.ipServer}/pagar`, data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;

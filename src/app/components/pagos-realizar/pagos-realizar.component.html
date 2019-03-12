@@ -1,54 +1,95 @@
 <div class="row">
-
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="# Recibo">
+    <input type="number" class="form-control" placeholder="# Recibo" />
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">Consultar</button>
+      <button class="btn btn-outline-secondary" (click)="consulta()">
+        Consultar
+      </button>
     </div>
   </div>
-
 </div>
 
-
 <div class="row">
-
   <div class="col-md-12">
     <table class="table">
       <thead>
         <tr>
+          <th></th>
           <th scope="col"># Recibo</th>
           <th scope="col"># Paseador</th>
           <th scope="col">Fecha Generado</th>
           <th scope="col">Monto</th>
           <th scope="col">Factura</th>
           <th scope="col">Fecha pago</th>
-          <th scope="col">Status (Revisión Sin Factura y Con Factura)</th>
+          <th scope="col">
+            Status
+            <!-- <br /><small class="form-text text-muted"
+              >Revisión Sin Factura y Con Factura</small
+            > -->
+          </th>
           <th></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>5</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>23</td>
-          <td>22/02/2019</td>
-          <td>Sin factura</td>
-          <th><button class="btn">Pagar</button></th>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>6</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td><input type="text" class="form-control" placeholder="# Factura"></td>
-          <td><input type="date" class="form-control" placeholder="Fecha"></td>
-          <td>Sin factura</td>
-          <th><button class="btn">Pagar</button></th>
+      <tbody *ngIf="recibos">
+        <tr
+          *ngFor="let recibo of recibos"
+          [class.selected-row]="recibo.selected"
+        >
+          <td>
+            <input
+              type="checkbox"
+              (change)="selectRow(recibo, $event.target)"
+              [checked]="recibo.selected"
+            />
+          </td>
+          <td>{{ recibo.id_recibo }}</td>
+          <td>{{ recibo.id_paseador }}</td>
+          <td>{{ recibo.f_generacion | date: "dd/MM/yyyy" }}</td>
+          <td>{{ "$ " + recibo.monto + ".00 MXN" }}</td>
+          <td *ngIf="recibo.factura; else inputFactura">
+            {{ recibo.factura }}
+          </td>
+          <ng-template #inputFactura>
+            <td>
+              <input
+                class="form-control"
+                type="text"
+                (keyup)="setFactura($event.target)"
+                placeholder="# Factura"
+                [disabled]="!recibo.selected"
+              />
+            </td>
+          </ng-template>
+          <td *ngIf="recibo.f_pago; else inputFecha">
+            {{ recibo.f_pago | date: "dd/MM/yyyy" }}
+          </td>
+          <ng-template #inputFecha>
+            <td>
+              <input
+                class="form-control"
+                type="date"
+                (change)="setDate($event.target)"
+                [disabled]="!recibo.selected"
+              />
+            </td>
+          </ng-template>
+          <td>{{ recibo.status === 0 ? "Sin Factura" : "Con Factura" }}</td>
+          <th *ngIf="recibo.status === 0; else btnPagar">
+            <button
+              class="btn"
+              (click)="revisar(recibo)"
+              [disabled]="!recibo.selected"
+            >
+              Guardar
+            </button>
+          </th>
+          <ng-template #btnPagar>
+            <th>
+              <button class="btn" (click)="pagar(recibo)">Pagar</button>
+            </th>
+          </ng-template>
         </tr>
       </tbody>
     </table>
   </div>
-
 </div>
