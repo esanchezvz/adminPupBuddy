@@ -85,7 +85,13 @@
           </th>
           <ng-template #btnPagar>
             <th>
-              <button class="btn" (click)="pagar(recibo)">Pagar</button>
+              <button
+                class="btn"
+                (click)="pagar(recibo)"
+                [disabled]="!recibo.selected"
+              >
+                Pagar
+              </button>
             </th>
           </ng-template>
         </tr>

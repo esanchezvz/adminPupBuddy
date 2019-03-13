@@ -384,4 +384,24 @@ export class ServiciosService {
         })
       );
   }
+
+  getHistorial(uid): Observable<any> {
+    return this.httpClient
+      .get(this.ipServer + `/historial/${uid}`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  postHistorico(data): Observable<any> {
+    return this.httpClient
+      .post(this.ipServer + `/historico`, data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
 }
