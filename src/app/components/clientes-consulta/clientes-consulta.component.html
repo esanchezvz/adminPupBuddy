@@ -1,89 +1,66 @@
 <div class="row">
-
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Correo cliente" aria-label="Recipient's username"
-      aria-describedby="basic-addon2">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Correo cliente"
+      (keyup)="setEmail($event.target)"
+    />
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">Consultar</button>
+      <button class="btn" (click)="consulta()">Consultar</button>
     </div>
   </div>
-
 </div>
 
 <div class="row">
-
   <div class="col-md-4">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col"></th>
-          <th scope="col">#</th>
-          <th scope="col">Buddy</th>
+          <th scope="col">ID Buddy</th>
+          <th scope="col">Nombre</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>1</td>
-          <td>Otto</td>
-        </tr>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>2</td>
-          <td>Mark</td>
+        <tr *ngFor="let buddy of buddies">
+          <td>{{ buddy.id_buddy }}</td>
+          <td>{{ buddy.nombre }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-
   <div class="col-md-4">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col"></th>
-          <th scope="col">#</th>
-          <th scope="col">Direccion</th>
+          <th scope="col">ID Dirección</th>
+          <th scope="col">Nombre</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>1</td>
-          <td>Otto</td>
-        </tr>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>2</td>
-          <td>Mark</td>
+        <tr *ngFor="let dir of direcciones">
+          <td>{{ dir.id_direccion }}</td>
+          <td>{{ dir.apodo }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-
   <div class="col-md-4">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col"></th>
-          <th scope="col">#</th>
-          <th scope="col">Historial</th>
+          <th scope="col">ID Paseo</th>
+          <th scope="col">ID Paseador</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>1</td>
-          <td>Otto</td>
-        </tr>
-        <tr>
-          <th><input type="checkbox"></th>
-          <td>2</td>
-          <td>Mark</td>
+        <tr *ngFor="let hist of historial">
+          <td>{{ hist.id_paseo }}</td>
+          <td>{{ hist.id_paseador }}</td>
         </tr>
       </tbody>
     </table>
   </div>
-
 </div>
