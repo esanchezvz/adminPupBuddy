@@ -67,10 +67,9 @@ export class TipsComponent implements OnInit {
     });
 
     this.imagenOriginal = tip.img;
-    console.log(this.imagenOriginal);
   }
 
-  cancelar(e) {
+  cancelar() {
     this.enable = false;
     this.imagenOriginal = null;
     this.nuevaImagen = null;
@@ -95,6 +94,7 @@ export class TipsComponent implements OnInit {
       .subscribe(
         response => {
           confirm(response.message) ? this.ngOnInit() : this.ngOnInit();
+          this.cancelar();
         },
         err => {
           alert(err.message);
