@@ -78,7 +78,7 @@ export class AltaTipComponent implements OnInit {
     return false;
   }
 
-  toBuddies() {
-    this.router.navigate(["buddies"]);
+  toConsulta() {
+    this.router.navigate(["tips/consulta"]);
   }
 }
