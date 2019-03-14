@@ -59,34 +59,15 @@
         <div class="form-group row">
           <label class="col-sm-4 col-form-label">Sexo</label>
           <div class="col-sm-8">
-            <div class="form-check">
-              <input
-                (change)="setSexo($event.target.value)"
-                class="form-check-input"
-                type="radio"
-                name="sexo"
-                [checked]="masc"
-                id="sexoM"
-                value="Masculino"
-              />
-              <label class="form-check-label" for="sexoM">
-                Masculino
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                (change)="setSexo($event.target.value)"
-                class="form-check-input"
-                type="radio"
-                name="sexo"
-                [checked]="fem"
-                id="sexoF"
-                value="Femenino"
-              />
-              <label class="form-check-label" for="sexoF">
-                Femenino
-              </label>
-            </div>
+            <select
+              class="form-control"
+              [value]="0"
+              formControlName="sexo"
+              required
+            >
+              <option value="1" [selected]="masc">Masculino</option>
+              <option value="0" [selected]="fem">Femenino</option>
+            </select>
           </div>
         </div>
         <div class="form-group row">
@@ -121,6 +102,7 @@
               type="email"
               class="form-control"
               id="email"
+              formControlName="email"
               value="{{ paseador.email }}"
             />
           </div>
@@ -132,6 +114,7 @@
           <div class="col-sm-8">
             <input
               type="email"
+              formControlName="confirmEmail"
               class="form-control"
               id="confirm-email"
               value="{{ paseador.email }}"
@@ -145,6 +128,7 @@
               type="tel"
               class="form-control"
               id="cel"
+              formControlName="cel"
               value="{{ paseador.cel }}"
             />
           </div>
@@ -158,6 +142,7 @@
               type="tel"
               class="form-control"
               id="confirm-cel"
+              formControlName="confirmCel"
               value="{{ paseador.cel }}"
             />
           </div>

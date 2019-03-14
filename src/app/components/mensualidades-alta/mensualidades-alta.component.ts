@@ -31,6 +31,7 @@ export class MensualidadesAltaComponent implements OnInit {
     tipo_servicio: null,
     monto: null
   };
+  habilitar: boolean;
 
   constructor(
     private serviciosService: ServiciosService,
@@ -68,17 +69,30 @@ export class MensualidadesAltaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.habilitar = true;
     this.getTarifas();
+  }
+
+  getValue(target) {
+    if (target.value.length > 5) {
+      this.habilitar = false;
+    }
   }
 
   consultaUsuario() {
     this.serviciosService.postMensualidad(this.formato.value).subscribe(
       response => {
-        this.membresia.id_usuario = response.id_usuario;
-        this.getBuddies(response.id_usuario);
-        this.getDirecciones(response.id_usuario);
-        // this.getTarjetas(response.id_usuario);
-        //this.formato.reset();
+        if (response !== null) {
+          this.membresia.id_usuario = response.id_usuario;
+          this.getBuddies(response.id_usuario);
+          this.getDirecciones(response.id_usuario);
+          // this.getTarjetas(response.id_usuario);
+          //this.formato.reset();
+        } else {
+          alert(
+            "El correo ingresado no se encuentra en nuestra base de datos."
+          );
+        }
       },
       error => {
         alert(`${error}\n Intente de Nuevo.`);

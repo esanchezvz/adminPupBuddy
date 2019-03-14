@@ -29,7 +29,9 @@ export class EditarPaseadorFormComponent implements OnInit {
       fnacimiento: ["", Validators.required],
       sexo: ["", Validators.required],
       email: ["", Validators.required],
+      confirmEmail: ["", Validators.required],
       cel: ["", Validators.required],
+      confirmCel: ["", Validators.required],
       rfc: ["", Validators.required],
       banco: ["", Validators.required],
       cuenta: ["", Validators.required],
@@ -54,7 +56,9 @@ export class EditarPaseadorFormComponent implements OnInit {
       fnacimiento: [this.paseador.fnacimiento, Validators.required],
       sexo: [this.paseador.sexo, Validators.required],
       email: [this.paseador.email, Validators.required],
+      confirmEmail: [this.paseador.email, Validators.required],
       cel: [this.paseador.cel, Validators.required],
+      confirmCel: [this.paseador.cel, Validators.required],
       rfc: [this.paseador.rfc, Validators.required],
       banco: [this.paseador.banco, Validators.required],
       cuenta: [this.paseador.cuenta, Validators.required],
@@ -65,19 +69,30 @@ export class EditarPaseadorFormComponent implements OnInit {
   }
 
   registrar() {
-    this.formato.value.fnacimiento = moment().format("DD/MM/YYYY");
-    this.servicios
-      .putPaseador(this.formato.value, this.paseador.id_paseador)
-      .subscribe(
-        response => {
-          console.log(this.formato.value);
-          alert(`${response.message} \n Paseador editado exitosamente`);
-          this.toConsulta();
-        },
-        error => {
-          alert(`${error.message}\n Intente de Nuevo.`);
-        }
+    this.formato.value.fnacimiento = moment(
+      this.formato.value.fnacimiento
+    ).format("DD/MM/YYYY");
+    if (
+      this.formato.value.email === this.formato.value.confirmEmail &&
+      this.formato.value.cel === this.formato.value.confirmCel
+    ) {
+      this.servicios
+        .putPaseador(this.formato.value, this.paseador.id_paseador)
+        .subscribe(
+          response => {
+            console.log(this.formato.value);
+            alert(`${response.message} \n Paseador editado exitosamente`);
+            this.toConsulta();
+          },
+          error => {
+            alert(`${error.message}\n Intente de Nuevo.`);
+          }
+        );
+    } else {
+      alert(
+        "Compruebe que los campos de correo y número telefónico coincidan."
       );
+    }
   }
 
   handleUpload(e) {
@@ -117,11 +132,5 @@ export class EditarPaseadorFormComponent implements OnInit {
 
   toConsulta() {
     this.router.navigate(["paseadores/consulta"]);
-  }
-
-  setSexo(event) {
-    event === "Masculino"
-      ? (this.formato.value.sexo = 1)
-      : (this.formato.value.sexo = 0);
   }
 }

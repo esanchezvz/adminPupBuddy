@@ -37,9 +37,10 @@ export class AltaTipComponent implements OnInit {
     this.serviciosService.postTip(this.formato.value).subscribe(
       res => {
         alert(res.message);
+        this.router.navigate(["tips/consulta"]);
       },
       err => {
-        alert(err.message);
+        alert("ERROR\n" + err.message);
       }
     );
   }
@@ -65,7 +66,6 @@ export class AltaTipComponent implements OnInit {
 
   checkImage(img: any) {
     if (img.size > 1000000) {
-      console.log("TOO LARGE");
       return false;
     }
     if (

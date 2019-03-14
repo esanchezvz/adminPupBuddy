@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col-12">
-    <form class="row" [formGroup]="formato" (ngSubmit)="altaDirectorio()">
+    <form
+      class="row"
+      [formGroup]="formato"
+      ngNativeValidate
+      (ngSubmit)="altaDirectorio()"
+    >
       <div class="col-12 col-md-6">
         <div class="form-group row">
           <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
@@ -10,6 +15,7 @@
               type="text"
               class="form-control"
               id="nombre"
+              required
             />
           </div>
         </div>
@@ -23,6 +29,7 @@
               type="text"
               class="form-control"
               id="categoria"
+              required
             />
           </div>
         </div>
@@ -36,6 +43,7 @@
               type="text"
               class="form-control"
               id="direccion"
+              required
             />
           </div>
         </div>
@@ -48,6 +56,7 @@
               class="form-control"
               id="lat"
               placeholder="Lat"
+              required
             />
           </div>
           <div class="col-sm-4">
@@ -57,6 +66,7 @@
               class="form-control"
               id="lng"
               placeholder="Lon"
+              required
             />
           </div>
         </div>
@@ -70,7 +80,9 @@
           >
             <input
               type="file"
+              accept="image/jpg,image/jpeg"
               (change)="onFileChanged($event)"
+              required
               id="img-paseador"
             />
           </div>
@@ -93,6 +105,8 @@
               class="form-control"
               id="tel"
               maxlength="10"
+              minlength="10"
+              required
               placeholder="(10 dígitos)"
             />
           </div>
@@ -105,6 +119,7 @@
               formControlName="web"
               class="form-control"
               id="web"
+              required
             />
           </div>
         </div>
@@ -139,6 +154,7 @@
               type="text"
               class="form-control"
               id="nombreTitular"
+              required
               placeholder="Nombre"
             />
             <input
@@ -147,6 +163,8 @@
               class="form-control"
               id="telTitular"
               maxlength="10"
+              minlength="10"
+              required
               placeholder="Teléfono (10 dígitos)"
             />
             <input
@@ -155,13 +173,14 @@
               class="form-control"
               id="emailTitular"
               placeholder="Email"
+              required
             />
           </div>
         </div>
       </div>
       <div class="col-12 mb-5 mt-3 text-center">
         <button class="btn m-3" type="submit">ACEPTAR</button>
-        <button class="btn m-3">CANCELAR</button>
+        <button class="btn m-3" (click)="toConsulta()">CANCELAR</button>
       </div>
     </form>
   </div>

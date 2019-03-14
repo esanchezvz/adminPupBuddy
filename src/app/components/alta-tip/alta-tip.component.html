@@ -11,6 +11,7 @@
             class="form-control"
             id="nombreTip"
             formControlName="nombre"
+            required
           />
         </div>
       </div>
@@ -22,6 +23,7 @@
             class="form-control"
             id="textoTip"
             formControlName="texto"
+            required
           />
         </div>
       </div>
@@ -35,6 +37,7 @@
             class="form-control"
             id="fechaTip"
             formControlName="fdp"
+            required
           />
         </div>
       </div>
@@ -46,6 +49,7 @@
             class="form-control"
             id="urlTip"
             formControlName="url"
+            required
           />
         </div>
       </div>
@@ -58,6 +62,7 @@
             id="imgTip"
             accept="image/png"
             (change)="handleUpload($event)"
+            required
           />
         </div>
         <div class="col-sm-4" *ngIf="imagen">
@@ -68,9 +73,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="row">
-        <button class="btn d-block mx-auto">Vista Previa</button>
-      </div> -->
       <div class="row">
         <div class="col-6 text-center">
           <button class="btn" (click)="toConsulta()">Cancelar</button>
