@@ -70,9 +70,7 @@ button.btn:disabled {
 
 button.btn:disabled:hover {
   text-transform: uppercase;
-  border-radius: 15px;
   color: white;
   background: #a288bb;
   border: 1px solid #a288bb;
-  transition: all 0.3s ease;
 }

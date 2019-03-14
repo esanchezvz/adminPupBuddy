@@ -1,69 +1,94 @@
 <div class="row">
-
   <div class="input-group mb-3 col-12">
     <form [formGroup]="formato" class="form-consulta">
-      <input type="email" formControlName="email" class="form-control" placeholder="Correo del cliente" aria-label="Correo del cliente" required>
+      <input
+        type="email"
+        formControlName="email"
+        class="form-control"
+        placeholder="Correo del cliente"
+        aria-label="Correo del cliente"
+        (keyup)="getValue($event.target)"
+        required
+      />
     </form>
     <div class="input-group-append">
-      <button class="btn" (click)="consultaUsuario()">Consultar</button>
+      <button class="btn" (click)="consultaUsuario()" [disabled]="habilitar">
+        Consultar
+      </button>
     </div>
   </div>
-
 </div>
 
 <div class="row">
-
   <div class="col-md-4">
     <table class="table">
       <thead>
         <tr>
-          <th *ngFor="let head of headElementsT1" scope="col">{{head}}</th>
+          <th *ngFor="let head of headElementsT1" scope="col">{{ head }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let el of buddies" class="table-row" [class.selected-row]="el.selected">
+        <tr
+          *ngFor="let el of buddies"
+          class="table-row"
+          [class.selected-row]="el.selected"
+        >
           <th scope="row">
-            <input type="checkbox" [checked]="el.selected" (change)="selectHandlerBuddies(el.id_buddy, el)">
+            <input
+              type="checkbox"
+              [checked]="el.selected"
+              (change)="selectHandlerBuddies(el.id_buddy, el)"
+            />
           </th>
-          <th>{{el.id_buddy}}</th>
-          <td>{{el.nombre}}</td>
+          <th>{{ el.id_buddy }}</th>
+          <td>{{ el.nombre }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <div class="col-md-4">
+    <input
+      id="timePicker"
+      class="form-control mb-3"
+      placeholder="Seleccione Una Hora"
+      [ngxTimepicker]="range"
+      min="08:00 am"
+      max="08:00 pm"
+      readonly
+    />
 
-    <input id="timePicker" 
-           class="form-control mb-3" 
-           placeholder="Seleccione Una Hora" 
-           [ngxTimepicker]="range"
-           min="08:00 am" 
-           max="08:00 pm" 
-           readonly>
+    <input
+      *ngIf="show"
+      id="timePicker2"
+      (change)="setTime2($event)"
+      class="form-control mb-3"
+      placeholder="Seleccione Hora Segundo Paseo"
+      [ngxTimepicker]="range2"
+      min="08:00 am"
+      max="08:00 pm"
+      readonly
+    />
 
-    <input *ngIf="show" 
-           id="timePicker2"
-           (change)="setTime2($event)" 
-           class="form-control mb-3" 
-           placeholder="Seleccione Hora Segundo Paseo" 
-           [ngxTimepicker]="range2" 
-           min="08:00 am" 
-           max="08:00 pm" 
-           readonly>
-
-    <ngx-material-timepicker #range 
-                             [minutesGap]="15" 
-                             [cancelBtnTmpl]="cancelBtn" 
-                             [confirmBtnTmpl]="confirmBtn">
+    <ngx-material-timepicker
+      #range
+      [minutesGap]="15"
+      [cancelBtnTmpl]="cancelBtn"
+      [confirmBtnTmpl]="confirmBtn"
+    >
     </ngx-material-timepicker>
-    <ngx-material-timepicker #range2 
-                             [minutesGap]="15" 
-                             [cancelBtnTmpl]="cancelBtn" 
-                             [confirmBtnTmpl]="confirmBtn">
+    <ngx-material-timepicker
+      #range2
+      [minutesGap]="15"
+      [cancelBtnTmpl]="cancelBtn"
+      [confirmBtnTmpl]="confirmBtn"
+    >
     </ngx-material-timepicker>
 
-    <select (change)="setService($event)" class="custom-select custom-select-sm mb-3">
+    <select
+      (change)="setService($event)"
+      class="custom-select custom-select-sm mb-3"
+    >
       <option selected hidden>Tipo de servicio</option>
       <option value="2">Mensual 1 paseo</option>
       <option value="3">Mensual 2 paseos</option>
@@ -75,25 +100,32 @@
 
     <div class="mb-3">
       <label for="fecha">Fecha Inicio mensualidad</label>
-      <input type="date" class="form-control" (change)="setDates($event)">
+      <input type="date" class="form-control" (change)="setDates($event)" />
     </div>
-
   </div>
 
   <div class="col-md-4">
     <table class="table">
       <thead>
         <tr>
-          <th *ngFor="let head of headElementsT2" scope="col">{{head}}</th>
+          <th *ngFor="let head of headElementsT2" scope="col">{{ head }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let el of direcciones" class="table-row" [class.selected-row]="el.selected">
+        <tr
+          *ngFor="let el of direcciones"
+          class="table-row"
+          [class.selected-row]="el.selected"
+        >
           <th scope="row">
-            <input type="checkbox" [checked]="el.selected" (change)="selectHandlerDirecciones(el.id_direccion, el)">
+            <input
+              type="checkbox"
+              [checked]="el.selected"
+              (change)="selectHandlerDirecciones(el.id_direccion, el)"
+            />
           </th>
-          <th>{{el.id_direccion}}</th>
-          <td>{{el.apodo}}</td>
+          <th>{{ el.id_direccion }}</th>
+          <td>{{ el.apodo }}</td>
         </tr>
       </tbody>
     </table>
@@ -109,7 +141,4 @@
   <ng-template #confirmBtn>
     <button class="btn">OK</button>
   </ng-template>
-
-
-
 </div>

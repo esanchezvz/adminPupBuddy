@@ -28,7 +28,9 @@ export class PaseadoresAltaComponent implements OnInit {
       fnacimiento: ["", Validators.required],
       sexo: ["", Validators.required],
       email: ["", Validators.required],
+      confirmEmail: ["", Validators.required],
       cel: ["", Validators.required],
+      confirmCel: ["", Validators.required],
       rfc: ["", Validators.required],
       banco: ["", Validators.required],
       cuenta: ["", Validators.required],
@@ -43,15 +45,23 @@ export class PaseadoresAltaComponent implements OnInit {
       this.formato.value.fnacimiento,
       "dd/MM/yyyy"
     );
-    this.serviciosService.postPaseador(this.formato.value).subscribe(
-      response => {
-        alert(`${response.message} \n Paseador agragado exitosamente`);
-        this.formato.reset();
-      },
-      error => {
-        alert(`${error}\n Intente de Nuevo.`);
-      }
-    );
+    if (
+      this.formato.value.email === this.formato.value.confirmEmail &&
+      this.formato.value.cel === this.formato.value.confirmCel
+    ) {
+      console.log(this.formato.value);
+      this.serviciosService.postPaseador(this.formato.value).subscribe(
+        response => {
+          alert(`${response.message}`);
+          this.router.navigate(["paseadores/consulta"]);
+        },
+        error => {
+          alert(`${error}\n Intente de Nuevo.`);
+        }
+      );
+    } else {
+      alert("Compruebe que el email y el celular sean correctos.");
+    }
   }
 
   ngDoCheck(): void {
@@ -93,10 +103,6 @@ export class PaseadoresAltaComponent implements OnInit {
       return true;
     }
     return false;
-  }
-
-  setSexo(event) {
-    event === "Masculino" ? (this.sexo = 1) : (this.sexo = 0);
   }
 
   toConsulta() {

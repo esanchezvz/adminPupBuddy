@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col-12">
-    <form class="row" [formGroup]="formato" (ngSubmit)="altaPaseador()">
+    <form
+      class="row"
+      [formGroup]="formato"
+      ngNativeValidate
+      (ngSubmit)="altaPaseador()"
+    >
       <div class="col-12 col-md-6">
         <div class="form-group row">
           <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
@@ -10,6 +15,7 @@
               type="text"
               class="form-control"
               id="nombre"
+              required
             />
           </div>
         </div>
@@ -23,6 +29,7 @@
               type="text"
               class="form-control"
               id="apellidoP"
+              required
             />
           </div>
         </div>
@@ -36,6 +43,7 @@
               type="text"
               class="form-control"
               id="apellidoM"
+              required
             />
           </div>
         </div>
@@ -49,38 +57,22 @@
               type="date"
               class="form-control"
               id="fecha"
+              required
             />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-4 col-form-label">Sexo</label>
           <div class="col-sm-8">
-            <div class="form-check">
-              <input
-                (change)="setSexo($event.target.value)"
-                class="form-check-input"
-                type="radio"
-                name="sexo"
-                id="sexoM"
-                value="Masculino"
-              />
-              <label class="form-check-label" for="sexoM">
-                Masculino
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                (change)="setSexo($event.target.value)"
-                class="form-check-input"
-                type="radio"
-                name="sexo"
-                id="sexoF"
-                value="Femenino"
-              />
-              <label class="form-check-label" for="sexoF">
-                Femenino
-              </label>
-            </div>
+            <select
+              class="form-control"
+              [value]="0"
+              formControlName="sexo"
+              required
+            >
+              <option value="1">Masculino</option>
+              <option value="0">Femenino</option>
+            </select>
           </div>
         </div>
         <div class="form-group row">
@@ -94,6 +86,7 @@
               id="img-paseador"
               (change)="handleUpload($event)"
               accept="image/jpeg"
+              required
             />
           </div>
           <div class="col-12" *ngIf="imgFlag">
@@ -111,6 +104,7 @@
               type="email"
               class="form-control"
               id="email"
+              required
             />
           </div>
         </div>
@@ -119,7 +113,12 @@
             >Confirmar Email</label
           >
           <div class="col-sm-8">
-            <input type="email" class="form-control" id="confirm-email" />
+            <input
+              type="email"
+              formControlName="confirmEmail"
+              class="form-control"
+              id="confirm-email"
+            />
           </div>
         </div>
         <div class="form-group row">
@@ -130,6 +129,9 @@
               type="tel"
               class="form-control"
               id="cel"
+              maxlength="10"
+              minlength="10"
+              required
             />
           </div>
         </div>
@@ -138,7 +140,12 @@
             >Confirmar Celular</label
           >
           <div class="col-sm-8">
-            <input type="tel" class="form-control" id="confirm-cel" />
+            <input
+              type="tel"
+              formControlName="confirmCel"
+              class="form-control"
+              id="confirm-cel"
+            />
           </div>
         </div>
         <div class="form-group row">
@@ -149,6 +156,7 @@
               type="text"
               class="form-control"
               id="rfc"
+              required
             />
           </div>
         </div>
@@ -163,6 +171,7 @@
               class="form-control"
               id="datos-bancarios"
               placeholder="BANCO"
+              required
             />
             <input
               formControlName="cuenta"
@@ -170,6 +179,7 @@
               class="form-control"
               id="datos-bancarios-banco"
               placeholder="CUENTA"
+              required
             />
             <input
               formControlName="clabe"
@@ -177,6 +187,7 @@
               class="form-control"
               id="datos-bancarios-clabe"
               placeholder="CLABE"
+              required
             />
           </div>
         </div>

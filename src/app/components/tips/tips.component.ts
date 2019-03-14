@@ -60,7 +60,12 @@ export class TipsComponent implements OnInit {
       id_tip: [tip.id_tip, Validators.required],
       nombre: [tip.nombre, Validators.required],
       texto: [tip.texto, Validators.required],
-      fdp: [moment(tip.fdp).format("YYYY-MM-DD"), Validators.required],
+      fdp: [
+        moment(tip.fdp)
+          // .utc()
+          .format("YYYY-MM-DD"),
+        Validators.required
+      ],
       fregistro: [tip.fregistro, Validators.required],
       url: [tip.url, Validators.required],
       img: [tip.img, Validators.required]
@@ -88,7 +93,6 @@ export class TipsComponent implements OnInit {
     this.formato.value.fdp = moment(this.formato.value.fdp).format(
       "DD/MM/YYYY"
     );
-
     this.serviciosService
       .putTip(this.formato.value, this.formato.value.id_tip)
       .subscribe(

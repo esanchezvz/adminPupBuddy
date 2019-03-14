@@ -3,6 +3,7 @@ import { ServiciosService } from "src/app/services/servicios.service";
 import { FormBuilder, Validators, FormControl } from "@angular/forms";
 import { DatePipe } from "@angular/common";
 import { toBase64String } from "@angular/compiler/src/output/source_map";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-directorio-alta",
@@ -18,7 +19,8 @@ export class DirectorioAltaComponent implements OnInit {
   constructor(
     private serviciosService: ServiciosService,
     private formBuilder: FormBuilder,
-    public datePipe: DatePipe
+    public datePipe: DatePipe,
+    private router: Router
   ) {
     this.formato = this.formBuilder.group({
       nombre: ["", Validators.required],
@@ -95,7 +97,11 @@ export class DirectorioAltaComponent implements OnInit {
       return true;
     }
 
-    alert("Solo se pueden subir imagenes de tipo JPEG, JPG y PNG");
+    alert("Solo se pueden subir imagenes de tipo JPEG y JPG.");
     return false;
+  }
+
+  toConsulta() {
+    this.router.navigate(["directorio/consulta"]);
   }
 }

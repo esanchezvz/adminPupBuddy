@@ -5,7 +5,7 @@ div.imgContainer {
 
 img.paseador {
   object-fit: cover;
-  /* border-radius: 50%; */
+  border-radius: 50%;
   width: 100%;
   max-width: 250px;
   height: auto;
