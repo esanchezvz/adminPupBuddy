@@ -1,22 +1,22 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { HttpHeaders, HttpClient, HttpResponse } from "@angular/common/http";
-import { map } from "rxjs/operators";
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ServiciosService {
   headers1 = new HttpHeaders().set(
-    "Content-Type",
-    "application/json; charset=utf-8"
+    'Content-Type',
+    'application/json; charset=utf-8'
   );
   httpOptions: any;
-  ipServer = "https://www.appwit-api.com:9910"; //SERVIDOR
+  ipServer = 'https://www.appwit-api.com:9910'; //SERVIDOR
   // ipServer = "http://192.168.15.6:9910"; //LOCAL
 
   constructor(private httpClient: HttpClient) {
-    this.headers1.append("Access-Control-Allow-Origin", "*");
+    this.headers1.append('Access-Control-Allow-Origin', '*');
     this.httpOptions = {
       headers: this.headers1,
       withCredentials: false
@@ -24,7 +24,7 @@ export class ServiciosService {
   }
 
   getTip(): Observable<any> {
-    return this.httpClient.get(this.ipServer + "/tips", this.httpOptions).pipe(
+    return this.httpClient.get(this.ipServer + '/tips', this.httpOptions).pipe(
       map((res: HttpResponse<any>) => {
         return res;
       })
@@ -33,7 +33,7 @@ export class ServiciosService {
 
   getPaseador(): Observable<any> {
     return this.httpClient
-      .get(this.ipServer + "/paseadores", this.httpOptions)
+      .get(this.ipServer + '/paseadores', this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -43,7 +43,7 @@ export class ServiciosService {
 
   getAgendados(): Observable<any> {
     return this.httpClient
-      .get(this.ipServer + "/agendados", this.httpOptions)
+      .get(this.ipServer + '/agendados', this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -53,7 +53,7 @@ export class ServiciosService {
 
   getRealizados(): Observable<any> {
     return this.httpClient
-      .get(this.ipServer + "/realizados", this.httpOptions)
+      .get(this.ipServer + '/realizados', this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -63,7 +63,7 @@ export class ServiciosService {
 
   getSolicitud(): Observable<any> {
     return this.httpClient
-      .get(this.ipServer + "/solicitudes", this.httpOptions)
+      .get(this.ipServer + '/solicitudes', this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -73,7 +73,7 @@ export class ServiciosService {
 
   postPaseador(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/paseador", data, this.httpOptions)
+      .post(this.ipServer + '/paseador', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -83,7 +83,7 @@ export class ServiciosService {
 
   postTip(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/tip", data, this.httpOptions)
+      .post(this.ipServer + '/tip', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -93,7 +93,7 @@ export class ServiciosService {
 
   postPaseoInicioFin(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/paseo", data, this.httpOptions)
+      .post(this.ipServer + '/paseo', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -103,7 +103,7 @@ export class ServiciosService {
 
   postMatch(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/match", data, this.httpOptions)
+      .post(this.ipServer + '/match', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -113,7 +113,7 @@ export class ServiciosService {
 
   postDirectorio(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/directorio", data, this.httpOptions)
+      .post(this.ipServer + '/directorio', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -123,7 +123,7 @@ export class ServiciosService {
 
   getDirecotrio(): Observable<any> {
     return this.httpClient
-      .get(this.ipServer + "/directorios", this.httpOptions)
+      .get(this.ipServer + '/directorios', this.httpOptions)
       .pipe(
         map((res: HttpResponse<Array<any>>) => {
           return res;
@@ -133,7 +133,7 @@ export class ServiciosService {
 
   postMensualidad(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/usuario", data, this.httpOptions)
+      .post(this.ipServer + '/usuario', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -144,7 +144,7 @@ export class ServiciosService {
   postMembresia(data): Observable<any> {
     // CREA MEMBRESIA
     return this.httpClient
-      .post(this.ipServer + "/membresia", data, this.httpOptions)
+      .post(this.ipServer + '/membresia', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -155,7 +155,7 @@ export class ServiciosService {
   postCargo(data): Observable<any> {
     // Genera cargo del servicio
     return this.httpClient
-      .post(this.ipServer + "/cargo", data, this.httpOptions)
+      .post(this.ipServer + '/cargo', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -217,7 +217,7 @@ export class ServiciosService {
 
   postMatchMembresia(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/matchadmin", data, this.httpOptions)
+      .post(this.ipServer + '/matchadmin', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -227,7 +227,7 @@ export class ServiciosService {
 
   postAgendarMembresia(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/agendar", data, this.httpOptions)
+      .post(this.ipServer + '/agendar', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -237,7 +237,7 @@ export class ServiciosService {
 
   postEstatusPaseador(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/paseadorst", data, this.httpOptions)
+      .post(this.ipServer + '/paseadorst', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -277,7 +277,7 @@ export class ServiciosService {
 
   getCobrosPaseos(): Observable<any> {
     return this.httpClient
-      .get(this.ipServer + "/cobrosPaseos", this.httpOptions)
+      .get(this.ipServer + '/cobrosPaseos', this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -297,7 +297,7 @@ export class ServiciosService {
 
   postCobrosPaseosR(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/cobrosPaseosR", data, this.httpOptions)
+      .post(this.ipServer + '/cobrosPaseosR', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -307,7 +307,7 @@ export class ServiciosService {
 
   postMembresias(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/membresias", data, this.httpOptions)
+      .post(this.ipServer + '/membresias', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -317,7 +317,7 @@ export class ServiciosService {
 
   postRecibo(data): Observable<any> {
     return this.httpClient
-      .post(this.ipServer + "/recibo", data, this.httpOptions)
+      .post(this.ipServer + '/recibo', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;
@@ -398,6 +398,16 @@ export class ServiciosService {
   postHistorico(data): Observable<any> {
     return this.httpClient
       .post(this.ipServer + `/historico`, data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  postRealizados(data): Observable<any> {
+    return this.httpClient
+      .post(this.ipServer + '/realizados', data, this.httpOptions)
       .pipe(
         map((res: HttpResponse<any>) => {
           return res;

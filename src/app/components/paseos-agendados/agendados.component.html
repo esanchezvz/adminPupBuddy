@@ -8,14 +8,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let el of items" class="table-row" [class.selected-row]="el.selected">
+          <tr
+            *ngFor="let el of agendados"
+            class="table-row"
+            [class.selected-row]="el.selected"
+          >
             <td>{{ el.id_solicitud }}</td>
             <td>{{ el.id_paseador }}</td>
-            <td>{{ el.rmatch | date: 'dd/MM/yyyy , h:mm a' }}</td>
-            <td>{{ el.inicio | date: 'h:mm a' }}</td>
-            <td *ngIf="el.status_pago === 0"><button class="btn" (click)="generarCargo(el)">Cobrar</button></td>
-            <td *ngIf="el.status_paseo === 0 && el.status_pago === 1"><button class="btn" (click)="iniciarPaseo(el)">Iniciar</button></td>
-            <td *ngIf="el.status_paseo === 1"><button class="btn" (click)="terminarPaseo(el)">Finalizar</button></td>
+            <td>{{ el.fechaEditada | date: 'dd/MM/yyyy , h:mm a' }}</td>
+            <td>{{ el.horaInicioEditada | date: 'h:mm a' }}</td>
+            <td *ngIf="el.status_pago === 0">
+              <button class="btn" (click)="generarCargo(el)">Cobrar</button>
+            </td>
+            <td *ngIf="el.status_paseo === 0 && el.status_pago === 1">
+              <button class="btn" (click)="iniciarPaseo(el)">Iniciar</button>
+            </td>
+            <td *ngIf="el.status_paseo === 1">
+              <button class="btn" (click)="terminarPaseo(el)">Finalizar</button>
+            </td>
           </tr>
         </tbody>
       </table>
