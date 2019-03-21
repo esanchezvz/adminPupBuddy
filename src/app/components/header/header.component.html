@@ -2,20 +2,37 @@
   <div class="float-left">
     <i class="menuIcon barIcon material-icons">menu</i>
   </div>
-  <a class="navbar-brand p-0 mx-auto"[routerLink]="[ 'tips' ]"><img class="logoBrand" src="./assets/img/logo-letras-min.png"
-      alt="Logo PUP BUDDY"></a>
+  <a class="navbar-brand p-0 mx-auto" [routerLink]="['tips']"
+    ><img
+      class="logoBrand"
+      src="./assets/img/logo-letras-min.png"
+      alt="Logo PUP BUDDY"
+  /></a>
+
   <div class="float-right">
-    <i class="barIcon material-icons" data-action="user_profile" data-toggle="tooltip" data-placement="left" ngbTooltip="Perfil">person</i>
-    <i (click)="logMeOut()" class="barIcon material-icons" data-action="log-out" data-toggle="tooltip" data-placement="left"
-      ngbTooltip="Cerrar Sesión">exit_to_app</i>
+    <i
+      class="barIcon material-icons"
+      data-action="user_profile"
+      data-toggle="tooltip"
+      data-placement="left"
+      ngbTooltip="Perfil"
+      >person</i
+    >
+    <i
+      (click)="logMeOut()"
+      class="barIcon material-icons"
+      data-action="log-out"
+      data-toggle="tooltip"
+      data-placement="left"
+      ngbTooltip="Cerrar Sesión"
+      >exit_to_app</i
+    >
   </div>
 </nav>
 <div id="sideNav" class="sideNav-wrapper">
-
   <ul class="navMenu">
-
     <li class="navItem">
-      <a [routerLink]="[ 'tips/consulta' ]">
+      <a [routerLink]="['tips/consulta']">
         <i class="navIcon material-icons">question_answer</i>
         <span class="navTitle">Tips</span>
       </a>
@@ -23,7 +40,7 @@
     </li>
 
     <li class="navItem">
-      <a [routerLink]="[ 'paseadores/consulta' ]">
+      <a [routerLink]="['paseadores/consulta']">
         <i class="navIcon material-icons">nature_people</i>
         <span class="navTitle">Paseadores</span>
       </a>
@@ -31,7 +48,7 @@
     </li>
 
     <li class="navItem">
-      <a [routerLink]="[ 'directorio/consulta' ]">
+      <a [routerLink]="['directorio/consulta']">
         <i class="navIcon material-icons">alternate_email</i>
         <span class="navTitle">Directorio</span>
       </a>
@@ -39,7 +56,7 @@
     </li>
 
     <li class="navItem">
-      <a [routerLink]="[ 'paseos/agendados' ]">
+      <a [routerLink]="['paseos/agendados']">
         <i class="navIcon material-icons">pets</i>
         <span class="navTitle">Paseos</span>
       </a>
@@ -47,7 +64,7 @@
     </li>
 
     <li class="navItem">
-      <a [routerLink]="[ 'mensualidades/alta' ]">
+      <a [routerLink]="['mensualidades/alta']">
         <i class="navIcon material-icons">add_alarm</i>
         <span class="navTitle">Membresias</span>
       </a>
@@ -55,7 +72,7 @@
     </li>
 
     <li class="navItem">
-      <a [routerLink]="[ 'cobrosprep/cobros' ]">
+      <a [routerLink]="['cobrosprep/cobros']">
         <i class="navIcon material-icons">attach_money</i>
         <span class="navTitle">Cobros y prepago</span>
       </a>
@@ -63,7 +80,7 @@
     </li>
 
     <li class="navItem">
-      <a [routerLink]="[ 'pagos/realizar' ]">
+      <a [routerLink]="['pagos/realizar']">
         <i class="navIcon material-icons">local_atm</i>
         <span class="navTitle">Pagos</span>
       </a>
@@ -71,7 +88,7 @@
     </li>
 
     <li class="navItem">
-      <a [routerLink]="[ 'clientes/consulta' ]">
+      <a [routerLink]="['clientes/consulta']">
         <i class="navIcon material-icons">people</i>
         <span class="navTitle">Clientes</span>
       </a>
@@ -79,13 +96,11 @@
     </li>
 
     <li class="navItem">
-      <a [routerLink]="[ '' ]">
-        <i class="navIcon material-icons">schedule</i>
-        <span class="navTitle">Reportes</span>
-      </a>
+      <!-- <a [routerLink]="['']"> -->
+      <i class="navIcon material-icons">schedule</i>
+      <span class="navTitle">Reportes</span>
+      <!-- </a> -->
       <span class="tooltipText">Reportes</span>
     </li>
-
   </ul>
-
 </div>

@@ -1,22 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
-
+import { Component, OnInit } from "@angular/core";
+import { LoginService } from "src/app/services/login.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
-
-
   constructor(private login: LoginService) {
-    document.addEventListener("DOMContentLoaded", function () {
-
+    document.addEventListener("DOMContentLoaded", function() {
       // Vertically spread sidenav items evenly
       var sideNav = document.getElementById("sideNav");
 
-      var navElm = document.getElementsByClassName("navItem") as HTMLCollectionOf<HTMLElement>;
+      var navElm = document.getElementsByClassName(
+        "navItem"
+      ) as HTMLCollectionOf<HTMLElement>;
       // var navHeight = sideNav.offsetHeight;
 
       function sideNavHeight() {
@@ -35,7 +33,7 @@ export class HeaderComponent implements OnInit {
       }
 
       sideNavHeight();
-      window.addEventListener('resize', sideNavHeight);
+      window.addEventListener("resize", sideNavHeight);
 
       // Menu Toggle
       var menuIcon = document.querySelector(".menuIcon");
@@ -43,7 +41,7 @@ export class HeaderComponent implements OnInit {
       var navTitle = document.querySelectorAll(".navTitle");
       var main = document.getElementById("content-wrapper");
 
-      menuIcon.addEventListener("click", function () {
+      menuIcon.addEventListener("click", function() {
         menuIcon.classList.toggle("open");
         sideNav.classList.toggle("open");
 
@@ -63,11 +61,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logMeOut() {
-    this.login.logOut()
+    this.login.logOut();
   }
 
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
 }

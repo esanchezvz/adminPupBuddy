@@ -32,6 +32,7 @@ export class MensualidadesConsultaComponent implements OnInit {
     this.serviciosService.getMembresias().subscribe(
       res => {
         this.membresias = res;
+        console.log(this.membresias)
       },
       err => {
         console.log(err);
