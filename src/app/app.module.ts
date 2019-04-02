@@ -43,6 +43,8 @@ import { PagosHistoricoComponent } from './components/pagos-historico/pagos-hist
 import { ModalComponent } from './directives/modal/modal.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { ClientesConsultaComponent } from './components/clientes-consulta/clientes-consulta.component';
+import { DetallesCalendarioComponent } from './components/detalles-calendario/detalles-calendario.component';
+import { DetallesSolicitudComponent } from './components/detalles-solicitud/detalles-solicitud.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import { ClientesConsultaComponent } from './components/clientes-consulta/client
     PagosHistoricoComponent,
     ModalComponent,
     ClientesComponent,
-    ClientesConsultaComponent
+    ClientesConsultaComponent,
+    DetallesCalendarioComponent,
+    DetallesSolicitudComponent
   ],
   imports: [
     BrowserModule,

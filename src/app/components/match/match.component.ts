@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class MatchComponent implements OnInit {
   solicitudes: any[];
   paseadores: any[];
-  titulosSolicitudes = ["", "Solicitud", "Fecha Servicio", "Hora Servicio"];
+  titulosSolicitudes = ["", "Solicitud", "Fecha Servicio", "Hora Servicio", "Ver mas"];
   titulosPaseadores = ["", "ID", "Nombre"];
   selectHandlerSolicitud: Function;
   selectHandlerPaseador: Function;
@@ -98,6 +98,11 @@ export class MatchComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  toDetalles(paseo) {
+    sessionStorage.setItem('detalles', JSON.stringify(paseo));
+    this.router.navigate(['paseos/solicitud']);
   }
 
 }

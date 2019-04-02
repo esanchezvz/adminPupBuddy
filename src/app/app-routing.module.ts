@@ -32,6 +32,8 @@ import { PagosRealizarComponent } from "./components/pagos-realizar/pagos-realiz
 import { PagosHistoricoComponent } from "./components/pagos-historico/pagos-historico.component";
 import { ClientesComponent } from "./components/clientes/clientes.component";
 import { ClientesConsultaComponent } from "./components/clientes-consulta/clientes-consulta.component";
+import { DetallesCalendarioComponent } from "./components/detalles-calendario/detalles-calendario.component";
+import { DetallesSolicitudComponent } from "./components/detalles-solicitud/detalles-solicitud.component";
 
 const APP_ROUTES: Routes = [
   {
@@ -54,7 +56,9 @@ const APP_ROUTES: Routes = [
     children: [
       { path: "match", component: MatchComponent },
       { path: "agendados", component: AgendadosComponent },
-      { path: "realizados", component: RealizadosComponent }
+      { path: "realizados", component: RealizadosComponent },
+      { path: "detalles", component: DetallesCalendarioComponent },
+      { path: "solicitud", component: DetallesSolicitudComponent }
     ]
   },
   {

@@ -245,6 +245,26 @@ export class ServiciosService {
       );
   }
 
+  postEstatusDirectorio(data): Observable<any> {
+    return this.httpClient
+      .post(this.ipServer + '/directoriost', data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  putAltaPagoMembresia(data): Observable<any> {
+    return this.httpClient
+      .put(this.ipServer + '/agendar', data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
   putTip(data, id): Observable<any> {
     return this.httpClient
       .put(`${this.ipServer}/tip/${id}`, data, this.httpOptions)
@@ -414,4 +434,36 @@ export class ServiciosService {
         })
       );
   }
+
+  getDetallesPaseoAdmin(id): Observable<any> {
+    return this.httpClient
+      .get(`${this.ipServer}/detalleap/${id}`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  getBuddyInfo(id): Observable<any> {
+    return this.httpClient
+      .get(`${this.ipServer}/buddie/${id}`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  getDetallesSolicitudAdmin(id): Observable<any> {
+    return this.httpClient
+      .get(`${this.ipServer}/detalleas/${id}`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+
 }

@@ -13,9 +13,9 @@ export class AgendadosComponent implements OnInit {
   headElements = [
     '# Solicitud',
     '# Paseador',
-    'Fecha y Hora',
     'Hora Inicio',
-    'Status'
+    'Status',
+    'Ver mas'
   ];
   selectHandler: Function;
   selectedRow: any[];
@@ -117,5 +117,10 @@ export class AgendadosComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  toDetalles(paseo) {
+    sessionStorage.setItem('detalles', JSON.stringify(paseo));
+    this.router.navigate(['paseos/detalles']);
   }
 }

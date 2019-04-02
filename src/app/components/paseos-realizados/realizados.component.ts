@@ -109,4 +109,12 @@ export class RealizadosComponent implements OnInit {
       }
     );
   }
+
+  toDetalles(paseo) {
+    sessionStorage.setItem('detalles', JSON.stringify(paseo));
+    this.router.navigate(['paseos/detalles']);
+  }
+
+
+
 }
