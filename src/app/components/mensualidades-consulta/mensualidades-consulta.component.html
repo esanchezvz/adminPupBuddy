@@ -27,7 +27,7 @@
               <b>{{ el.h_paseo2 }}</b>
             </td>
             <td>$ {{ el.monto }}.00</td>
-            <td>{{ el.status_pago }}</td>
+            <td>{{ el.status_pago === 1 ? 'Pagado' : 'Sin pago' }}</td>
           </tr>
         </tbody>
       </table>
@@ -42,7 +42,7 @@
       <li class="list-group-item">
         <b>Buddies</b>{{ " " + membresias.length }}
       </li>
-      <li class="list-group-item"><b>Monto</b> $ 700.00 MXN</li>
+      <li class="list-group-item"><b>Monto</b> {{ el.monto | currency }} MXN</li>
     </ul>
   </div>
 </div>

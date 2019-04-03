@@ -61,12 +61,12 @@
       <div class="col-md-2">
         <label for="cliente">Status</label>
         <div *ngIf="!fechas">
-          <button class="btn form-control" (click)="activarMembresia()">
+          <button class="btn form-control">
             {{ textoBoton }}
           </button>
         </div>
         <div *ngIf="fechas">
-          <button class="btn form-control">
+          <button class="btn form-control" (click)="activarPago()">
             {{ textoBoton }}
           </button>
         </div>
@@ -81,7 +81,8 @@
           class="form-control"
           placeholder="000001"
           maxlength="10"
-          [readonly]="fechas"
+          [value]="membresia.id_transaccion"
+          [readonly]="membresia.status_pago === 1"
           (keyup)="getAuthNumber($event.target.value)"
         />
       </div>

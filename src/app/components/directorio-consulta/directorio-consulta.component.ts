@@ -14,13 +14,24 @@ export class DirectorioConsultaComponent implements OnInit {
   selectHandler: Function;
   selectedRow: any[];
 
-  constructor(private router: Router, private service: ServiciosService) {
-    this.getDirectorio();
+  constructor(private router: Router, private service: ServiciosService) {}
+
+  ngOnInit() {
+
+    this.service.getDirecotrio().subscribe(
+      res => {
+        console.log(res)
+        this.elements = res
+      },
+      err => {
+        //alert("No pudimos obtener los datos...")
+      }
+    );
+
+
   }
 
-  ngOnInit() {}
-
-  getDirectorio() {
+  /*getDirectorio() {
     this.service.getDirecotrio().subscribe(
       res => {
         this.elements = res.map(item => {
@@ -36,10 +47,28 @@ export class DirectorioConsultaComponent implements OnInit {
         //alert("No pudimos obtener los datos...")
       }
     );
-  }
+  }*/
 
   selectedDir(item) {
     sessionStorage.setItem("comercio", JSON.stringify(item));
     this.router.navigate(["directorio/editar/", item.id_directorio]);
+  }
+
+  changeStatus(st, ps) {
+
+    var data = {
+      "status": st,
+      "idDirectorio": ps
+    }
+
+    this.service.postEstatusDirectorio(data).subscribe(
+      response => {
+        console.log(response);
+        this.ngOnInit();
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

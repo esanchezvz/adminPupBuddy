@@ -1,0 +1,76 @@
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="title">Detalles Solicitud</h1>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-12 col-md-12 text-center" *ngIf="detalles">
+      <!--h2 class="subtitle">Info Solicitud</h2-->
+      <div class="row">
+        <div class="col-12 col-sm-3 form-group mb-0">
+          <label for="dir"><b>DIRECCIÓN</b></label>
+        </div>
+        <div class="col-12 col-sm-9">
+          <input type="text" readonly id="dir" [value]="detalles.direccion" class="form-control" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-3 form-group mb-0">
+          <label for="fecha"><b>FECHA</b></label>
+        </div>
+        <div class="col-12 col-sm-9">
+          <input type="text" readonly id="fecha" value="{{ fecha | date: 'dd/MM/yyyy' }}" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-sm-3 form-group mb-0">
+          <label for="fecha"><b>HORA</b></label>
+        </div>
+        <div class="col-12 col-sm-9">
+          <input type="text" readonly id="fecha" [value]="detalles.hora" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-sm-3 form-group mb-0">
+          <label for="fecha"><b>STATUS</b></label>
+        </div>
+        <div class="col-12 col-sm-9">
+          <input type="text" readonly id="fecha" value="{{ statusText || 'Error' }}" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-sm-3 form-group mb-0">
+          <label for="dir"><b>CLIENTE</b></label>
+        </div>
+        <div class="col-12 col-sm-9">
+          <input type="text" readonly id="dir" [value]="detalles.username" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-sm-3 form-group mb-0">
+          <label for="dir"><b>CORREO</b></label>
+        </div>
+        <div class="col-12 col-sm-9">
+          <input type="text" readonly id="dir" [value]="detalles.correoCliente" class="form-control" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-sm-3 form-group mb-0">
+          <label for="dir"><b>CONTACTO</b></label>
+        </div>
+        <div class="col-12 col-sm-9">
+          <input type="text" readonly id="dir" [value]="detalles.contacto" class="form-control" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

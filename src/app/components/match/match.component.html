@@ -16,6 +16,7 @@
           <th>{{el.id_solicitud}}</th>
           <td>{{el.f_servicio | date: 'dd/MM/yy'}}</td>
           <td>{{el.h_servicio}}</td>
+          <td><button class="btn" (click)="toDetalles(el)">Detalles</button></td>
         </tr>
       </tbody>
     </table>

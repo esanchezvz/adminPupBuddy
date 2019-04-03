@@ -39,13 +39,14 @@
       <thead>
         <tr>
           <th scope="col"># Solicitud</th>
-          <th scope="col"># Paseador</th>
+          <th scope="col">Paseador</th>
           <th scope="col">Fecha/Hora Inicio</th>
-          <th scope="col">Buddies</th>
+          <th scope="col"># Buddies</th>
           <th scope="col">Correo cliente</th>
           <th scope="col">C.P.</th>
           <th scope="col">Monto Cobrado</th>
           <th scope="col">Status</th>
+          <th scope="col">Detalles</th>
         </tr>
       </thead>
       <tbody>
@@ -58,6 +59,7 @@
           <td>{{ item.cp }}</td>
           <td>{{ item.monto | currency }} MXN</td>
           <td>{{ item.status === 2 ? 'Finalizado' : 'Cancelado' }}</td>
+          <td><button class="btn" (click)="toDetalles(item)">Ver mas</button></td>
         </tr>
       </tbody>
     </table>

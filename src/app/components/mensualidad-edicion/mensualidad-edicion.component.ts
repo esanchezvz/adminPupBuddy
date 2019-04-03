@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ServiciosService } from "src/app/services/servicios.service";
 import { Router } from "@angular/router";
 import { initDomAdapter } from "@angular/platform-browser/src/browser";
+import { Alert } from "selenium-webdriver";
 
 @Component({
   selector: "app-mensualidad-edicion",
@@ -22,6 +23,7 @@ export class MensualidadEdicionComponent implements OnInit {
   public itemsPaseador: any[];
   public match: any = {};
   selectedPaseador = false;
+  flag: boolean = true;
   selectedPaseo = false;
   allowMatch = false;
 
@@ -109,6 +111,8 @@ export class MensualidadEdicionComponent implements OnInit {
 
   ngDoCheck(): void {
     // Cambiar Texto botón en dependiendo en status_admin
+
+
     this.membresia.status_pago === 0
       ? (this.textoBoton = "Activar")
       : (this.textoBoton = "Desactivar");
@@ -129,7 +133,6 @@ export class MensualidadEdicionComponent implements OnInit {
     this.serviciosService
       .postAgendarMembresia({
         idMembresia: this.membresia.id_membresia,
-        idAut: this.idAut
       })
       .subscribe(
         res => {
@@ -139,7 +142,8 @@ export class MensualidadEdicionComponent implements OnInit {
               res => {
                 this.fechas = res;
                 console.log(this.fechas);
-                this.router.navigate(["mensualidades/consulta"]);
+                this.ngOnInit()
+                //this.router.navigate(["mensualidades/consulta"]);
               },
               err => {
                 console.log(err);
@@ -147,7 +151,7 @@ export class MensualidadEdicionComponent implements OnInit {
             );
         },
         err => {
-          console.log(err);
+          //console.log(err);
         }
       );
   }
@@ -167,7 +171,8 @@ export class MensualidadEdicionComponent implements OnInit {
         });
       },
       err => {
-        console.log(err);
+        //console.log(err);
+        this.activarMembresia()
       }
     );
 
@@ -176,8 +181,29 @@ export class MensualidadEdicionComponent implements OnInit {
         this.paseadores = res;
       },
       err => {
-        console.log(err);
+        //console.log(err);
       }
     );
   }
+
+
+
+
+  activarPago() {
+    this.serviciosService
+      .putAltaPagoMembresia({
+        idMembresia: this.membresia.id_membresia,
+        idAut: this.idAut
+      })
+      .subscribe(
+        res => {
+          alert("Activación exitosa");
+          this.router.navigate(["mensualidades/consulta"]);
+        },
+        err => {
+          //console.log(err);
+        }
+      );
+  }
+
 }

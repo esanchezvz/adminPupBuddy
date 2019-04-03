@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ServiciosService } from "src/app/services/servicios.service";
 import { FormBuilder, Validators, FormControl } from "@angular/forms";
 import * as moment from "moment";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-mensualidades-alta",
@@ -35,7 +36,8 @@ export class MensualidadesAltaComponent implements OnInit {
 
   constructor(
     private serviciosService: ServiciosService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.formato = this.formBuilder.group({
       email: ["", Validators.required]
@@ -225,7 +227,7 @@ export class MensualidadesAltaComponent implements OnInit {
     this.show ? this.setTime2() : null;
     this.serviciosService.postMembresia(this.membresia).subscribe(
       response => {
-        // alert(`${response.message}`);
+        this.router.navigate(["mensualidades/consulta"]);
         this.ngOnInit();
       },
       error => {
