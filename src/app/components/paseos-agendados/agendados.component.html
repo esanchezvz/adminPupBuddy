@@ -4,15 +4,14 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputEmail4">Rango inicial</label>
-          <input type="date" class="form-control" (change)="checkInput($event.target.value, 1)" />
+          <input type="date" class="form-control"/>
         </div>
         <div class="form-group col-md-6">
           <label for="inputEmail4">Rango final</label>
           <div class="input-group mb-3">
-            <input type="date" class="form-control" [min]="minDate" (change)="checkInput($event.target.value, 2)" />
+            <input type="date" class="form-control"/>
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" (click)="consulta()"
-                [disabled]="!habilitarConsulta">
+              <button class="btn btn-outline-secondary" type="button">
                 Consultar
               </button>
             </div>
@@ -38,8 +37,44 @@
             class="table-row"
             [class.selected-row]="el.selected"
           >
-            <td>{{ el.id_solicitud }}</td>
             <td>{{ el.id_paseador }}</td>
+            <td>{{ el.f_servicio }}</td>
+            <td>{{ el.h_servicio }}</td>
+            <td>{{ el.horaInicioEditada | date: 'h:mm a' }}</td>
+            <td *ngIf="el.status_pago === 0">
+              <button class="btn" (click)="generarCargo(el)">Cobrar</button>
+            </td>
+            <td *ngIf="el.status_paseo === 0 && el.status_pago === 1">
+              <button class="btn" (click)="iniciarPaseo(el)">Iniciar</button>
+            </td>
+            <td *ngIf="el.status_paseo === 1">
+              <button class="btn" (click)="terminarPaseo(el)">Finalizar</button>
+            </td>
+            <td>
+              <button class="btn" (click)="toDetalles(el)">Detalles</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="container bg-light p-3">
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{ head }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let el of agendados" class="table-row" [class.selected-row]="el.selected">
+            <td>{{ el.id_paseador }}</td>
+            <td>{{ el.f_servicio }}</td>
+            <td>{{ el.h_servicio }}</td>
             <td>{{ el.horaInicioEditada | date: 'h:mm a' }}</td>
             <td *ngIf="el.status_pago === 0">
               <button class="btn" (click)="generarCargo(el)">Cobrar</button>

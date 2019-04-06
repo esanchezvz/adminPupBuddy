@@ -159,6 +159,7 @@ export class MensualidadEdicionComponent implements OnInit {
   getMembresiaFechas() {
     this.serviciosService.getMembresia(this.membresia.id_membresia).subscribe(
       res => {
+        console.log(res)
         this.fechas = res;
         this.showFechas = this.fechas.map(item => {
           if (item.r_match === null) {
