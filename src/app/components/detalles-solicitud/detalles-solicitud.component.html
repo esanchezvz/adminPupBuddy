@@ -73,4 +73,45 @@
     </div>
   </div>
 
+  <br>
+  
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2 class="subtitle">{{ buddyText }}</h2>
+      <div class="row" *ngIf="threeBuddies">
+        <div class="col-12 col-md-4 text-center" *ngFor="let buddy of buddies">
+          <div class="imgContainer">
+            <img class="img-fluid huella" src="{{ buddy.img_a }}" alt="{{ buddy.nombre }}" />
+          </div>
+          <h4 class="subtitle">{{ buddy.nombre }}</h4>
+        </div>
+      </div>
+  
+      <div class="row" *ngIf="fourBuddies">
+        <div class="col-12 col-md-3 text-center" *ngFor="let buddy of buddies">
+          <div class="imgContainer">
+            <img class="img-fluid huella" src="{{ buddy.img_a }}" alt="{{ buddy.nombre }}" />
+          </div>
+          <h4 class="subtitle">{{ buddy.nombre }}</h4>
+        </div>
+      </div>
+      <div class="row" *ngIf="twoBuddies">
+        <div class="col-12 col-md-6 text-center" *ngFor="let buddy of buddies">
+          <div class="imgContainer">
+            <img class="img-fluid huella" src="{{ buddy.img_a }}" alt="{{ buddy.nombre }}" />
+          </div>
+          <h4 class="subtitle">{{ buddy.nombre }}</h4>
+        </div>
+      </div>
+      <div class="row" *ngIf="oneBuddy">
+        <div class="col-12 text-center" *ngFor="let buddy of buddies">
+          <div class="imgContainer">
+            <img class="img-fluid huella" src="{{ buddy.img_a }}" alt="{{ buddy.nombre }}" />
+          </div>
+          <h4 class="subtitle">{{ buddy.nombre }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

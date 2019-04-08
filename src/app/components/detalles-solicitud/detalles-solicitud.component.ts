@@ -63,6 +63,7 @@ export class DetallesSolicitudComponent implements OnInit {
         if (id !== 0) {
           this.servicio.getBuddyInfo(id).subscribe(
             res => {
+              console.log(res)
               this.buddies.push(res);
             },
             err => {

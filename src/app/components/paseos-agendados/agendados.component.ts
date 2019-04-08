@@ -11,8 +11,9 @@ import { ServiciosService } from 'src/app/services/servicios.service';
 export class AgendadosComponent implements OnInit {
   agendados: any[];
   headElements = [
-    '# Solicitud',
     '# Paseador',
+    'Fecha Servicio',
+    'Hora Servicio',
     'Hora Inicio',
     'Status',
     'Ver mas'
