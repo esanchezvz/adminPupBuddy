@@ -1,13 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { ServiciosService } from "src/app/services/servicios.service";
-import { Router } from "@angular/router";
-import { initDomAdapter } from "@angular/platform-browser/src/browser";
-import { Alert } from "selenium-webdriver";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ServiciosService } from 'src/app/services/servicios.service';
 
 @Component({
-  selector: "app-mensualidad-edicion",
-  templateUrl: "./mensualidad-edicion.component.html",
-  styleUrls: ["./mensualidad-edicion.component.css"]
+  selector: 'app-mensualidad-edicion',
+  templateUrl: './mensualidad-edicion.component.html',
+  styleUrls: ['./mensualidad-edicion.component.css']
 })
 export class MensualidadEdicionComponent implements OnInit {
   public idAut;
@@ -26,6 +24,8 @@ export class MensualidadEdicionComponent implements OnInit {
   flag: boolean = true;
   selectedPaseo = false;
   allowMatch = false;
+  usuario: any;
+  buddy: any;
 
   constructor(
     private serviciosService: ServiciosService,
@@ -41,7 +41,7 @@ export class MensualidadEdicionComponent implements OnInit {
       this.serviciosService.postMatchMembresia(this.match).subscribe(
         response => {
           console.log(response);
-          alert("Paseo de Membresía agendado exitosamente");
+          alert('Paseo de Membresía agendado exitosamente');
           this.ngOnInit();
           // this.router.navigate(["paseos/agendados"]);
         },
@@ -84,38 +84,58 @@ export class MensualidadEdicionComponent implements OnInit {
   fechas: any[];
 
   ngOnInit() {
-    this.membresia = JSON.parse(sessionStorage.getItem("membresia"));
+    this.membresia = JSON.parse(sessionStorage.getItem('membresia'));
+
     this.getMembresiaFechas();
     switch (this.membresia.tipo_servicio) {
       case 2:
-        this.tipoMembresia = "Gold Mensual";
+        this.tipoMembresia = 'Gold Mensual';
         break;
       case 3:
-        this.tipoMembresia = "VIB Mensual";
+        this.tipoMembresia = 'VIB Mensual';
         break;
       case 4:
-        this.tipoMembresia = "Gold Trimestral";
+        this.tipoMembresia = 'Gold Trimestral';
         break;
       case 5:
-        this.tipoMembresia = "VIB Trimestral";
+        this.tipoMembresia = 'VIB Trimestral';
         break;
       case 6:
-        this.tipoMembresia = "Gold Anual";
+        this.tipoMembresia = 'Gold Anual';
         break;
       case 7:
-        this.tipoMembresia = "VIB Anual";
+        this.tipoMembresia = 'VIB Anual';
         break;
       default:
     }
+
+    this.serviciosService.getUsuario(this.membresia.id_usuario).subscribe(
+      res => {
+        this.usuario = res;
+        console.log(this.usuario);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+    this.serviciosService.getBuddy(this.membresia.id_buddy).subscribe(
+      res => {
+        this.buddy = res;
+        console.log(this.buddy);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   ngDoCheck(): void {
     // Cambiar Texto botón en dependiendo en status_admin
 
-
     this.membresia.status_pago === 0
-      ? (this.textoBoton = "Activar")
-      : (this.textoBoton = "Desactivar");
+      ? (this.textoBoton = 'Activar')
+      : (this.textoBoton = 'Desactivar');
     this.selectedPaseador === true && this.selectedPaseo === true
       ? (this.allowMatch = true)
       : (this.allowMatch = false);
@@ -132,7 +152,7 @@ export class MensualidadEdicionComponent implements OnInit {
   activarMembresia() {
     this.serviciosService
       .postAgendarMembresia({
-        idMembresia: this.membresia.id_membresia,
+        idMembresia: this.membresia.id_membresia
       })
       .subscribe(
         res => {
@@ -142,7 +162,7 @@ export class MensualidadEdicionComponent implements OnInit {
               res => {
                 this.fechas = res;
                 console.log(this.fechas);
-                this.ngOnInit()
+                this.ngOnInit();
                 //this.router.navigate(["mensualidades/consulta"]);
               },
               err => {
@@ -159,7 +179,7 @@ export class MensualidadEdicionComponent implements OnInit {
   getMembresiaFechas() {
     this.serviciosService.getMembresia(this.membresia.id_membresia).subscribe(
       res => {
-        console.log(res)
+        console.log(res);
         this.fechas = res;
         this.showFechas = this.fechas.map(item => {
           if (item.r_match === null) {
@@ -173,7 +193,7 @@ export class MensualidadEdicionComponent implements OnInit {
       },
       err => {
         //console.log(err);
-        this.activarMembresia()
+        this.activarMembresia();
       }
     );
 
@@ -187,9 +207,6 @@ export class MensualidadEdicionComponent implements OnInit {
     );
   }
 
-
-
-
   activarPago() {
     this.serviciosService
       .putAltaPagoMembresia({
@@ -198,13 +215,12 @@ export class MensualidadEdicionComponent implements OnInit {
       })
       .subscribe(
         res => {
-          alert("Activación exitosa");
-          this.router.navigate(["mensualidades/consulta"]);
+          alert('Activación exitosa');
+          this.router.navigate(['mensualidades/consulta']);
         },
         err => {
           //console.log(err);
         }
       );
   }
-
 }

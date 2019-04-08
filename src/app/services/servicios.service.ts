@@ -465,5 +465,63 @@ export class ServiciosService {
       );
   }
 
+  getMembresiaDetalle(id): Observable<any> {
+    return this.httpClient
+      .get(`${this.ipServer}/membresias/${id}`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
 
+  postFechasRealizadosMembresias(data): Observable<any> {
+    return this.httpClient
+      .post(this.ipServer + '/agendadosr', data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  postFechasAgendados(data): Observable<any> {
+    return this.httpClient
+      .post(this.ipServer + '/agendados', data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  postFechasAgendadosMembresias(data): Observable<any> {
+    return this.httpClient
+      .post(this.ipServer + '/agendadosm', data, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  getUsuario(id): Observable<any> {
+    return this.httpClient
+      .get(`${this.ipServer}/usuario/${id}`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
+
+  getBuddy(id): Observable<any> {
+    return this.httpClient
+      .get(`${this.ipServer}/buddie/${id}`, this.httpOptions)
+      .pipe(
+        map((res: HttpResponse<any>) => {
+          return res;
+        })
+      );
+  }
 }

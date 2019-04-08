@@ -24,7 +24,6 @@
                 class="btn btn-outline-secondary"
                 type="button"
                 (click)="consulta()"
-                [disabled]="!habilitarConsulta"
               >
                 Consultar
               </button>
@@ -35,6 +34,7 @@
     </form>
   </div>
   <div class="col-md-12">
+    <h3>PASEOS</h3>
     <table class="table">
       <thead>
         <tr>
@@ -59,19 +59,50 @@
           <td>{{ item.cp }}</td>
           <td>{{ item.monto | currency }} MXN</td>
           <td>{{ item.status === 2 ? 'Finalizado' : 'Cancelado' }}</td>
-          <td><button class="btn" (click)="toDetalles(item)">Ver mas</button></td>
+          <td>
+            <button class="btn" (click)="toDetalles(item)">Ver más</button>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
+  <!-- <div class="row"> -->
+  <div class="col-12 mb-4">
     <ul class="list-group">
       <li class="list-group-item active">Total</li>
       <li class="list-group-item"><b>Buddies</b> {{ nBuddies }}</li>
       <li class="list-group-item"><b>Monto</b> {{ monto | currency }} MXN</li>
     </ul>
+  </div>
+  <!-- </div> -->
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h3>MEMBRESÍAS</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"># Membresia</th>
+          <th scope="col">Paseador</th>
+          <th scope="col"># Buddies</th>
+          <th scope="col">Fecha/Hora Inicio</th>
+          <th scope="col">Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of membresiasR">
+          <th scope="row">{{ item.id_membresia }}</th>
+          <td>{{ item.id_paseador }}</td>
+          <td>1</td>
+          <td>{{ item.fechaEditada | date: 'dd/MM/yyyy, h:mm a' }}</td>
+          <td>
+            <button class="btn" (click)="toMembresia(item)">
+              Ver más
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -1,25 +1,7 @@
 <div class="row">
   <form>
     <div class="form-row mb-3">
-      <div class="col-md-2">
-        <label for="cliente">Cliente</label>
-        <input
-          type="text"
-          class="form-control"
-          value="{{ membresia.id_usuario }}"
-          readonly
-        />
-      </div>
-      <div class="col-md-2">
-        <label for="cliente">Buddy</label>
-        <input
-          type="text"
-          class="form-control"
-          value="{{ membresia.id_buddy }}"
-          readonly
-        />
-      </div>
-      <div class="col-md-2">
+      <div class="col-md-3 col-12">
         <label for="cliente">Fecha inicio</label>
         <input
           type="text"
@@ -28,7 +10,7 @@
           readonly
         />
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3 col-12">
         <label for="cliente">Fecha corte</label>
         <input
           type="text"
@@ -37,7 +19,7 @@
           readonly
         />
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3 col-12">
         <label for="cliente">Horario 1</label>
         <input
           type="text"
@@ -46,7 +28,7 @@
           readonly
         />
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3 col-12">
         <label for="cliente">Horario 2</label>
         <input
           type="text"
@@ -100,6 +82,53 @@
   </form>
 </div>
 
+<div class="row mt-5" *ngIf="usuario">
+  <div class="col-12"><h2>Cliente</h2></div>
+  <div class="col-12 text-center">
+    <h4 class="title">
+      {{ usuario.nombre }} {{ usuario.ap }} {{ usuario.am }}
+    </h4>
+  </div>
+  <div
+    class="col-12 dato-usuario text-center d-flex align-items-center justify-content-center"
+  >
+    <i class="material-icons">phone</i>{{ usuario.cel }}
+  </div>
+  <div
+    class="col-12 dato-usuario text-center d-flex align-items-center justify-content-center"
+  >
+    <i class="material-icons">mail</i>{{ usuario.email }}
+  </div>
+</div>
+
+<div class="row mt-5" *ngIf="buddy">
+  <div class="col-12"><h2>Buddy</h2></div>
+  <div class="col-12 text-center">
+    <h4 class="title">
+      {{ buddy.nombre }}
+    </h4>
+  </div>
+  <div
+    class="col-6 text-center d-flex align-items-center justify-content-center"
+  >
+    <img [src]="buddy.img_a" alt="img a" class="img-fluid" />
+  </div>
+  <div
+    class="col-6 text-center d-flex align-items-center justify-content-center"
+  >
+    <img [src]="buddy.img_b" alt="img b" class="img-fluid" />
+  </div>
+  <div
+    class="col-12 text-center d-flex align-items-center justify-content-center"
+  >
+    <ul>
+      <li><b>Raza: </b> {{ buddy.raza }}</li>
+      <li><b>Tamaño: </b> {{ buddy.tamano }}</li>
+      <li><b>Comentarios: </b> {{ buddy.comentarios }}</li>
+    </ul>
+  </div>
+</div>
+
 <div class="row mt-5">
   <div class="col-md-6">
     <table class="table bg-light">
@@ -123,8 +152,8 @@
               (change)="selectHandlerSolicitud(fecha.id_agendado, fecha)"
             />
           </th>
-          <td>{{ fecha.agendado | date: "dd/MM/yyyy" }}</td>
-          <td>{{ fecha.agendado | date: "hh:mm" }}</td>
+          <td>{{ fecha.agendado | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ fecha.agendado | date: 'hh:mm' }}</td>
           <td>Sin asignacion</td>
         </tr>
       </tbody>
