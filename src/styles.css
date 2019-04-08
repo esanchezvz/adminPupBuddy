@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~bootstrap/dist/css/bootstrap.css";
+@import '~bootstrap/dist/css/bootstrap.css';
 /* angular-cli file: src/styles.css */
 
 /*@import "../node_modules/angular-calendar/css/angular-calendar.css";*/
@@ -8,7 +8,7 @@
 
 body,
 html {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   background-image: url(../src/assets/img/bg-white-min.png);
   background-attachment: fixed;
   background-repeat: repeat;
@@ -16,7 +16,7 @@ html {
 }
 
 h1 {
-  font-family: "Luckiest Guy", cursive;
+  font-family: 'Luckiest Guy', cursive;
 }
 
 /* .container{
@@ -73,4 +73,9 @@ button.btn:disabled:hover {
   color: white;
   background: #a288bb;
   border: 1px solid #a288bb;
+}
+
+td {
+  vertical-align: middle !important;
+  text-align: center;
 }

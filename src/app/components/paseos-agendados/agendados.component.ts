@@ -10,6 +10,7 @@ import { ServiciosService } from 'src/app/services/servicios.service';
 })
 export class AgendadosComponent implements OnInit {
   agendados: any[];
+  membresias: any[];
   headElements = [
     '# Paseador',
     'Fecha Servicio',
@@ -21,6 +22,9 @@ export class AgendadosComponent implements OnInit {
   selectHandler: Function;
   selectedRow: any[];
   items: any[];
+  fecha1: any;
+  fecha2: any;
+  minDate: any;
   paseo: any = {
     idPaseo: null,
     status: null
@@ -98,30 +102,119 @@ export class AgendadosComponent implements OnInit {
       idPaseo: null,
       status: null
     };
-    this.servicios.getAgendados().subscribe(
-      response => {
-        this.items = response;
-        console.log('items', response);
-        this.agendados = this.items.map(item => {
-          return {
-            ...item,
-            selected: false,
-            fechaEditada: moment(item.rmatch).add(1, 'hours'),
-            horaInicioEditada: moment(item.inicio)
-              .add(1, 'hours')
-              .valueOf()
-          }; /*@TODO JCVD: quitar la hora que se agrega cuando se arregle el servicio*/
-        });
-        console.log('AGENDADOS ->', this.agendados);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    // this.servicios.getAgendados().subscribe(
+    //   response => {
+    //     this.items = response;
+    //     this.agendados = this.items.map(item => {
+    //       if (this.checkHorarioVerano()) {
+    //         return {
+    //           ...item,
+    //           selected: false,
+    //           fechaEditada: moment(item.rmatch).add(1, 'hours'),
+    //           horaInicioEditada: moment(item.inicio)
+    //             .add(1, 'hours')
+    //         }; /*@TODO JCVD: quitar la hora que se agrega cuando se arregle el servicio*/
+    //       } else {
+    //         return {
+    //           ...item,
+    //           selected: false,
+    //           fechaEditada: item.rmatch,
+    //           horaInicioEditada: item.inicio
+    //         };
+    //       }
+    //     });
+    //     console.log('AGENDADOS ->', this.agendados);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
+  }
+
+  checkHorarioVerano() {
+    const today = moment();
+    const year = new Date().getFullYear();
+    const primerDomAbril = moment([year, 0 + 3])
+      .endOf('month')
+      .weekday(0);
+    const ultimoSabOctubre = moment([year, 0 + 9])
+      .endOf('month')
+      .weekday(0);
+
+    if (
+      today.isSameOrAfter(primerDomAbril) &&
+      today.isSameOrBefore(ultimoSabOctubre)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   toDetalles(paseo) {
     sessionStorage.setItem('detalles', JSON.stringify(paseo));
     this.router.navigate(['paseos/detalles']);
+  }
+
+  checkInput(value, id) {
+    switch (id) {
+      case 1:
+        this.fecha1 = value;
+        this.minDate = moment(this.fecha1)
+          .add(1, 'days')
+          .format('YYYY-MM-DD');
+        break;
+      case 2:
+        this.fecha2 = value;
+        break;
+      default:
+        this.fecha1 = null;
+        this.fecha2 = null;
+    }
+  }
+
+  getFechas() {
+    const fecha1 = moment(this.fecha1).format('YYYY/MM/DD');
+    const fecha2 = moment(this.fecha2).format('YYYY/MM/DD');
+
+    console.log({ i: fecha1, f: fecha2 });
+    this.servicios.postFechasAgendados({ i: fecha1, f: fecha2 }).subscribe(
+      res => {
+        this.agendados = res;
+        console.log('agendados ->', this.agendados);
+        // this.consulta1 = true;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+    this.servicios
+      .postFechasAgendadosMembresias({ i: fecha1, f: fecha2 })
+      .subscribe(
+        res => {
+          this.membresias = res;
+          console.log('membresias ->', this.membresias);
+          // this.consulta1 = true;
+        },
+        err => {
+          console.log(err);
+        }
+      );
+  }
+
+  toMembresia(elem) {
+    let membresia;
+
+    this.servicios.getMembresiaDetalle(elem.id_membresia).subscribe(
+      res => {
+        membresia = res;
+        sessionStorage.setItem('membresia', JSON.stringify(membresia));
+        this.router.navigate(['mensualidades/editar/', elem.id_membresia]);
+      },
+      err => {
+        alert('Ocurrió un error. Intente de nuevo');
+      }
+    );
   }
 }

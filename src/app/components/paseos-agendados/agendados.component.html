@@ -4,14 +4,27 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputEmail4">Rango inicial</label>
-          <input type="date" class="form-control"/>
+          <input
+            type="date"
+            class="form-control"
+            (change)="checkInput($event.target.value, 1)"
+          />
         </div>
         <div class="form-group col-md-6">
           <label for="inputEmail4">Rango final</label>
           <div class="input-group mb-3">
-            <input type="date" class="form-control"/>
+            <input
+              type="date"
+              class="form-control"
+              [min]="fecha1"
+              (change)="checkInput($event.target.value, 2)"
+            />
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="getFechas()"
+              >
                 Consultar
               </button>
             </div>
@@ -25,6 +38,7 @@
 <div class="container bg-light p-3">
   <div class="row">
     <div class="col-12">
+      <h3>PASEOS</h3>
       <table class="table">
         <thead>
           <tr>
@@ -60,10 +74,11 @@
   </div>
 </div>
 
-<br>
+<br />
 <div class="container bg-light p-3">
   <div class="row">
     <div class="col-12">
+      <h3>MEMBRESIAS</h3>
       <table class="table">
         <thead>
           <tr>
@@ -71,22 +86,26 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let el of agendados" class="table-row" [class.selected-row]="el.selected">
+          <tr
+            *ngFor="let el of membresias"
+            class="table-row"
+            [class.selected-row]="el.selected"
+          >
             <td>{{ el.id_paseador }}</td>
-            <td>{{ el.f_servicio }}</td>
-            <td>{{ el.h_servicio }}</td>
+            <td>{{ el.agendado | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ el.agendado | date: 'hh:mm a' }}</td>
             <td>{{ el.horaInicioEditada | date: 'h:mm a' }}</td>
-            <td *ngIf="el.status_pago === 0">
-              <button class="btn" (click)="generarCargo(el)">Cobrar</button>
+            <td *ngIf="el.membresia_status === -1">
+              Por Cobrar
             </td>
-            <td *ngIf="el.status_paseo === 0 && el.status_pago === 1">
+            <td *ngIf="el.status_paseo === 0 && el.membresia_status === 1">
               <button class="btn" (click)="iniciarPaseo(el)">Iniciar</button>
             </td>
             <td *ngIf="el.status_paseo === 1">
               <button class="btn" (click)="terminarPaseo(el)">Finalizar</button>
             </td>
             <td>
-              <button class="btn" (click)="toDetalles(el)">Detalles</button>
+              <button class="btn" (click)="toMembresia(el)">Ver Más</button>
             </td>
           </tr>
         </tbody>
