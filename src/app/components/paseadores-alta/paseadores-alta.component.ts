@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { ServiciosService } from "src/app/services/servicios.service";
-import { FormBuilder, Validators, FormControl } from "@angular/forms";
-import { DatePipe } from "@angular/common";
-import { Router } from "@angular/router";
+import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ServiciosService } from 'src/app/services/servicios.service';
 
 @Component({
-  selector: "app-paseadores-alta",
-  templateUrl: "./paseadores-alta.component.html",
-  styleUrls: ["./paseadores-alta.component.css"]
+  selector: 'app-paseadores-alta',
+  templateUrl: './paseadores-alta.component.html',
+  styleUrls: ['./paseadores-alta.component.css']
 })
 export class PaseadoresAltaComponent implements OnInit {
   public formato;
@@ -22,20 +22,21 @@ export class PaseadoresAltaComponent implements OnInit {
     public router: Router
   ) {
     this.formato = this.formBuilder.group({
-      nombre: ["", Validators.required],
-      ap: ["", Validators.required],
-      am: ["", Validators.required],
-      fnacimiento: ["", Validators.required],
-      sexo: ["", Validators.required],
-      email: ["", Validators.required],
-      confirmEmail: ["", Validators.required],
-      cel: ["", Validators.required],
-      confirmCel: ["", Validators.required],
-      rfc: ["", Validators.required],
-      banco: ["", Validators.required],
-      cuenta: ["", Validators.required],
-      clabe: ["", Validators.required],
-      img: ["", Validators.required]
+      nombre: ['', Validators.required],
+      ap: ['', Validators.required],
+      am: ['', Validators.required],
+      fnacimiento: ['', Validators.required],
+      sexo: ['', Validators.required],
+      email: ['', Validators.required],
+      confirmEmail: ['', Validators.required],
+      cel: ['', Validators.required],
+      confirmCel: ['', Validators.required],
+      rfc: ['', Validators.required],
+      banco: ['', Validators.required],
+      cuenta: ['', Validators.required],
+      clabe: ['', Validators.required],
+      accesskey: ['', Validators.required],
+      img: ['', Validators.required]
     });
   }
 
@@ -43,7 +44,7 @@ export class PaseadoresAltaComponent implements OnInit {
     this.formato.value.sexo = this.sexo;
     this.formato.value.fnacimiento = this.datePipe.transform(
       this.formato.value.fnacimiento,
-      "dd/MM/yyyy"
+      'dd/MM/yyyy'
     );
     if (
       this.formato.value.email === this.formato.value.confirmEmail &&
@@ -53,14 +54,14 @@ export class PaseadoresAltaComponent implements OnInit {
       this.serviciosService.postPaseador(this.formato.value).subscribe(
         response => {
           alert(`${response.message}`);
-          this.router.navigate(["paseadores/consulta"]);
+          this.router.navigate(['paseadores/consulta']);
         },
         error => {
           alert(`${error}\n Intente de Nuevo.`);
         }
       );
     } else {
-      alert("Compruebe que el email y el celular sean correctos.");
+      alert('Compruebe que el email y el celular sean correctos.');
     }
   }
 
@@ -85,19 +86,19 @@ export class PaseadoresAltaComponent implements OnInit {
     } else if (this.checkImage(files[0]) === false) {
       e.target.value = null;
       alert(
-        "Recuerda que la imagen solo puede ser .png y no debe exceder 1MB."
+        'Recuerda que la imagen solo puede ser .png y no debe exceder 1MB.'
       );
     }
   }
 
   checkImage(img: any) {
     if (img.size > 1000000) {
-      console.log("TOO LARGE");
+      console.log('TOO LARGE');
       return false;
     }
     if (
-      img.type.toString() === "image/jpeg" ||
-      img.type.toString() === "image/jpg"
+      img.type.toString() === 'image/jpeg' ||
+      img.type.toString() === 'image/jpg'
       // img.type.toString() === "image/png" //SOLO PNG
     ) {
       return true;
@@ -106,7 +107,7 @@ export class PaseadoresAltaComponent implements OnInit {
   }
 
   toConsulta() {
-    this.router.navigate(["paseadores/consulta"]);
+    this.router.navigate(['paseadores/consulta']);
   }
 
   ngOnInit() {}

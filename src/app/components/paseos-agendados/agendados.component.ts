@@ -88,7 +88,11 @@ export class AgendadosComponent implements OnInit {
     this.servicios.postCargo(this.cobrar).subscribe(
       response => {
         console.log(response.message);
-        this.router.navigate(['paseos/match']);
+        if (response.tipo === 'SUCCESS') {
+          this.router.navigate(['paseos/match']);
+        } else {
+          alert(response.message);
+        }
       },
       error => {
         console.error(error);
