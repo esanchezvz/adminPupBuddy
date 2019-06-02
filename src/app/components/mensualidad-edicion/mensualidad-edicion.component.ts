@@ -21,7 +21,7 @@ export class MensualidadEdicionComponent implements OnInit {
   public itemsPaseador: any[];
   public match: any = {};
   selectedPaseador = false;
-  flag: boolean = true;
+  flag = true;
   selectedPaseo = false;
   allowMatch = false;
   usuario: any;
@@ -130,6 +130,7 @@ export class MensualidadEdicionComponent implements OnInit {
     );
   }
 
+  // tslint:disable-next-line: use-life-cycle-interface
   ngDoCheck(): void {
     // Cambiar Texto botón en dependiendo en status_admin
 
@@ -159,11 +160,11 @@ export class MensualidadEdicionComponent implements OnInit {
           this.serviciosService
             .getMembresia(this.membresia.id_membresia)
             .subscribe(
-              res => {
-                this.fechas = res;
+              response => {
+                this.fechas = response;
                 console.log(this.fechas);
                 this.ngOnInit();
-                //this.router.navigate(["mensualidades/consulta"]);
+                // this.router.navigate(["mensualidades/consulta"]);
               },
               err => {
                 console.log(err);
@@ -171,7 +172,7 @@ export class MensualidadEdicionComponent implements OnInit {
             );
         },
         err => {
-          //console.log(err);
+          // console.log(err);
         }
       );
   }
@@ -192,7 +193,7 @@ export class MensualidadEdicionComponent implements OnInit {
         });
       },
       err => {
-        //console.log(err);
+        // console.log(err);
         this.activarMembresia();
       }
     );
@@ -202,7 +203,7 @@ export class MensualidadEdicionComponent implements OnInit {
         this.paseadores = res;
       },
       err => {
-        //console.log(err);
+        // console.log(err);
       }
     );
   }
@@ -219,7 +220,7 @@ export class MensualidadEdicionComponent implements OnInit {
           this.router.navigate(['mensualidades/consulta']);
         },
         err => {
-          //console.log(err);
+          // console.log(err);
         }
       );
   }

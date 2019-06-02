@@ -52,14 +52,21 @@ export class AgendadosComponent implements OnInit {
   }
 
   iniciarPaseo(elem, tipo) {
-    this.paseo.idPaseo = elem.id_paseo;
+    tipo === 0
+      ? (this.paseo.idPaseo = elem.id_paseo)
+      : (this.paseo.idPaseo = elem.id_agendado);
     this.paseo.status = 1;
     this.paseo.servicio = tipo;
-    // console.log(this.paseo);
+    console.log('PETICION', this.paseo);
     this.servicios.postPaseoInicioFin(this.paseo).subscribe(
       response => {
         console.log(response.message);
-        this.ngOnInit();
+        if (response.message === 'Paseo iniciado') {
+          alert('Paseo iniciado correctamente');
+          // this.router.navigate(['paseos/match']);
+        } else {
+          alert('ERROR DESCONOCIDO');
+        }
       },
       error => {
         console.error(error);
@@ -68,14 +75,21 @@ export class AgendadosComponent implements OnInit {
   }
 
   terminarPaseo(elem, tipo) {
-    this.paseo.idPaseo = elem.id_paseo;
+    tipo === 0
+      ? (this.paseo.idPaseo = elem.id_paseo)
+      : (this.paseo.idPaseo = elem.id_agendado);
     this.paseo.status = 2;
     this.paseo.servicio = tipo;
     // console.log(this.paseo);
     this.servicios.postPaseoInicioFin(this.paseo).subscribe(
       response => {
         console.log(response.message);
-        this.ngOnInit();
+        if (response.message === 'Paseo finalizado') {
+          alert('Paseo finalizado correctamente');
+          // this.router.navigate(['paseos/match']);
+        } else {
+          alert('ERROR DESCONOCIDO');
+        }
       },
       error => {
         console.error(error);
@@ -94,7 +108,7 @@ export class AgendadosComponent implements OnInit {
       response => {
         console.log(response.message);
         if (response.tipo === 'SUCCESS') {
-          this.router.navigate(['paseos/match']);
+          // this.router.navigate(['paseos/match']);
         } else {
           alert(response.message);
         }

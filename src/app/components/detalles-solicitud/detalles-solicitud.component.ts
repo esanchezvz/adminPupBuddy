@@ -53,10 +53,8 @@ export class DetallesSolicitudComponent implements OnInit {
     );
   }
 
+  // tslint:disable-next-line: use-life-cycle-interface
   ngDoCheck(): void {
-    //Called every time that the input properties of a component or a directive are checked.
-    // Use it to extend change detection by performing a custom check.
-    //Add 'implements DoCheck' to the class.
     if (this.getBuddiesInfo) {
       console.log(this.idBuddies);
       this.idBuddies.map(id => {
@@ -96,5 +94,9 @@ export class DetallesSolicitudComponent implements OnInit {
   getNumberOfBuddies() {
     const arr = this.idBuddies.filter(id => id !== 0);
     return arr.length;
+  }
+
+  getBuddieAge(dof) {
+    return dof;
   }
 }
