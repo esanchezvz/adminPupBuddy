@@ -5,7 +5,6 @@
     </div>
   </div>
   <div class="row">
-
     <div class="col-12 col-md-12 text-center" *ngIf="detalles">
       <!--h2 class="subtitle">Info Solicitud</h2-->
       <div class="row">
@@ -13,7 +12,13 @@
           <label for="dir"><b>DIRECCIÓN</b></label>
         </div>
         <div class="col-12 col-sm-9">
-          <input type="text" readonly id="dir" [value]="detalles.direccion" class="form-control" />
+          <input
+            type="text"
+            readonly
+            id="dir"
+            [value]="detalles.direccion"
+            class="form-control"
+          />
         </div>
       </div>
       <div class="row">
@@ -21,7 +26,13 @@
           <label for="fecha"><b>FECHA</b></label>
         </div>
         <div class="col-12 col-sm-9">
-          <input type="text" readonly id="fecha" value="{{ fecha | date: 'dd/MM/yyyy' }}" class="form-control" />
+          <input
+            type="text"
+            readonly
+            id="fecha"
+            value="{{ fecha | date: 'dd/MM/yyyy' }}"
+            class="form-control"
+          />
         </div>
       </div>
 
@@ -30,7 +41,13 @@
           <label for="fecha"><b>HORA</b></label>
         </div>
         <div class="col-12 col-sm-9">
-          <input type="text" readonly id="fecha" [value]="detalles.hora" class="form-control" />
+          <input
+            type="text"
+            readonly
+            id="fecha"
+            [value]="detalles.hora"
+            class="form-control"
+          />
         </div>
       </div>
 
@@ -39,7 +56,13 @@
           <label for="fecha"><b>STATUS</b></label>
         </div>
         <div class="col-12 col-sm-9">
-          <input type="text" readonly id="fecha" value="{{ statusText || 'Error' }}" class="form-control" />
+          <input
+            type="text"
+            readonly
+            id="fecha"
+            value="{{ statusText || 'Error' }}"
+            class="form-control"
+          />
         </div>
       </div>
 
@@ -48,7 +71,13 @@
           <label for="dir"><b>CLIENTE</b></label>
         </div>
         <div class="col-12 col-sm-9">
-          <input type="text" readonly id="dir" [value]="detalles.username" class="form-control" />
+          <input
+            type="text"
+            readonly
+            id="dir"
+            [value]="detalles.username"
+            class="form-control"
+          />
         </div>
       </div>
 
@@ -57,7 +86,13 @@
           <label for="dir"><b>CORREO</b></label>
         </div>
         <div class="col-12 col-sm-9">
-          <input type="text" readonly id="dir" [value]="detalles.correoCliente" class="form-control" />
+          <input
+            type="text"
+            readonly
+            id="dir"
+            [value]="detalles.correoCliente"
+            class="form-control"
+          />
         </div>
       </div>
 
@@ -66,52 +101,116 @@
           <label for="dir"><b>CONTACTO</b></label>
         </div>
         <div class="col-12 col-sm-9">
-          <input type="text" readonly id="dir" [value]="detalles.contacto" class="form-control" />
+          <input
+            type="text"
+            readonly
+            id="dir"
+            [value]="detalles.contacto"
+            class="form-control"
+          />
         </div>
       </div>
-
     </div>
   </div>
 
-  <br>
-  
+  <br />
+
   <div class="row">
     <div class="col-12 text-center">
       <h2 class="subtitle">{{ buddyText }}</h2>
       <div class="row" *ngIf="threeBuddies">
         <div class="col-12 col-md-4 text-center" *ngFor="let buddy of buddies">
           <div class="imgContainer">
-            <img class="img-fluid huella" src="{{ buddy.img_a }}" alt="{{ buddy.nombre }}" />
+            <img
+              class="img-fluid huella"
+              src="{{ buddy.img_a }}"
+              alt="{{ buddy.nombre }}"
+            />
           </div>
           <h4 class="subtitle">{{ buddy.nombre }}</h4>
+          <ul class="text-left">
+            <li><b>Raza: </b>{{ buddy.raza }}</li>
+            <li><b>Tamaño: </b>{{ buddy.tamano | uppercase }}</li>
+            <li><b>Comentarios: </b>{{ buddy.comentarios }}</li>
+            <li><b>Sexo: </b>{{ buddy.sexo === 0 ? 'Hembra' : 'Macho' }}</li>
+            <!--@TO-DO: Cambiar fechaNacimiento por edad ***Crear Pipe*** -->
+            <li>
+              <b>Fecha de Nacimiento: </b
+              >{{ buddy.f_nacimiento | date: 'dd/MM/yyyy' }}
+            </li>
+          </ul>
         </div>
       </div>
-  
+
       <div class="row" *ngIf="fourBuddies">
         <div class="col-12 col-md-3 text-center" *ngFor="let buddy of buddies">
           <div class="imgContainer">
-            <img class="img-fluid huella" src="{{ buddy.img_a }}" alt="{{ buddy.nombre }}" />
+            <img
+              class="img-fluid huella"
+              src="{{ buddy.img_a }}"
+              alt="{{ buddy.nombre }}"
+            />
           </div>
           <h4 class="subtitle">{{ buddy.nombre }}</h4>
+          <ul class="text-left">
+            <li><b>Raza: </b>{{ buddy.raza }}</li>
+            <li><b>Tamaño: </b>{{ buddy.tamano | uppercase }}</li>
+            <li><b>Comentarios: </b>{{ buddy.comentarios }}</li>
+            <li><b>Sexo: </b>{{ buddy.sexo === 0 ? 'Hembra' : 'Macho' }}</li>
+            <!--@TO-DO: Cambiar fechaNacimiento por edad ***Crear Pipe*** -->
+            <li>
+              <b>Fecha de Nacimiento: </b
+              >{{ buddy.f_nacimiento | date: 'dd/MM/yyyy' }}
+            </li>
+          </ul>
         </div>
       </div>
       <div class="row" *ngIf="twoBuddies">
         <div class="col-12 col-md-6 text-center" *ngFor="let buddy of buddies">
           <div class="imgContainer">
-            <img class="img-fluid huella" src="{{ buddy.img_a }}" alt="{{ buddy.nombre }}" />
+            <img
+              class="img-fluid huella"
+              src="{{ buddy.img_a }}"
+              alt="{{ buddy.nombre }}"
+            />
           </div>
           <h4 class="subtitle">{{ buddy.nombre }}</h4>
+          <ul class="text-left">
+            <li><b>Raza: </b>{{ buddy.raza }}</li>
+            <li><b>Tamaño: </b>{{ buddy.tamano | uppercase }}</li>
+            <li><b>Comentarios: </b>{{ buddy.comentarios }}</li>
+            <li><b>Sexo: </b>{{ buddy.sexo === 0 ? 'Hembra' : 'Macho' }}</li>
+            <!--@TO-DO: Cambiar fechaNacimiento por edad ***Crear Pipe*** -->
+            <li>
+              <b>Fecha de Nacimiento: </b
+              >{{ buddy.f_nacimiento | date: 'dd/MM/yyyy' }}
+            </li>
+          </ul>
         </div>
       </div>
       <div class="row" *ngIf="oneBuddy">
         <div class="col-12 text-center" *ngFor="let buddy of buddies">
           <div class="imgContainer">
-            <img class="img-fluid huella" src="{{ buddy.img_a }}" alt="{{ buddy.nombre }}" />
+            <img
+              class="img-fluid huella"
+              src="{{ buddy.img_a }}"
+              alt="{{ buddy.nombre }}"
+            />
           </div>
           <h4 class="subtitle">{{ buddy.nombre }}</h4>
+          <ul class="text-left">
+            <li><b>Raza: </b>{{ buddy.raza }}</li>
+            <li><b>Tamaño: </b>{{ buddy.tamano | uppercase }}</li>
+            <li><b>Comentarios: </b>{{ buddy.comentarios }}</li>
+            <li><b>Sexo: </b>{{ buddy.sexo === 0 ? 'Hembra' : 'Macho' }}</li>
+            <!--@TO-DO: Cambiar fechaNacimiento por edad ***Crear Pipe*** -->
+            <li>
+              <b>Fecha de Nacimiento: </b
+              >{{ buddy.f_nacimiento | date: 'dd/MM/yyyy' }}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
-
 </div>

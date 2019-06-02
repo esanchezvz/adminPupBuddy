@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { ServiciosService } from "src/app/services/servicios.service";
-import { Router } from "@angular/router";
-import * as moment from "moment";
+import { Component, OnInit } from '@angular/core';
+import { ServiciosService } from 'src/app/services/servicios.service';
+import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
-  selector: "app-detalles-calendario",
-  templateUrl: "./detalles-calendario.component.html",
-  styleUrls: ["./detalles-calendario.component.css"]
+  selector: 'app-detalles-calendario',
+  templateUrl: './detalles-calendario.component.html',
+  styleUrls: ['./detalles-calendario.component.css']
 })
 export class DetallesCalendarioComponent implements OnInit {
   detalles: any;
@@ -23,11 +23,11 @@ export class DetallesCalendarioComponent implements OnInit {
   public fecha;
   public statusText;
 
-  constructor(private servicio: ServiciosService, private router: Router) { }
+  constructor(private servicio: ServiciosService, private router: Router) {}
 
   ngOnInit() {
     this.buddies = [];
-    const { id_paseo } = JSON.parse(sessionStorage.getItem("detalles"));
+    const { id_paseo } = JSON.parse(sessionStorage.getItem('detalles'));
     this.servicio.getDetallesPaseoAdmin(id_paseo).subscribe(
       res => {
         this.detalles = res;
@@ -41,9 +41,9 @@ export class DetallesCalendarioComponent implements OnInit {
         this.fecha = moment(this.detalles.fecha);
 
         if (this.detalles.status === 1) {
-          this.statusText = "En Curso";
+          this.statusText = 'En Curso';
         } else if (this.detalles.status === 0) {
-          this.statusText = "Agendado";
+          this.statusText = 'Agendado';
         }
         console.log(this.detalles);
       },
@@ -63,7 +63,7 @@ export class DetallesCalendarioComponent implements OnInit {
         if (id !== 0) {
           this.servicio.getBuddyInfo(id).subscribe(
             res => {
-              console.log(res)
+              console.log(res);
               this.buddies.push(res);
             },
             err => {
@@ -73,8 +73,8 @@ export class DetallesCalendarioComponent implements OnInit {
         }
       });
       this.getNumberOfBuddies() === 1
-        ? (this.buddyText = "Buddy")
-        : (this.buddyText = "Buddies");
+        ? (this.buddyText = 'Buddy')
+        : (this.buddyText = 'Buddies');
 
       if (this.getNumberOfBuddies() === 1) {
         this.oneBuddy = true;

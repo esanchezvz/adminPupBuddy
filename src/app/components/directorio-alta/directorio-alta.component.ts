@@ -1,20 +1,19 @@
-import { Component, OnInit } from "@angular/core";
-import { ServiciosService } from "src/app/services/servicios.service";
-import { FormBuilder, Validators, FormControl } from "@angular/forms";
-import { DatePipe } from "@angular/common";
-import { toBase64String } from "@angular/compiler/src/output/source_map";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { ServiciosService } from 'src/app/services/servicios.service';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-directorio-alta",
-  templateUrl: "./directorio-alta.component.html",
-  styleUrls: ["./directorio-alta.component.css"]
+  selector: 'app-directorio-alta',
+  templateUrl: './directorio-alta.component.html',
+  styleUrls: ['./directorio-alta.component.css']
 })
 export class DirectorioAltaComponent implements OnInit {
   public formato;
   public imgFlag = false;
-  private urlImg = "";
-  private urlImgFinal = "";
+  private urlImg = '';
+  private urlImgFinal = '';
 
   constructor(
     private serviciosService: ServiciosService,
@@ -23,29 +22,29 @@ export class DirectorioAltaComponent implements OnInit {
     private router: Router
   ) {
     this.formato = this.formBuilder.group({
-      nombre: ["", Validators.required],
-      categoria: ["", Validators.required],
-      direccion: ["", Validators.required],
-      lat: ["", Validators.required],
-      lng: ["", Validators.required],
-      tel: ["", Validators.required],
-      web: ["", Validators.required],
-      fb: ["", Validators.required],
-      instagram: ["", Validators.required],
-      t_nombre: ["", Validators.required],
-      t_tel: ["", Validators.required],
-      t_email: ["", Validators.required],
-      img: [""]
+      nombre: ['', Validators.required],
+      categoria: ['', Validators.required],
+      direccion: ['', Validators.required],
+      lat: ['', Validators.required],
+      lng: ['', Validators.required],
+      tel: ['', Validators.required],
+      web: ['', Validators.required],
+      fb: ['', Validators.required],
+      instagram: ['', Validators.required],
+      t_nombre: ['', Validators.required],
+      t_tel: ['', Validators.required],
+      t_email: ['', Validators.required],
+      img: ['']
     });
   }
 
   altaDirectorio() {
-    if (this.urlImg == "") {
-      alert("Favor de agregar una imagen");
+    if (this.urlImg === '') {
+      alert('Favor de agregar una imagen');
       return;
     }
     if (this.formato.invalid) {
-      alert("Favor de verificar los campos");
+      alert('Favor de verificar los campos');
       return;
     }
     this.getOnlyBase64(); // Obtiene la base 64 en finalUrl
@@ -57,7 +56,7 @@ export class DirectorioAltaComponent implements OnInit {
         alert(`¡Éxito!\n${res.message}`);
       },
       error => {
-        alert("Error! Vuelva a intentar.");
+        alert('Error! Vuelva a intentar.');
       }
     );
   }
@@ -68,10 +67,10 @@ export class DirectorioAltaComponent implements OnInit {
     // CONTROL DE IMAGEN AGREGADA
     if (event.target.files && event.target.files[0]) {
       if (this.checkImage(event.target.files[0])) {
-        var reader = new FileReader();
+        const reader = new FileReader();
 
         reader.readAsDataURL(event.target.files[0]); // read file as data url
-        reader.onload = event => {
+        reader.onload = e => {
           this.urlImg = reader.result.toString();
         };
         this.imgFlag = true;
@@ -80,28 +79,28 @@ export class DirectorioAltaComponent implements OnInit {
   }
 
   getOnlyBase64() {
-    this.urlImgFinal = this.urlImg; //.split("base64,")[1];
+    this.urlImgFinal = this.urlImg; // .split("base64,")[1];
   }
 
   checkImage(img: any) {
     if (img.size > 1000000) {
-      console.log("TOO LARGE");
-      alert("La imagen supera el máximo de 1MB");
+      console.log('TOO LARGE');
+      alert('La imagen supera el máximo de 1MB');
       return false;
     }
     if (
-      img.type.toString() === "image/jpeg" ||
+      img.type.toString() === 'image/jpeg' ||
       // img.type.toString() === "image/png" ||
-      img.type.toString() === "image/jpg"
+      img.type.toString() === 'image/jpg'
     ) {
       return true;
     }
 
-    alert("Solo se pueden subir imagenes de tipo JPEG y JPG.");
+    alert('Solo se pueden subir imagenes de tipo JPEG y JPG.');
     return false;
   }
 
   toConsulta() {
-    this.router.navigate(["directorio/consulta"]);
+    this.router.navigate(['directorio/consulta']);
   }
 }

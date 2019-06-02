@@ -52,17 +52,19 @@
             [class.selected-row]="el.selected"
           >
             <td>{{ el.id_paseador }}</td>
-            <td>{{ el.f_servicio }}</td>
+            <td>{{ el.f_servicio | date: 'long' }}</td>
             <td>{{ el.h_servicio }}</td>
             <td>{{ el.horaInicioEditada | date: 'h:mm a' }}</td>
             <td *ngIf="el.status_pago === 0">
               <button class="btn" (click)="generarCargo(el)">Cobrar</button>
             </td>
             <td *ngIf="el.status_paseo === 0 && el.status_pago === 1">
-              <button class="btn" (click)="iniciarPaseo(el)">Iniciar</button>
+              <button class="btn" (click)="iniciarPaseo(el, 0)">Iniciar</button>
             </td>
             <td *ngIf="el.status_paseo === 1">
-              <button class="btn" (click)="terminarPaseo(el)">Finalizar</button>
+              <button class="btn" (click)="terminarPaseo(el, 0)">
+                Finalizar
+              </button>
             </td>
             <td>
               <button class="btn" (click)="toDetalles(el)">Detalles</button>
@@ -99,10 +101,12 @@
               Por Cobrar
             </td>
             <td *ngIf="el.status_paseo === 0 && el.membresia_status === 1">
-              <button class="btn" (click)="iniciarPaseo(el)">Iniciar</button>
+              <button class="btn" (click)="iniciarPaseo(el, 1)">Iniciar</button>
             </td>
             <td *ngIf="el.status_paseo === 1">
-              <button class="btn" (click)="terminarPaseo(el)">Finalizar</button>
+              <button class="btn" (click)="terminarPaseo(el, 1)">
+                Finalizar
+              </button>
             </td>
             <td>
               <button class="btn" (click)="toMembresia(el)">Ver Más</button>

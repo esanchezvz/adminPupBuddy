@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { ServiciosService } from "src/app/services/servicios.service";
-import { Router } from "@angular/router";
-import * as moment from "moment";
+import { Component, OnInit } from '@angular/core';
+import { ServiciosService } from 'src/app/services/servicios.service';
+import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-detalles-solicitud',
@@ -23,11 +23,11 @@ export class DetallesSolicitudComponent implements OnInit {
   public fecha;
   public statusText;
 
-  constructor(private servicio: ServiciosService, private router: Router) { }
+  constructor(private servicio: ServiciosService, private router: Router) {}
 
   ngOnInit() {
     this.buddies = [];
-    const { id_solicitud } = JSON.parse(sessionStorage.getItem("detalles"));
+    const { id_solicitud } = JSON.parse(sessionStorage.getItem('detalles'));
     this.servicio.getDetallesSolicitudAdmin(id_solicitud).subscribe(
       res => {
         this.detalles = res;
@@ -41,9 +41,9 @@ export class DetallesSolicitudComponent implements OnInit {
         this.fecha = moment(this.detalles.fecha);
 
         if (this.detalles.status === 1) {
-          this.statusText = "En Curso";
+          this.statusText = 'En Curso';
         } else if (this.detalles.status === 0) {
-          this.statusText = "Agendado";
+          this.statusText = 'Agendado';
         }
         console.log(this.detalles);
       },
@@ -53,9 +53,8 @@ export class DetallesSolicitudComponent implements OnInit {
     );
   }
 
+  // tslint:disable-next-line: use-life-cycle-interface
   ngDoCheck(): void {
-    //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
-    //Add 'implements DoCheck' to the class.
     if (this.getBuddiesInfo) {
       console.log(this.idBuddies);
       this.idBuddies.map(id => {
@@ -63,7 +62,7 @@ export class DetallesSolicitudComponent implements OnInit {
         if (id !== 0) {
           this.servicio.getBuddyInfo(id).subscribe(
             res => {
-              console.log(res)
+              console.log(res);
               this.buddies.push(res);
             },
             err => {
@@ -73,8 +72,8 @@ export class DetallesSolicitudComponent implements OnInit {
         }
       });
       this.getNumberOfBuddies() === 1
-        ? (this.buddyText = "Buddy")
-        : (this.buddyText = "Buddies");
+        ? (this.buddyText = 'Buddy')
+        : (this.buddyText = 'Buddies');
 
       if (this.getNumberOfBuddies() === 1) {
         this.oneBuddy = true;
@@ -95,5 +94,9 @@ export class DetallesSolicitudComponent implements OnInit {
   getNumberOfBuddies() {
     const arr = this.idBuddies.filter(id => id !== 0);
     return arr.length;
+  }
+
+  getBuddieAge(dof) {
+    return dof;
   }
 }

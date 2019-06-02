@@ -11,6 +11,7 @@ import { ServiciosService } from 'src/app/services/servicios.service';
 export class AgendadosComponent implements OnInit {
   agendados: any[];
   membresias: any[];
+  consulta = false;
   headElements = [
     '# Paseador',
     'Fecha Servicio',
@@ -27,7 +28,8 @@ export class AgendadosComponent implements OnInit {
   minDate: any;
   paseo: any = {
     idPaseo: null,
-    status: null
+    status: null,
+    servicio: null
   };
 
   cobrar: any = {
@@ -49,13 +51,22 @@ export class AgendadosComponent implements OnInit {
     };
   }
 
-  iniciarPaseo(elem) {
-    this.paseo.idPaseo = elem.id_paseo;
+  iniciarPaseo(elem, tipo) {
+    tipo === 0
+      ? (this.paseo.idPaseo = elem.id_paseo)
+      : (this.paseo.idPaseo = elem.id_agendado);
     this.paseo.status = 1;
+    this.paseo.servicio = tipo;
+    console.log('PETICION', this.paseo);
     this.servicios.postPaseoInicioFin(this.paseo).subscribe(
       response => {
         console.log(response.message);
-        this.ngOnInit();
+        if (response.message === 'Paseo iniciado') {
+          alert('Paseo iniciado correctamente');
+          // this.router.navigate(['paseos/match']);
+        } else {
+          alert('ERROR DESCONOCIDO');
+        }
       },
       error => {
         console.error(error);
@@ -63,14 +74,22 @@ export class AgendadosComponent implements OnInit {
     );
   }
 
-  terminarPaseo(elem) {
-    console.log(elem);
-    this.paseo.idPaseo = elem.id_paseo;
+  terminarPaseo(elem, tipo) {
+    tipo === 0
+      ? (this.paseo.idPaseo = elem.id_paseo)
+      : (this.paseo.idPaseo = elem.id_agendado);
     this.paseo.status = 2;
+    this.paseo.servicio = tipo;
+    // console.log(this.paseo);
     this.servicios.postPaseoInicioFin(this.paseo).subscribe(
       response => {
         console.log(response.message);
-        this.ngOnInit();
+        if (response.message === 'Paseo finalizado') {
+          alert('Paseo finalizado correctamente');
+          // this.router.navigate(['paseos/match']);
+        } else {
+          alert('ERROR DESCONOCIDO');
+        }
       },
       error => {
         console.error(error);
@@ -89,7 +108,7 @@ export class AgendadosComponent implements OnInit {
       response => {
         console.log(response.message);
         if (response.tipo === 'SUCCESS') {
-          this.router.navigate(['paseos/match']);
+          // this.router.navigate(['paseos/match']);
         } else {
           alert(response.message);
         }
@@ -104,35 +123,12 @@ export class AgendadosComponent implements OnInit {
   ngOnInit() {
     this.paseo = {
       idPaseo: null,
-      status: null
+      status: null,
+      servicio: null
     };
-    // this.servicios.getAgendados().subscribe(
-    //   response => {
-    //     this.items = response;
-    //     this.agendados = this.items.map(item => {
-    //       if (this.checkHorarioVerano()) {
-    //         return {
-    //           ...item,
-    //           selected: false,
-    //           fechaEditada: moment(item.rmatch).add(1, 'hours'),
-    //           horaInicioEditada: moment(item.inicio)
-    //             .add(1, 'hours')
-    //         }; /*@TODO JCVD: quitar la hora que se agrega cuando se arregle el servicio*/
-    //       } else {
-    //         return {
-    //           ...item,
-    //           selected: false,
-    //           fechaEditada: item.rmatch,
-    //           horaInicioEditada: item.inicio
-    //         };
-    //       }
-    //     });
-    //     console.log('AGENDADOS ->', this.agendados);
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // );
+    if (this.consulta === true) {
+      this.getFechas();
+    }
   }
 
   checkHorarioVerano() {
@@ -180,6 +176,7 @@ export class AgendadosComponent implements OnInit {
   getFechas() {
     const fecha1 = moment(this.fecha1).format('YYYY/MM/DD');
     const fecha2 = moment(this.fecha2).format('YYYY/MM/DD');
+    this.consulta = true;
 
     console.log({ i: fecha1, f: fecha2 });
     this.servicios.postFechasAgendados({ i: fecha1, f: fecha2 }).subscribe(
